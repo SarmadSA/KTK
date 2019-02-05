@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
-import Submitandexplore from './components/Submitandexplore'
-import Bg from './components/bg'
+import './css/Global.css';
+import { Router } from 'react-router-dom';
+import History from './utils/History';
+import Routes from './components/Routes';
 
-        class App extends Component {
+class App extends Component {
     render() {
         return (
+            <Router history={History}>
                 <div className="App">
-                    <Bg/>
-                    <Submitandexplore/>
+                    <main className="main">
+                        <Routes />
+                        <br className="clear"/>
+                    </main>
                 </div>
-                );
+            </Router>
+        );
     }
-};
+}
 
 export default App;
