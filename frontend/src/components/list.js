@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card'
         import CardDeck from 'react-bootstrap/CardDeck'
         import Button from 'react-bootstrap/Button'
+        import Container from 'react-bootstrap/Container'
 
         const list = () => {
     return (
+            <Container>
             <CardDeck>
                 <Card>
                 <Card.Img variant="top" src={require("../img/template.svg")} />
@@ -61,6 +63,7 @@ import Card from 'react-bootstrap/Card'
                 </Card.Footer>
                 </Card>
             </CardDeck>
+            </Container>
             );
 };
 export default list;

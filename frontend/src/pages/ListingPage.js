@@ -1,7 +1,9 @@
 import React from 'react';
 
 const ListingPage = () =>{
-    return (<div>Listing</div>);
+    return (<div>
+
+            </div>);
 };
 
 export default ListingPage;

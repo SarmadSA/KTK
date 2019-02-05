@@ -4,22 +4,22 @@ html, body, #root, .App {
 }
 
 .jumbotron {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  width: 80%;
-  padding: 20px;
-  text-align: center;
-  background:none !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+    background:none !important;
 }
 
-p {
+.invisible {
     visibility: hidden;
 }
 
-.btn {
+.btnLg {
     height: 100px;
     border-radius: 200px;
     font-size: xx-large;
