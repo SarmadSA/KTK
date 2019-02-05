@@ -1,0 +1,26 @@
+
+*:not(.jumbotron) {
+    height: 100%;
+}
+
+.jumbotron {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+  background:none !important;
+}
+
+p {
+    visibility: hidden;
+}
+
+.btn {
+    height: 100px;
+    border-radius: 200px;
+    font-size: xx-large;
+}
