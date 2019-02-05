@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import css from '../css/Submitandexplore.css'
 
-const Submitandexplore = () => {
+const Submitandexplore = (props) => {
     return (
 <Jumbotron>
     <Container>
@@ -16,7 +16,7 @@ const Submitandexplore = () => {
             </Col>
         <Col md="auto"><p>Hello</p></Col>
             <Col xs lg="5">
-                <Button block size="lg" variant="success">Explore</Button>
+                <Button block size="lg" variant="success" onClick={props.handleExploreBtn}>Explore</Button>
             </Col>
         </Row>
     </Container>

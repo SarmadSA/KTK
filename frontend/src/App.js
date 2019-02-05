@@ -2,13 +2,22 @@ import React, { Component } from 'react';
 import './App.css';
 import Submitandexplore from './components/Submitandexplore'
 import Bg from './components/bg'
+import Navbar from './components/navbar'
 
-        class App extends Component {
-    render() {
+class App extends Component {
+
+            
+   render() {
+        
+            function handleExplore(){
+                //redirect 
+            }
+            
         return (
                 <div className="App">
+                    <Navbar/>
                     <Bg/>
-                    <Submitandexplore/>
+                    <Submitandexplore handleExploreBtn={handleExplore}/>
                 </div>
                 );
     }
