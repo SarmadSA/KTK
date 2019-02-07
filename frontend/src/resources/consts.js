@@ -1,0 +1,1 @@
+export const CARD_PER_ROW = 4;

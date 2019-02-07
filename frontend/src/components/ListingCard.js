@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
 
-        const Card = () => {
+const ListingCard = () => {
     return (
             <Card>
             <Card.Img variant="top" src={require("../img/template.svg")} />
@@ -16,6 +16,6 @@ import Card from 'react-bootstrap/Card'
                 <small className="text-muted">Profile</small>
             </Card.Footer>
             </Card>
-            );
+    );
 };
-export default Card;
+export default ListingCard;
