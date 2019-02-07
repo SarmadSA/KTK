@@ -2,6 +2,12 @@
     margin-bottom: 15px;
 }
 
-.dropdown-button-drop-left {
+.btn-toolbar {
     display: flow-root !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.dropleft {
+    float: right;
 }
