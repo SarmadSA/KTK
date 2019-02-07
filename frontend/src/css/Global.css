@@ -2,6 +2,6 @@
     clear: both;
 }
 
-li, a{
-    color: black;
+.card{
+    max-width: 261px;
 }

@@ -3,7 +3,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Container from 'react-bootstrap/Container';
-import css from '../css/dropleft.css'
+import '../css/dropleft.css'
+import '../css/Explore.css';
 
 const Dropleft = () => {
     return (
