@@ -14,8 +14,7 @@ const Dropleft = () => {
                                     variant="info"
                                     title={` Drop ${direction} `}
                                     id={`dropdown-button-drop-${direction}`}
-                                    key={direction}
-                                    >
+                                    key={direction}>
                                     <div className="pl-4">
                                     <li><a href="#" data-value="option1" tabIndex="-1">
                                     <input type="checkbox"/>&nbsp;Country 1</a></li>
