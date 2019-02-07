@@ -4,6 +4,7 @@ import './css/Global.css';
 import { Router } from 'react-router-dom';
 import History from './utils/History';
 import Routes from './components/Routes';
+import Footer from './components/Footer';
 
 class App extends Component {
     render() {
@@ -13,6 +14,7 @@ class App extends Component {
                     <main className="main">
                         <Routes />
                         <br className="clear"/>
+                        <Footer/>
                     </main>
                 </div>
             </Router>
