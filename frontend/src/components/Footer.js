@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import css from '../css/footer.css'
+import React from 'react';
+import css from '../css/footer.css';
 
 const Footer = () => {
     return (
