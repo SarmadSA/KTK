@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card'
+import React from 'react';
+import Card from 'react-bootstrap/Card';
 
-        const Card = () => {
+const Card = () => {
     return (
             <Card>
             <Card.Img variant="top" src={require("../img/template.svg")} />

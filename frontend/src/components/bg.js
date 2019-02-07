@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import css from '../css/bg.css'
+import React from 'react';
+import css from '../css/bg.css';
 
 const bg = () => {
     return (

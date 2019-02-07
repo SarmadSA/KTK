@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card'
-        import CardDeck from 'react-bootstrap/CardDeck'
-        import Button from 'react-bootstrap/Button'
-        import Container from 'react-bootstrap/Container'
-        import Row from 'react-bootstrap/Row'
-        import css from '../css/Explore.css'
+import React from 'react';
+import Card from 'react-bootstrap/Card';
+import CardDeck from 'react-bootstrap/CardDeck';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import css from '../css/Explore.css';
 
-        const list = () => {
+const list = () => {
     return (
             <Container>
                 <Row>

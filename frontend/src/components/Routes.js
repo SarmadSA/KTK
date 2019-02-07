@@ -7,7 +7,6 @@ import NotFoundPage from "../pages/NotFoundPage";
 import AboutPage from "../pages/AboutPage";
 import ExplorePage from "../pages/ExplorePage";
 
-
 const Routes = () =>{
     return(
         <Switch>
