@@ -1,3 +1,7 @@
 .row {
     margin-bottom: 15px;
 }
+
+.dropdown-button-drop-left {
+    display: flow-root !important;
+}

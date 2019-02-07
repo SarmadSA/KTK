@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
+import Container from 'react-bootstrap/Container'
 
 const Dropleft = () => {
     return (
+            <Container>
             <ButtonToolbar>
                 {['left'].map(direction => (
                                 <DropdownButton
@@ -18,7 +23,8 @@ const Dropleft = () => {
                                     <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
                                 </DropdownButton>
                                 ))}
-            </ButtonToolbar>);
+            </ButtonToolbar>
+            </Container>);
 };
 
 export default Dropleft;
