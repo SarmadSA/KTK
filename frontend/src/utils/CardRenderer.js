@@ -1,16 +1,19 @@
-import React, { Component }
-from 'react';
-import Card from '../components/Card'
+import React from 'react';
+import ListingCard from '../components/ListingCard';
 
-const CardRenderer = () => {
-return (
-<Container>
-    <Row>
-        <CardDeck>
-            <Card>
-        </CardDeck>
-    </Row>
-</Container>
-);
+
+const CardRenderer = (props) => {
+    const cardArray = [];
+
+    renderCards(props.number);
+
+    function renderCards(numOfCards) {
+        for(let i = 0; i < numOfCards; i++){
+            cardArray.push(<ListingCard/>);
+        }
+    }
+
+    return cardArray;
 };
+
 export default CardRenderer;
