@@ -7,19 +7,19 @@
     font-size: larger;
 }
 
-input[type='checkbox'] {
+.inputFilter {
     -webkit-appearance:none;
-    width:20px;
-    height:20px;
+    width:25px;
+    height:14px;
     background:white;
     border-radius:5px;
     border:2px solid #555;
 }
-input[type='checkbox']:checked {
+.inputFilter:checked {
     background: #555;
 }
 
-.icon {
+.iconFilter {
     padding-top: 5px;
     margin-top: -12px;
     float: right;

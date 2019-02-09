@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import '../css/card.css';
 
 const ListingCard = () => {
     return (
             <Card>
             <Card.Img variant="top" src={require("../img/template.svg")} />
             <Card.Body>
-                <Card.Title>Card title</Card.Title>
+                <Card.Title>Picture Title</Card.Title>
                 <Card.Text>
-                    This is a wider card with supporting text below as a natural lead-in to
-                    additional content. This content is a little bit longer.
+                    This is a description of the picture.
                 </Card.Text>
             </Card.Body>
             <Card.Footer>
-                <small className="text-muted">Profile</small>
+                <p className="cardFooter float-left">Username</p><p className="cardFooter float-right">Age: 9 USA</p>
+                 <Button block variant="success">SUPPORT</Button>
             </Card.Footer>
             </Card>
     );

@@ -10,10 +10,10 @@ import '../css/Explore.css';
 const Dropleft = () => {
     return (
             <Container className="filter">
-                <ButtonToolbar>
+                <ButtonToolbar className="filterBar">
                     {['left'].map(direction => (
                                 <div>
-                                    <TiFilter className="icon"/>
+                                    <TiFilter className="iconFilter"/>
                                     <DropdownButton
                                         drop={direction}
                                         variant="info"
@@ -21,9 +21,9 @@ const Dropleft = () => {
                                         id={`dropdown-button-drop-${direction}`}
                                         key={direction}>
                                         <div className="pl-4 filter">
-                                            <li><label><input type="checkbox"/>&nbsp;Country 1</label></li>
-                                            <li><label><input type="checkbox"/>&nbsp;Country 2</label></li>
-                                            <li><label><input type="checkbox"/>&nbsp;Country 3</label></li>
+                                            <li><label><input className="inputFilter" type="checkbox"/>&nbsp;Country 1</label></li>
+                                            <li><label><input className="inputFilter" type="checkbox"/>&nbsp;Country 2</label></li>
+                                            <li><label><input className="inputFilter" type="checkbox"/>&nbsp;Country 3</label></li>
                                         </div>
                                     </DropdownButton>
                                     <DropdownButton
@@ -34,8 +34,8 @@ const Dropleft = () => {
                                         id={`dropdown-button-drop-${direction}`}
                                         key={direction}>
                                         <div className="pl-4 filter">
-                                            <li><label><input type="checkbox"/>&nbsp;Age 0-5</label></li>
-                                            <li><label><input type="checkbox"/>&nbsp;Age 6-10</label></li>
+                                            <li><label><input className="inputFilter" type="checkbox"/>&nbsp;Age 0-5</label></li>
+                                            <li><label><input className="inputFilter" type="checkbox"/>&nbsp;Age 6-10</label></li>
                                         </div>
                                     </DropdownButton>
                                 </div>

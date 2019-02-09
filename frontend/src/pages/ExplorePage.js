@@ -4,12 +4,13 @@ import List from '../components/list';
 import Dropdown from '../components/Dropleft';
 import Text from '../components/text';
 
-        const LandingPage = () => {
+const LandingPage = () => {
     return (<div>
-            <Nav/>
-            <Text/>
-            <Dropdown/>
-            <List/>
+        <Nav/>
+        <Text/>
+        <hr/>
+        <Dropdown/>
+        <List/>
     </div>);
 };
 
