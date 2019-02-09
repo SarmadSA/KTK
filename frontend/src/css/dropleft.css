@@ -1,3 +1,27 @@
 .dropleft {
+    padding-top: 2px;
     float: right;
+}
+
+.filter{
+    font-size: larger;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance:none;
+    width:20px;
+    height:20px;
+    background:white;
+    border-radius:5px;
+    border:2px solid #555;
+}
+input[type='checkbox']:checked {
+    background: #555;
+}
+
+.icon {
+    padding-top: 5px;
+    margin-top: -12px;
+    float: right;
+    font-size: 55px;
 }
