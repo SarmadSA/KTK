@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ListingPage = () =>{
-    return (<div>
+    return (<div className="surround">
 
             </div>);
 };

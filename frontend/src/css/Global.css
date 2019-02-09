@@ -1,3 +1,11 @@
 .clear{
     clear: both;
 }
+
+.main {
+    height: 100%;
+}
+
+.surround {
+    height: 100%;
+}

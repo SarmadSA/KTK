@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import '../css/about.css'
 
 const about = () => {
     return (
@@ -10,7 +11,7 @@ const about = () => {
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
                     <h1>About</h1>
-                    <div>Lorem ipsum dolor sit amet, reque aliquam iracundia usu ut, 
+                    <div className="aboutText">Lorem ipsum dolor sit amet, reque aliquam iracundia usu ut, 
                     id wisi suavitate expetendis per. 
                     Ne eros animal neglegentur pro, viris salutandi voluptaria ei his. 
                     Per stet graece democritum ad. 
@@ -26,7 +27,7 @@ const about = () => {
                             <Form.Control type="email" placeholder="name@example.com" />
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Example textarea</Form.Label>
+                            <Form.Label>Message</Form.Label>
                             <Form.Control as="textarea" rows="3" />
                         </Form.Group>
                     </Form>

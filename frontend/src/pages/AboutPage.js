@@ -3,7 +3,7 @@ import Nav from '../components/navbar'
 import About from '../components/about'
 
 const AboutPage = () =>{
-    return (<div>
+    return (<div className="surround">
             <Nav/>
             <About/>
             </div>);

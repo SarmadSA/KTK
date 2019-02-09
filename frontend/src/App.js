@@ -13,8 +13,8 @@ class App extends Component {
                 <div className="App">
                     <main className="main">
                         <Routes />
-                        <br className="clear"/>
                         <Footer/>
+                        <div className="clear"/>
                     </main>
                 </div>
             </Router>
