@@ -1,13 +1,11 @@
-.row {
+.eachRow {
     margin-bottom: 15px;
+    display: -moz-inline-stack;
+    display: inline-block;
 }
 
-.btn-toolbar {
+.filterBar {
     display: flow-root !important;
     margin-top: 15px;
     margin-bottom: 15px;
-}
-
-.dropleft {
-    float: right;
 }

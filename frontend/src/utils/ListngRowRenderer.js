@@ -14,7 +14,7 @@ const ListingRowRenderer = (props) => {
 
     const getRow = (numOfCards) => {
         return (
-            <Row>
+            <Row className="eachRow">
                 <CardDeck>
                     <CardRenderer number={numOfCards}/>
                 </CardDeck>

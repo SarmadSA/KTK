@@ -2,6 +2,10 @@
     clear: both;
 }
 
-.card{
-    max-width: 261px;
+.main {
+    height: 100%;
+}
+
+.surround {
+    height: 100%;
 }
