@@ -6,4 +6,5 @@ import com.activekids.web.model.User;
 public interface UserService {
     Iterable<User> getAllUsers();
     boolean createUser(String email, String firstName, String lastName, String password);
+    boolean removeUser(Long id);
 }
