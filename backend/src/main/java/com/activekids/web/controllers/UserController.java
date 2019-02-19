@@ -32,4 +32,16 @@ public class UserController {
 
         return response;
     }
+
+    @DeleteMapping(path="/delete")
+    public String deleteUser(@RequestParam Long userId){
+        String response = "Something went wrong!";
+
+        boolean successfullyCreated = userService.removeUser(userId);
+        if(successfullyCreated){
+            response = "User deleted!";
+        }
+
+        return response;
+    }
 }
