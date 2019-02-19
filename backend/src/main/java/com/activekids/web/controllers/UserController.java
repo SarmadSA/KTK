@@ -20,4 +20,17 @@ public class UserController {
     public Iterable<User> listAllUsers(){
         return userService.getAllUsers();
     }
+
+    @PostMapping(path="/add")
+    public String addUser(@RequestParam String email, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String password){
+        String response = "Something went wrong!";
+
+        //TODO: validate correct datatype after parsing.
+        boolean successfullyCreated = userService.createUser(email, firstName, lastName, password);
+        if(successfullyCreated){
+            response = "User Created!";
+        }
+
+        return response;
+    }
 }
