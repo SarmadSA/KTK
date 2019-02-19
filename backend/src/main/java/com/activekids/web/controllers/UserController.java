@@ -16,5 +16,8 @@ public class UserController {
         this.userService = userService;
     }
 
-
+    @GetMapping("/list")
+    public Iterable<User> listAllUsers(){
+        return userService.getAllUsers();
+    }
 }
