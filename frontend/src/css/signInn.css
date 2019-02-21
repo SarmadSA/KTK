@@ -1,14 +1,14 @@
 @media only screen and (min-width: 700px) {
     .popup_inner {
-        left: 30vw;
-        right: 30vw;
+        left: 35vw;
+        right: 35vw;
     }
     .closePop {
-        right: 30vw;
+        right: 35vw;
     }
 }
 @media only screen and (max-width: 700px) {
-        .popup_inner {
+    .popup_inner {
         left: 10vw;
         right: 10vw;
     }
@@ -20,10 +20,12 @@
     position: absolute;
     top: 20vh;
     margin: auto;
-    background: #08CC30;
     padding-top: 5px;
+    background: rgb(71,210,37);
+    background: linear-gradient(290deg, rgba(71,210,37,1) 0%, rgba(14,190,160,0.9) 100%);
 }
 .popup {
+    z-index: 10;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -54,7 +56,6 @@
 }
 
 .loginA {
-    color: black !important;
-    text-decoration: underline !important;
+    color: black;
     font-size: 15px;
 }

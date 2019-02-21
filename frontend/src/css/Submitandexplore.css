@@ -16,6 +16,8 @@
 }
 
 .btnLg {
+    background-color: #47d225;
+    border-color: #47d225;
     height: 100px;
     border-radius: 200px;
     font-size: xx-large;
