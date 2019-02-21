@@ -6,7 +6,7 @@
  
 .about {
     position: absolute;
-    top: 400px;
+    top: 420px;
     width: 100%;
 }
 
@@ -20,5 +20,10 @@ Form {
 }
 
 .aboutContactDiv {
-    background-color: #fff;
+    background: rgba(255,255,255,0.5);
+    padding: 20px;
+}
+
+.formContainer {
+    background: rgba(255,255,255,0.8);
 }

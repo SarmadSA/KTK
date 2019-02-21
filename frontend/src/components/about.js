@@ -6,18 +6,13 @@ import Col from 'react-bootstrap/Col';
 import css from '../css/about.css';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 
-const aboutContactStyle = {
-    backgroundColor: '#fff',
-    padding: '20px'
-};
-
 const about = () => {
     return (
         <Jumbotron>
             <Container>
                 <Row>
                     <Col md={{span: 6, offset: 3 }}>
-                        <div style={aboutContactStyle}>
+                        <div className="aboutContactDiv">
                         <h1>About</h1>
                         <div className="aboutText">Lorem ipsum dolor sit amet, reque aliquam iracundia usu ut, 
                         id wisi suavitate expetendis per. 
@@ -28,15 +23,15 @@ const about = () => {
                         <Form>
                             <Form.Group controlId="exampleForm.ControlInput1">
                                 <Form.Label>Name</Form.Label>
-                                <Form.Control type="name" placeholder="Jane Doe" />
+                                <Form.Control type="name" placeholder="Jane Doe" className="formContainer"/>
                             </Form.Group>
                             <Form.Group controlId="exampleForm.ControlInput1">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="name@example.com" />
+                                <Form.Control type="email" placeholder="name@example.com" className="formContainer"/>
                             </Form.Group>
                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                 <Form.Label>Message</Form.Label>
-                                <Form.Control as="textarea" rows="3" />
+                                <Form.Control as="textarea" rows="3" className="formContainer"/>
                             </Form.Group>
                             <button type="submit" className="btn submitBtn">
                                 Submit
