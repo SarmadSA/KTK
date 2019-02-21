@@ -6,6 +6,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import AboutPage from "../pages/AboutPage";
 import ExplorePage from "../pages/ExplorePage";
 import SignUp from "../pages/SignUp";
+import ProfilePage from "../pages/ProfilePage";
 
 const Routes = () =>{
     return(
@@ -13,9 +14,10 @@ const Routes = () =>{
             <Route path="/about" exact component={AboutPage}/>
             <Route path="/contact" exact component={AboutPage}/>
             <Route path="/signup" exact component={SignUp}/>
-            <Route path="/Listing/:id" exact component={ListingPage}/>
+            <Route path="/listing/:id" exact component={ListingPage}/>
             <Route path="/home" exact component={ExplorePage}/>
             <Route path="/explore" exact component={ExplorePage}/>
+            <Route path="/profile/:id" exact component={ProfilePage}/>
             <Route path="/" exact component={LandingPage}/>
             <Route render={()=> <NotFoundPage/>}/>
         </Switch>

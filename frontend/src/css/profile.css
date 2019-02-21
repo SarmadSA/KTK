@@ -1,0 +1,29 @@
+.Username {
+    padding-top: 15px;
+    padding-left: 1vw;
+}
+
+.DescriptionText {
+    font-size: 14px;
+}
+
+.cflag {
+    float: left;
+    padding-top:2px;
+    margin-bottom: 20px;
+}
+
+.profilePic {
+    text-align: left;
+}
+
+@media only screen and (min-width: 700px) {
+    .profilePic img {
+        max-width: 200px;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .profilePic img {
+        max-width: 145px;
+    }
+}
