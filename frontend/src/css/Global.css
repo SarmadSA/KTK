@@ -1,11 +1,64 @@
+html, body, #root, .App {
+    height: 100%;
+}
+
 .clear{
     clear: both;
 }
 
 .main {
-    height: 100%;
+    min-height: 100vh;
 }
 
 .surround {
     height: 100%;
+}
+
+.blue {
+    color: #0ebea0;
+}
+
+.green {
+    color: #47d225;
+}
+
+.yellow {
+    color: #fffd1e;
+}
+
+.purple {
+    color: #b212a2;
+}
+
+.red {
+     color: #b20e12;
+}
+
+.black {
+    color: black !important;
+}
+
+.greenBck {
+    background-color: #08CC30;
+}
+
+.blueBck {
+    background-color: #0ebea0;
+    border-color: #0ebea0;
+}
+
+.yellowBck {
+    background-color: #fffd1e;
+}
+
+.purpleBck {
+    background-color: #b212a2;
+}
+
+.redBck {
+     background-color: #b20e12;
+}
+
+.blackBck {
+     background-color: black;
 }
