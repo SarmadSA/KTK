@@ -1,0 +1,31 @@
+.signUp {
+    padding-top: 50px;
+}
+
+.datePicker {
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    width: 100%;
+    height:  calc(2.25rem + 2px);
+    padding-left: 10px;
+    display: block;
+}
+
+.terms {
+    display: inline-flex;
+}
+
+.label {
+    display: inline-flex;
+}
+
+.label a {
+    color: red !important;
+}
+
+.checkbox input {
+    width:25px;
+    height:25px;
+}

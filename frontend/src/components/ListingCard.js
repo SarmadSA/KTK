@@ -14,8 +14,8 @@ const ListingCard = () => {
                 </Card.Text>
             </Card.Body>
             <Card.Footer>
-                <p className="cardFooter float-left">Username</p><p className="cardFooter float-right">Age: 9 USA</p>
-                 <Button block variant="success">SUPPORT</Button>
+                <p className="cardFooter float-left">Name</p><p className="cardFooter float-right">Age: 9 USA</p>
+                 <Button className="greenBck" block variant="success">SUPPORT</Button>
             </Card.Footer>
             </Card>
     );

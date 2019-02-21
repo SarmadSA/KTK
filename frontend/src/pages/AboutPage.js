@@ -7,7 +7,6 @@ import Bg from '../components/bg';
 
 const AboutPage = () =>{
     return (<div className="surround">
-                <Nav/>
                 <Bg/>
                 <div  className="about">
                 <About/>

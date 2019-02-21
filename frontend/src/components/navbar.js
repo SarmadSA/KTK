@@ -1,10 +1,11 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import '../css/nav.css';
 
-        const navbar = () => {
+const navbar = () => {
 return (
-<Navbar bg="dark" collapseOnSelect expand="lg" variant="dark">
+<Navbar className="greenBck" collapseOnSelect expand="lg">
     <Navbar.Brand href="#explore">
         <img
             alt=""
@@ -18,20 +19,15 @@ return (
     <Navbar.Toggle />
     <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-            <Nav.Link href="#explore">Explore</Nav.Link>
-            <Nav.Link href="#submit">Submit</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
+            <Nav.Link className="navFont" href="#explore">Explore</Nav.Link>
+            <Nav.Link className="navFont" href="#submit">Submit</Nav.Link>
+            <Nav.Link className="navFont" href="#about">About</Nav.Link>
         </Nav>
-        <Navbar.Text>
-            Signed in as: <a href= "#login">Mark Otto</a>
+        <Navbar.Text className="navFont">
+            <a href= "#login">Log In</a>
+            <a>&nbsp;or&nbsp;</a>
+            <a href= "#signup">Sign Up</a>
         </Navbar.Text>
-            <img
-            alt=""
-            src={require("../img/profile.png")}
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-            />
     </Navbar.Collapse>
 </Navbar>
         );
