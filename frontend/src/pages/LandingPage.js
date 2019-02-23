@@ -4,7 +4,7 @@ import Submitandexplore from '../components/Submitandexplore'
 
         const LandingPage = () => {
     return (<div className="surround">
-        <Bg/>
+        <Bg otherClasses={"breath"}/>
         <Submitandexplore/>
     </div>);
 };
