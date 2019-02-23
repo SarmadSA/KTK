@@ -33,7 +33,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public boolean removeUser(Long id) {
+    public boolean removeUser(Integer id) {
         userRepository.deleteById(id);
         return true;
     }

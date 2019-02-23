@@ -19,7 +19,7 @@ public class User {
     //@NotNull auto generated value, no need for not null (//TODO: only when you create database set to notnull)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @Email(message = "{user.email.email}")
     @Size(min = 3, max = 254, message = "{user.email.size}")
