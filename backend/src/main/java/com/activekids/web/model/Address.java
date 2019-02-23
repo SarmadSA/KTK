@@ -17,7 +17,7 @@ public class Address {
     @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter @Setter
-    private Long id;
+    private Integer id;
 
     @Size(min = 2, max = 60)
     @NotNull
