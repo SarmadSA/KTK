@@ -6,6 +6,7 @@ public enum Response {
     USER_CREATED("User created!"),
     USER_NOT_CREATED("Could not create User!"),
     USER_DELETED("User deleted!"),
+    USER_NOT_DELETED("Could not delete User!"),
     UNKNOWN_ERROR("Something went wrong");
 
     @Getter
