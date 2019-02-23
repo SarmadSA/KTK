@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @Transactional
-    @PostMapping(path="/add", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    @PutMapping(path="/add", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity addUser(@Valid @RequestBody User user){
         boolean successfullyCreated = userService.createUser(user);
 
@@ -51,6 +51,19 @@ public class UserController {
         }
         else {
             return new ResponseEntity<>(Response.USER_NOT_DELETED, HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @Transactional
+    @PostMapping("/update/{userId}")
+    public ResponseEntity updateUser(@PathVariable Integer userId, @Valid @RequestBody User user){
+        boolean successfullyUpdated = userService.updateUser(userId, user);
+
+        if(successfullyUpdated){
+            return new ResponseEntity<>(Response.USER_UPDATED, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(Response.USER_NOT_UPDATED, HttpStatus.NO_CONTENT);
         }
     }
 }
