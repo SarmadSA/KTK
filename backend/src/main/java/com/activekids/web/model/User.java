@@ -1,54 +1,55 @@
 package com.activekids.web.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Date;
 
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class User {
 
+    //@NotNull auto generated value, no need for not null (//TODO: only when you create database set to notnull)
     @Id
-    @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter
     private Long id;
 
-    @Email
-    @Size(min = 1, max = 254)
-    @NotNull
-    @Getter @Setter
+    @Email(message = "{user.email.email}")
+    @Size(min = 3, max = 254, message = "{user.email.size}")
+    @NotNull(message = "{user.email.notNull}")
+    @NotBlank(message = "{user.email.NotBlank}")
     private String email;
 
-    @Size(min = 1, max = 255)
-    @NotNull
-    @Getter @Setter
+    @Size(min = 2, max = 60, message = "{user.firstName.size}")
+    @NotNull(message = "{user.firstName.notNull}")
+    @NotBlank(message = "{user.firstName.NotBlank}")
     private String firstName;
 
-    @Size(min = 1, max = 255)
-    @NotNull
-    @Getter @Setter
+    @Size(min = 2, max = 60, message = "{user.lastName.size}")
+    @NotNull(message = "{user.lastName.notNull}")
+    @NotBlank(message = "{user.lastName.notBlank}")
     private String lastName;
 
-    @Size(min = 6, max = 255)
-    @NotNull
-    @Getter @Setter
+    @Size(min = 8, max = 255, message = "{user.password.size}")
+    @NotNull(message = "{user.password.notNull}")
     private String password;
 
-    //@NotNull
-    @Getter @Setter
+    @Past(message = "{user.birthDate.past}")
+    @DateTimeFormat
+    @Temporal(TemporalType.DATE)
     private Date birthDate;
 
     @Size(max = 255)
-    @Getter @Setter
     private String image;
 
     @ManyToOne
-    @Getter @Setter
     private Address address;
 
 }
