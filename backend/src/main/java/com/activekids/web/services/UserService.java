@@ -7,5 +7,5 @@ public interface UserService {
     Iterable<User> getAllUsers();
     boolean createUser(User user);
     boolean removeUser(Integer id);
-
+    boolean updateUser(Integer id, User User);
 }
