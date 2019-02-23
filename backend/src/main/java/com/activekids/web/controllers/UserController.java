@@ -41,15 +41,16 @@ public class UserController {
         }
     }
 
-    @DeleteMapping(path="/delete")
-    public String deleteUser(@RequestParam Long userId){
-        String response = "Something went wrong!";
+    @Transactional
+    @DeleteMapping("/delete/{userId}")
+    public ResponseEntity deleteUser(@PathVariable Integer userId){
+        boolean successfullyDeleted = userService.removeUser(userId);
 
-        boolean successfullyCreated = userService.removeUser(userId);
-        if(successfullyCreated){
-            response = "User deleted!";
+        if(successfullyDeleted){
+            return new ResponseEntity<>(Response.USER_DELETED, HttpStatus.OK);
         }
-
-        return response;
+        else {
+            return new ResponseEntity<>(Response.USER_NOT_DELETED, HttpStatus.NO_CONTENT);
+        }
     }
 }
