@@ -12,7 +12,7 @@ const Submitandexplore = (props) => {
     <Container>
         <Row className="justify-content-md-center align-middle">
             <Col xs lg="5">
-                <Button className="btnLg" block size="lg" variant="success">Submit</Button>
+                <Button className="btnLg" block size="lg" variant="success" onClick={props.handleSubmitBtn}>Submit</Button>
             </Col>
         <Col md="auto"><p className="invisible">Hello</p></Col>
             <Col xs lg="5">
