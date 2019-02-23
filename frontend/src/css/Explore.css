@@ -1,6 +1,5 @@
 .eachRow {
     margin-bottom: 15px;
-    display: -moz-inline-stack;
     display: inline-block;
 }
 

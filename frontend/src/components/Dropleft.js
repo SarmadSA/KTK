@@ -16,10 +16,10 @@ const Dropleft = () => {
                                     <TiFilter className="iconFilter"/>
                                     <DropdownButton
                                         drop={direction}
-                                        variant="info"
                                         title={`Country`}
                                         id={`dropdown-button-drop-${direction}`}
-                                        key={direction}>
+                                        key={direction}
+                                        bsPrefix="blueBck btn">
                                         <div className="pl-4 filter">
                                             <li><label><input className="inputFilter" type="checkbox"/>&nbsp;Country 1</label></li>
                                             <li><label><input className="inputFilter" type="checkbox"/>&nbsp;Country 2</label></li>
@@ -29,10 +29,10 @@ const Dropleft = () => {
                                     <DropdownButton
                                         className="pr-3"
                                         drop={direction}
-                                        variant="info"
                                         title={`Age`}
                                         id={`dropdown-button-drop-${direction}`}
-                                        key={direction}>
+                                        key={direction}
+                                        bsPrefix="blueBck btn">
                                         <div className="pl-4 filter">
                                             <li><label><input className="inputFilter" type="checkbox"/>&nbsp;Age 0-5</label></li>
                                             <li><label><input className="inputFilter" type="checkbox"/>&nbsp;Age 6-10</label></li>

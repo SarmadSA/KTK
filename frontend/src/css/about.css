@@ -1,3 +1,29 @@
-.aboutText{
+.aboutText {
     padding-bottom: 50px;
+    font-weight: 600;
+    
+}
+ 
+.about {
+    position: absolute;
+    top: 420px;
+    width: 100%;
+}
+
+Form {
+    font-weight: 700;
+}
+
+.submitBtn {
+    background-color: #28a745;
+    -webkit-text-stroke-color: transparent;
+}
+
+.aboutContactDiv {
+    background: rgba(255,255,255,0.5);
+    padding: 20px;
+}
+
+.formContainer {
+    background: rgba(255,255,255,0.8);
 }

@@ -1,11 +1,16 @@
 import React from 'react';
-import Nav from '../components/navbar'
-import About from '../components/about'
+import Nav from '../components/navbar';
+import About from '../components/about';
+import Bg from '../components/bg';
+
+
 
 const AboutPage = () =>{
     return (<div className="surround">
-            <Nav/>
-            <About/>
+                <Bg/>
+                <div  className="about">
+                <About/>
+                </div>
             </div>);
 };
 
