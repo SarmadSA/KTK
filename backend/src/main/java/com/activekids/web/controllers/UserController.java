@@ -1,9 +1,16 @@
 package com.activekids.web.controllers;
 
 import com.activekids.web.model.User;
+import com.activekids.web.responses.Response;
 import com.activekids.web.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @CrossOrigin //TODO - Allow only authorized domains
@@ -21,16 +28,17 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping(path="/add")
-    public String addUser(@RequestParam String email, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String password){
-        String response = "Something went wrong!";
+    @Transactional
+    @PostMapping(path="/add", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity addUser(@Valid @RequestBody User user){
+        boolean successfullyCreated = userService.createUser(user);
 
-        boolean successfullyCreated = userService.createUser(email, firstName, lastName, password);
         if(successfullyCreated){
-            response = "User Created!";
+            return new ResponseEntity<>(Response.USER_CREATED, HttpStatus.CREATED);
         }
-
-        return response;
+        else {
+            return new ResponseEntity<>(Response.USER_NOT_CREATED, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping(path="/delete")
