@@ -9,13 +9,15 @@ const goToPage = (path) =>{
 };
 
 const LandingPage = () => {
-    return (<div className="surround">
-        <Bg otherClasses={"breath"}/>
-        <Submitandexplore
-            handleExploreBtn={ ()=> goToPage('/explore') }
-            handleSubmitBtn={ ()=> goToPage('/submit') }
-        />
-    </div>);
+    return (
+        <div className="surround">
+            <Bg otherClasses={"breath"}/>
+            <Submitandexplore
+                handleExploreBtn={ ()=> goToPage('/explore') }
+                handleSubmitBtn={ ()=> goToPage('/submit') }
+            />
+        </div>
+    );
 };
 
 
