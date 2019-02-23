@@ -1,9 +1,13 @@
 package com.activekids.web.services;
 
+import com.activekids.web.model.Address;
 import com.activekids.web.model.User;
 import com.activekids.web.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.Optional;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -21,15 +25,8 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public boolean createUser(String email, String firstName, String lastName, String password) {
-        User user = new User();
-        user.setEmail(email);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setPassword(password);
-
+    public boolean createUser(User user) {
         userRepository.save(user);
-
         //TODO: check if user saved in database then return correct boolean value
         return true;
 
