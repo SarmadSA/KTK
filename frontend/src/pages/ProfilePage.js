@@ -11,7 +11,7 @@ const ProfilePage = () => {
                     <Col xs={12} md={7} lg={6}>
                         <Profileinfo/>
                     </Col>
-                    <Col xs={12} md={5} lg={6}>
+                    <Col xs={12} md={5} lg={6} className="mt-5">
                         <PList/>
                     </Col>  
                 </Row>
