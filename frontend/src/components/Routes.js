@@ -5,7 +5,7 @@ import LandingPage from "../pages/LandingPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import AboutPage from "../pages/AboutPage";
 import ExplorePage from "../pages/ExplorePage";
-import SignUp from "../pages/SignUp";
+import SignUpPage from "../pages/SignUpPage";
 import ProfilePage from "../pages/ProfilePage";
 import SignIn from './SignIn';
 
@@ -15,7 +15,7 @@ const Routes = () =>{
             <Route path="/about" exact component={AboutPage}/>
             <Route path="/signin" exact component={SignIn}/>
             <Route path="/contact" exact component={AboutPage}/>
-            <Route path="/signup" exact component={SignUp}/>
+            <Route path="/signup" exact component={SignUpPage}/>
             <Route path="/listing/:id" exact component={ListingPage}/>
             <Route path="/home" exact component={ExplorePage}/>
             <Route path="/explore" exact component={ExplorePage}/>
