@@ -3,7 +3,7 @@ import React from 'react';
         const countries = () => {
 return (
 <Form.Control as="select">
-    <option>Choose...</option>
+    <option>Select...</option>
     <option value="">Country...</option>
     <option value="AF">Afghanistan</option>
     <option value="AL">Albania</option>

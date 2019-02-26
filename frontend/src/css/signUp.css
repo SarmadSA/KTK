@@ -26,6 +26,55 @@
     height:25px;
 }
 
-.redStar {
-    color: red !important;
+.password{
+  display: block;
+  position: relative;
+  color: #727272;
 }
+  
+  .show{
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    height: 37px;
+    right: 5px;
+    color: black;
+    width: 50px;
+    line-height: 37px;
+  }
+  
+  .strength{
+    position: absolute;
+    width: 0%;
+    height: 4px;
+    bottom: -8px;
+    left: 0;
+    background: transparent;
+    transition: all 300ms ease-in-out;
+  }
+  
+    .strength[data-score="null"]{
+      width: 0;
+      background: red;
+    }
+    
+    .strength[data-score="0"]{
+      width: 5%;
+      background: #F44336;
+    }
+    .strength[data-score="1"]{
+      width: 25%;
+      background: #F44336;
+    }
+    .strength[data-score="2"]{
+      width: 50%;
+      background: #FFEB3B;
+    }
+    .strength[data-score="3"]{
+      width: 75%;
+      background: #4CAF50;
+    }
+    .strength[data-score="4"]{
+      width: 100%;
+      background: #4CAF50;
+    }
