@@ -1,20 +1,15 @@
 import React from 'react';
 import Bg from '../components/bg';
 import Submitandexplore from '../components/Submitandexplore';
-import History from '../utils/History';
-
-
-const goToPage = (path) =>{
-    History.push(path);
-};
+import {gotToPage} from "../helpers/helperFunctions";
 
 const LandingPage = () => {
     return (
         <div className="surround">
             <Bg otherClasses={"breath"}/>
             <Submitandexplore
-                handleExploreBtn={ ()=> goToPage('/explore') }
-                handleSubmitBtn={ ()=> goToPage('/submit') }
+                handleExploreBtn={ () => gotToPage('/explore') }
+                handleSubmitBtn={ () => gotToPage('/submit') }
             />
         </div>
     );
