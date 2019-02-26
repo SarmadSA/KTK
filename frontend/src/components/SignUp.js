@@ -28,26 +28,27 @@ class SignUp extends Component {
                 <div className='signUp'>
                     <div>
                         <h3>Registration</h3>
+                        <p>Everything labeled with <a className="redStar">*</a> is mandatory.</p>
                         <Container>
                             <Form className="SignForm">
                                 <Form.Row>
                                     <Form.Group as={Col} xs={12} md={4} controlId="formGridEmail">
                                         <div className="label">
-                                            <Form.Label>Email</Form.Label><a>*</a>
+                                            <Form.Label>Email</Form.Label><a className="redStar">*</a>
                                         </div>
                                         <Form.Control type="email" placeholder="Email" />
                                     </Form.Group>
                 
                                     <Form.Group as={Col} xs={12} md={4} controlId="formGridPassword">
                                         <div className="label">
-                                            <Form.Label>Password</Form.Label><a>*</a>
+                                            <Form.Label>Password</Form.Label><a className="redStar">*</a>
                                         </div>
                                         <Form.Control type="password" placeholder="Password" />
                                     </Form.Group>
                 
                                     <Form.Group as={Col} xs={12} md={4} controlId="formGridPassword">
                                         <div className="label">
-                                            <Form.Label>Repeat Password</Form.Label><a>*</a>
+                                            <Form.Label>Repeat Password</Form.Label><a className="redStar">*</a>
                                         </div>
                                         <Form.Control type="password" placeholder="Repeat Password" />
                                     </Form.Group>
@@ -56,14 +57,14 @@ class SignUp extends Component {
                                 <Form.Row>
                                     <Form.Group as={Col} xs={12} md={4} controlId="formGridName">
                                         <div className="label">
-                                            <Form.Label>Name</Form.Label><a>*</a>
+                                            <Form.Label>Name</Form.Label><a className="redStar">*</a>
                                         </div>
                                         <Form.Control type="name" placeholder="Name" />
                                     </Form.Group>
                 
                                     <Form.Group as={Col} xs={12} md={4} controlId="formGridLastName">
                                         <div className="label">
-                                            <Form.Label>Last Name</Form.Label><a>*</a>
+                                            <Form.Label>Last Name</Form.Label><a className="redStar">*</a>
                                         </div>
                                         <Form.Control type="lastname" placeholder="Last Name" />
                                     </Form.Group>
@@ -90,7 +91,7 @@ class SignUp extends Component {
                                 <Form.Row>
                                     <Form.Group as={Col} xs={12} md={3} controlId="formGridCountry">
                                         <div className="label">
-                                            <Form.Label>Country</Form.Label><a>*</a>
+                                            <Form.Label>Country</Form.Label><a className="redStar">*</a>
                                         </div>
                                         <Countries/>
                                     </Form.Group>
@@ -112,11 +113,11 @@ class SignUp extends Component {
                                 </Form.Row>
                 
                                 <Form.Group className="terms" id="formGridCheckbox">
-                                    <Form.Check className="checkbox" type="checkbox" label="I agree to the &nbsp;" /><a href="">terms of service</a><a>*</a>
+                                    <Form.Check className="checkbox" type="checkbox" label="&nbsp;&nbsp;I agree to the&nbsp;" /><a href="">terms of service</a><a className="redStar">*</a>
                                 </Form.Group>
                                 <br/>
                                 <Button variant="primary" type="submit">
-                                    Submit
+                                    Complete
                                 </Button>
                             </Form>
                         </Container>

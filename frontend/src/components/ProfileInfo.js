@@ -3,7 +3,7 @@ import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import DescriptionText from '../components/DescriptionText';
-import Cflag from '../components/Flag';
+import Flag from 'react-world-flags';
 import '../css/profile.css';
 
 const ProfileInfo = () => {
@@ -15,7 +15,7 @@ return (
         <Row>   
             <Col className="profilePic" xs={6} md={5}>
                 <Image src={require("../img/ProfiPic.svg")} rounded/>
-                <Cflag/>
+                <Flag className="pflag" code="NO" height="20"/>
             </Col>
             <Col xs={6} md={5}>
                 <h5 className="Description">Description</h5>

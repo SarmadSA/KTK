@@ -21,11 +21,11 @@
     display: inline-flex;
 }
 
-.label a {
-    color: red !important;
-}
-
 .checkbox input {
     width:25px;
     height:25px;
+}
+
+.redStar {
+    color: red !important;
 }
