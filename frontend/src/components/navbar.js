@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../css/nav.css';
-import {gotToPage} from "../helpers/helperFunctions";
+//import {gotToPage} from "../helpers/helperFunctions";
 import SignIn from '../components/SignIn';
 
 const navbar = () => {
@@ -11,7 +11,7 @@ const navbar = () => {
     };
 
     const handleSignUpClick =()=>{
-        gotToPage('/signup');
+   //     gotToPage('/signup');
     };
 
 
@@ -37,9 +37,8 @@ const navbar = () => {
                             <Nav.Link className="navFont" href="#about">About</Nav.Link>
                         </Nav>
                         <Navbar.Text className="navFont">
-                            <button onClick={handleLoginClick}>Log In</button>
-                            <a>&nbsp;or&nbsp;</a>
-                            <button onClick={handleSignUpClick}>Sign Up</button>
+                            <button className="btn" onClick={handleLoginClick}>Log In</button>
+                            <button className="btn" onClick={handleSignUpClick}>Sign Up</button>
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Navbar>

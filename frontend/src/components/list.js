@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 
 
 const list = () => {
-    const numberOfCards = 9; //get this number from props
+    const numberOfCards = 8; //get this number from props
     return (
         <Container>
             <ListingRowRenderer number = {numberOfCards}/>
