@@ -1,8 +1,9 @@
 import React from 'react';
+import css from '../css/listing.css';
 
-const ListingP = () => {
+const ListingComponent = () => {
     return (
-            <div>
+            <div className="divContainer">
                 <h1 class="ListingTitle">Title</h1>
                 <object data="https://www.eesc.com.au/new/wp-content/uploads/Grey-blank-panel.png" type="image/png">
                     <img class="ListingPhoto"></img>
@@ -14,4 +15,4 @@ const ListingP = () => {
             </div>);
 };
 
-export default ListingP;
+export default ListingComponent;

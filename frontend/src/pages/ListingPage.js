@@ -1,11 +1,10 @@
 import React from 'react';
 import Nav from '../components/navbar';
-import ListingP from '../components/ListingP';
+import ListingComponent from '../components/ListingComponent';
 
 const ListingPage = () =>{
     return (<div className="surround">
-                <Nav/>
-                <ListingP/>
+                <ListingComponent/>
             </div>);
 };
 
