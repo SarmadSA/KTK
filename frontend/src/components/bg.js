@@ -1,9 +1,9 @@
 import React from 'react';
-import css from '../css/bg.css';
+import '../css/bg.css';
 
-const bg = () => {
+const bg = (props) => {
     return (
-            <div className="bg-image"></div>);
+            <div className={"bg-image " + props.otherClasses}></div>);
 };
 
 export default bg;

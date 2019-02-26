@@ -8,6 +8,9 @@ html, body, #root, .App {
 
 .main {
     min-height: 100vh;
+
+    /*Disable scroll bars*/
+    overflow: hidden;
 }
 
 .surround {

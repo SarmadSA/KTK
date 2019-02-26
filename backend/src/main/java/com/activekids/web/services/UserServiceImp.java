@@ -5,6 +5,7 @@ import com.activekids.web.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class UserServiceImp implements UserService {
 
@@ -21,23 +22,29 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public boolean createUser(String email, String firstName, String lastName, String password) {
-        User user = new User();
-        user.setEmail(email);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setPassword(password);
-
+    public boolean createUser(User user) {
         userRepository.save(user);
-
         //TODO: check if user saved in database then return correct boolean value
         return true;
-
     }
 
     @Override
-    public boolean removeUser(Long id) {
+    public boolean removeUser(Integer id) {
         userRepository.deleteById(id);
+        return true;
+    }
+
+    @Override
+    public boolean updateUser(Integer id, User user) {
+        User userToUpdate = userRepository.getUserById(id);
+        userToUpdate.setEmail(user.getEmail());
+        userToUpdate.setFirstName(user.getFirstName());
+        userToUpdate.setLastName(user.getLastName());
+        userToUpdate.setPassword(user.getPassword());
+        userToUpdate.setBirthDate(user.getBirthDate());
+        userToUpdate.setImage(user.getImage());
+        userToUpdate.setAddress(user.getAddress());
+
         return true;
     }
 }
