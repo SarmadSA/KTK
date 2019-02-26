@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../css/nav.css';
-//import {gotToPage} from "../helpers/helperFunctions";
+import {gotToPage} from "../helpers/helperFunctions";
 import SignIn from '../components/SignIn';
 
 const navbar = () => {
@@ -11,7 +11,7 @@ const navbar = () => {
     };
 
     const handleSignUpClick =()=>{
-   //     gotToPage('/signup');
+        gotToPage('/signup');
     };
 
 
