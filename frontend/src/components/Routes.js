@@ -7,10 +7,12 @@ import AboutPage from "../pages/AboutPage";
 import ExplorePage from "../pages/ExplorePage";
 import SignUp from "../pages/SignUp";
 import ProfilePage from "../pages/ProfilePage";
+import TestPage from "../pages/TestPage";
 
 const Routes = () =>{
     return(
         <Switch>
+            <Route path="/test" exact component={TestPage}/>
             <Route path="/about" exact component={AboutPage}/>
             <Route path="/contact" exact component={AboutPage}/>
             <Route path="/signup" exact component={SignUp}/>

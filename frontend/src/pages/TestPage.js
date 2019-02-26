@@ -1,9 +1,9 @@
 import React from 'react';
-import Signup from '../components/SignUp';
+import Signin from '../components/SignIn';
 
 const  ContactPage = () =>{
     return (<div className="surround">
-            <Signup />
+            <Signin />
             </div>);
 };
 

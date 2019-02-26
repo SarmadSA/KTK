@@ -112,7 +112,7 @@ class SignUp extends Component {
                                 </Form.Row>
                 
                                 <Form.Group className="terms" id="formGridCheckbox">
-                                    <Form.Check className="checkbox" type="checkbox" label="I agree to the &nbsp;" /><a href="">terms of service</a>
+                                    <Form.Check className="checkbox" type="checkbox" label="I agree to the &nbsp;" /><a href="">terms of service</a><a>*</a>
                                 </Form.Group>
                                 <br/>
                                 <Button variant="primary" type="submit">
