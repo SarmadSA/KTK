@@ -7,6 +7,7 @@ import AboutPage from "../pages/AboutPage";
 import ExplorePage from "../pages/ExplorePage";
 import SignUpPage from "../pages/SignUpPage";
 import ProfilePage from "../pages/ProfilePage";
+import ProfileEditPage from "../pages/ProfileEditPage";
 import SignIn from './SignIn';
 
 const Routes = () =>{
@@ -20,6 +21,7 @@ const Routes = () =>{
             <Route path="/home" exact component={ExplorePage}/>
             <Route path="/explore" exact component={ExplorePage}/>
             <Route path="/profile/:id" exact component={ProfilePage}/>
+            <Route path="/profileedit/:id" exact component={ProfileEditPage}/>
             <Route path="/" exact component={LandingPage}/>
             <Route render={()=> <NotFoundPage/>}/>
         </Switch>
