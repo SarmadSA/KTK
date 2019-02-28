@@ -1,9 +1,14 @@
 import React from 'react';
-import ListingP from '../components/ListingP';
+import Bg from '../components/bg';
+import Nav from '../components/navbar';
+import ListingComponent from '../components/ListingComponent';
 
 const ListingPage = () =>{
     return (<div className="surround">
-                <ListingP/>
+                <Bg/>
+                <div className="listingComp">
+                <ListingComponent/>
+                </div>
             </div>);
 };
 
