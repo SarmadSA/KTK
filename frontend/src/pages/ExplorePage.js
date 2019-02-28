@@ -4,12 +4,14 @@ import Dropdown from '../components/Dropleft';
 import Text from '../components/text';
 
 const LandingPage = () => {
-    return (<div className="surround">
-        <Text/>
-        <hr/>
-        <Dropdown/>
-        <List/>
-    </div>);
+    return (
+        <div className="surround">
+            <Text/>
+            <hr/>
+            <Dropdown/>
+            <List/>
+        </div>
+    );
 };
 
 

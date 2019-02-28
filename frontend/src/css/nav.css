@@ -1,3 +1,7 @@
 .navFont {
     color: black !important;
 }
+
+.nav {
+    z-index: 10;
+}

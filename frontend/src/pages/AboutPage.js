@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from '../components/navbar';
 import About from '../components/about';
 import Bg from '../components/bg';
 
