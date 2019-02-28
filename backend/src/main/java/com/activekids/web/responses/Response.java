@@ -9,6 +9,12 @@ public enum Response {
     USER_NOT_DELETED("Could not delete user!"),
     USER_UPDATED("User updated!"),
     USER_NOT_UPDATED("Could not update user!"),
+    ADDRESS_CREATED("Address created!"),
+    ADDRESS_NOT_CREATED("Could not create address!"),
+    ADDRESS_DELETED("Address deleted!"),
+    ADDRESS_NOT_DELETED("Could not delete address!"),
+    ADDRESS_UPDATED("Address updated!"),
+    ADDRESS_NOT_UPDATED("Could not update address!"),
     UNKNOWN_ERROR("Something went wrong");
 
     @Getter
