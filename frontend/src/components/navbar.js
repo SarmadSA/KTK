@@ -1,21 +1,41 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../css/nav.css';
 import {goToPage} from "../helpers/helperFunctions";
 import SignIn from '../components/SignIn';
 
-const navbar = () => {
-    const handleLoginClick =()=>{
-        //display signIn
+class navbar extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            loginVisible: false
+        };
+    }
+
+    setLoginClass = () =>{
+        if (this.state.loginVisible) {
+            return 'visible';
+        } else {
+            return '';
+        }
     };
 
-    const handleSignUpClick =()=>{
+    handleLoginClick = () => {
+        this.setState({loginVisible: true});
+    };
+
+    closeLoginWindow = () => {
+        this.setState({loginVisible: false});
+    };
+
+    handleSignUpClick = () => {
         goToPage('/signup');
     };
 
 
-    const contentToRender = () =>{
+    contentToRender = () => {
         if (window.location.pathname.split("/").pop() !== "") {
             return (
                 <Navbar className="greenBck" collapseOnSelect expand="lg">
@@ -37,22 +57,28 @@ const navbar = () => {
                             <Nav.Link className="navFont" href="#about">About</Nav.Link>
                         </Nav>
                         <Navbar.Text className="navFont">
-                            <button className="btn" onClick={handleLoginClick}>Log In</button>
-                            <button className="btn" onClick={handleSignUpClick}>Sign Up</button>
+                            <button className="btn" onClick={this.handleLoginClick}>Log In</button>
+                            <button className="btn" onClick={this.handleSignUpClick}>Sign Up</button>
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Navbar>
             );
-        }
-        else{
-            return(<div></div>)
+        } else {
+            return (<div></div>)
         }
     };
 
-    return (
-        <div>
-            {contentToRender()}
-        </div>
-    );
-};
+    render() {
+        return (
+            <div>
+                <SignIn
+                    handleCloseClick={this.closeLoginWindow}
+                    otherClasses={this.setLoginClass()}
+                />
+                {this.contentToRender()}
+            </div>
+        );
+    }
+}
+
 export default navbar;

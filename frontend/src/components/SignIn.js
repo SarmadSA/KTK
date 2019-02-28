@@ -5,12 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import '../css/signInn.css';
 
-const SignIn = () => {
+const SignIn = (props) => {
     return (
-        <div className='popup'>
+        <div className={'popup ' + props.otherClasses}>
             <div className='popup_inner'>
                 <h3>Log In</h3>
-                <button className="closePop"><IoMdClose/></button>
+                <button className="closePop" onClick={props.handleCloseClick}><IoMdClose/></button>
                 <Container>
                     <Form className="SignForm">
                         <Form.Group controlId="formBasicEmail">

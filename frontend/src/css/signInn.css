@@ -25,6 +25,7 @@
     background: linear-gradient(290deg, rgba(71,210,37,1) 0%, rgba(14,190,160,0.9) 100%);
 }
 .popup {
+    display: none;
     z-index: 10;
     position: fixed;
     width: 100%;
@@ -43,6 +44,7 @@
     border: none;
     top: 20vh;
     position: fixed;
+    cursor: pointer;
 }
 .SignForm {
     margin-top: 15px;
@@ -58,4 +60,12 @@
 .loginA {
     color: black;
     font-size: 15px;
+}
+
+.visible{
+    display: block;
+}
+
+.invisible{
+    display: none;
 }
