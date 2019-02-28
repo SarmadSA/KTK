@@ -3,7 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import DatePicker from './DatePicker';
 import Countries from './countries';
 import '../css/signUp.css';
 
@@ -12,11 +11,9 @@ class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: new Date(),
             type: 'password',
             score: 'null'
         };
-        this.handleChange = this.handleChange.bind(this);
         this.showHide = this.showHide.bind(this);
         this.passwordStrength = this.passwordStrength.bind(this);
     }
@@ -42,12 +39,6 @@ class SignUp extends Component {
         score: pw.score
       });      
     }
-    }
-
-    handleChange(date) {
-        this.setState({
-            startDate: date
-        });
     }
 
     render() {
@@ -78,8 +69,7 @@ class SignUp extends Component {
                                             <Form.Label>Email</Form.Label>
                                         </div>
                                         <Form.Control type="email" placeholder="Email" />
-                                    </Form.Group>
-                                    
+                                        </Form.Group>
                                     <Form.Group as={Col} xs={12} md={12} controlId="formGridPassword">
                                         <div className="label">
                                             <Form.Label>Password</Form.Label>
