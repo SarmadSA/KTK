@@ -1,0 +1,62 @@
+.divContainer {
+    background-color: rgba(255,255,255,0.5);
+    max-width: 590px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ListingPhoto {
+    width: 500px;
+    max-width: 100%;
+}
+
+.divContainer img {
+    max-width: 300px;
+    float: left;
+}
+
+.Age {
+    float: left;
+}
+
+.Location {
+    float: right;
+}
+
+.Description {
+    float: left;
+    padding-top: 20px;
+    text-align: left;
+}
+
+.buyBtn {
+   margin-top: 10px;
+   background-color: #28a745;
+   border-color: #28a745;
+   border-radius: 200px;
+   width: 80px;
+   border-style: solid;
+   margin-right: 100%;
+   font-size: 160%;
+}
+
+.listingComp {
+    position: absolute;
+    width: 100%;
+    top: 70px;
+}
+
+.formContainer {
+    width: 150px;
+}
+
+.minSum {
+    position: absolute;
+    margin-left: 160px;
+    margin-top: -48px;
+}
+
+.try {
+    
+}
