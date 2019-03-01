@@ -39,7 +39,7 @@ class navbar extends Component {
         if (window.location.pathname.split("/").pop() !== "") {
             return (
                 <Navbar className="greenBck" collapseOnSelect expand="lg">
-                    <Navbar.Brand href="#explore">
+                    <Navbar.Brand onClick={()=>goToPage('')}>
                         <img
                             alt=""
                             src={require("../logo.svg")}
@@ -52,9 +52,9 @@ class navbar extends Component {
                     <Navbar.Toggle/>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link className="navFont" href="#explore">Explore</Nav.Link>
-                            <Nav.Link className="navFont" href="#submit">Submit</Nav.Link>
-                            <Nav.Link className="navFont" href="#about">About</Nav.Link>
+                            <Nav.Link className="navFont" onClick={()=>goToPage('/explore')}>Explore</Nav.Link>
+                            <Nav.Link className="navFont" onClick={()=>goToPage('/submit')}>Submit</Nav.Link>
+                            <Nav.Link className="navFont" onClick={()=>goToPage('/about')}>About</Nav.Link>
                         </Nav>
                         <Navbar.Text className="navFont">
                             <button className="btn" onClick={this.handleLoginClick}>Log In</button>
