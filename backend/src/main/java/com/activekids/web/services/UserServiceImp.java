@@ -4,16 +4,19 @@ import com.activekids.web.model.User;
 import com.activekids.web.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Service
 public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
+    private BCryptPasswordEncoder encoder;
 
     @Autowired
     public UserServiceImp(UserRepository userRepository) {
         this.userRepository = userRepository;
+        this.encoder = new BCryptPasswordEncoder();
     }
 
     @Override
@@ -23,6 +26,9 @@ public class UserServiceImp implements UserService {
 
     @Override
     public boolean createUser(User user) {
+        //Hash password, hash -> salt + password. everything is done by this class.
+        String hashedPassword = this.encoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
         userRepository.save(user);
         //TODO: check if user saved in database then return correct boolean value
         return true;
