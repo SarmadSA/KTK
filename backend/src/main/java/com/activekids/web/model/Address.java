@@ -16,7 +16,7 @@ public class Address {
 
     //@NotNull //TODO: only when you create database set to notnull
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Size(min = 1, max = 60, message = "{address.country.size}")
@@ -36,6 +36,6 @@ public class Address {
 
     @PositiveOrZero(message = "{address.ZipCode.PositiveOrZero}")
     @NotNull(message = "{address.ZipCode.notNull}")
-    @NotBlank(message = "{address.ZipCode.notBlank}")
+    //@NotBlank(message = "{address.ZipCode.notBlank}")
     private Integer ZipCode;
 }
