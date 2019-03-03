@@ -47,6 +47,7 @@ public class UserServiceImp implements UserService {
         userToUpdate.setFirstName(user.getFirstName());
         userToUpdate.setLastName(user.getLastName());
         userToUpdate.setPassword(user.getPassword());
+        userToUpdate.setCountry(user.getCountry());
         userToUpdate.setBirthDate(user.getBirthDate());
         userToUpdate.setImage(user.getImage());
         userToUpdate.setAddress(user.getAddress());
