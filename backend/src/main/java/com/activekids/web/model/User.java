@@ -18,7 +18,7 @@ public class User {
 
     //@NotNull auto generated value, no need for not null (//TODO: only when you create database set to notnull)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Email(message = "{user.email.email}")
@@ -45,6 +45,11 @@ public class User {
     @DateTimeFormat
     @Temporal(TemporalType.DATE)
     private Date birthDate;
+
+    @Size(min = 1, max = 60, message = "{user.country.size}")
+    @NotNull(message = "{user.country.notNull}")
+    @NotBlank(message = "{user.country.notBlank}")
+    private String country;
 
     @Size(max = 255)
     private String image;
