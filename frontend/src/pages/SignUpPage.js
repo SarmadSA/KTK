@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 
 const SignUp = () => {
     return (
-            <div className="surround">    
+            <div>    
                 <Col xs={12} md={4} lg={4} className="signUpBox">
                 <Signup/>
                 </Col>

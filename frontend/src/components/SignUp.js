@@ -75,7 +75,7 @@ class SignUp extends Component {
                                             <Form.Label>Password</Form.Label>
                                         </div>
                                         <Form.Control type={this.state.type} className="password input" onChange={this.passwordStrength} placeholder="Password" />
-                                        <span className="password show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
+                                        <span className="password showpass" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
                                         <span className="password strength" data-score={this.state.score} />                            
                                     </Form.Group>
                                 </Form.Row>

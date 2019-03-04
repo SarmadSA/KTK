@@ -10,7 +10,8 @@ class navbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loginVisible: false
+            loginVisible: false,
+            navExpanded: false
         };
     }
 
@@ -34,11 +35,21 @@ class navbar extends Component {
         goToPage('/signup');
     };
 
+    setNavExpanded = (expanded) =>{
+        this.setState({ navExpanded: expanded });
+    };
+
+    closeNav = () => {
+        this.setState({ navExpanded: false });
+    };
+    
 
     contentToRender = () => {
         if (window.location.pathname.split("/").pop() !== "") {
             return (
-                <Navbar className="greenBck" collapseOnSelect expand="lg">
+                <Navbar className="greenBck nav" collapseOnSelect expand="lg"
+                onToggle={this.setNavExpanded}
+                expanded={this.state.navExpanded}>
                     <Navbar.Brand onClick={()=>goToPage('')}>
                         <img
                             alt=""
@@ -52,13 +63,13 @@ class navbar extends Component {
                     <Navbar.Toggle/>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link className="navFont" onClick={()=>goToPage('/explore')}>Explore</Nav.Link>
-                            <Nav.Link className="navFont" onClick={()=>goToPage('/submit')}>Submit</Nav.Link>
-                            <Nav.Link className="navFont" onClick={()=>goToPage('/about')}>About</Nav.Link>
+                            <Nav.Link className="navFont" onClick={()=>{goToPage('/explore'); this.closeNav();}}>Explore</Nav.Link>
+                            <Nav.Link className="navFont" onClick={()=>{goToPage('/submit'); this.closeNav();}}>Submit</Nav.Link>
+                            <Nav.Link className="navFont" onClick={()=>{goToPage('/about'); this.closeNav();}}>About</Nav.Link>
                         </Nav>
                         <Navbar.Text className="navFont">
-                            <button className="btn" onClick={this.handleLoginClick}>Log In</button>
-                            <button className="btn" onClick={this.handleSignUpClick}>Sign Up</button>
+                            <button className="btn" onClick={()=>{this.handleLoginClick(); this.closeNav();}}>Log In</button>
+                            <button className="btn" onClick={()=>{this.handleSignUpClick(); this.closeNav();}}>Sign Up</button>
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Navbar>

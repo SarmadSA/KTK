@@ -4,7 +4,7 @@ import Nav from '../components/navbar';
 import ListingComponent from '../components/ListingComponent';
 
 const ListingPage = () =>{
-    return (<div className="surround">
+    return (<div>
                 <Bg/>
                 <div className="listingComp">
                 <ListingComponent/>

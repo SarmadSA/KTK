@@ -14,7 +14,7 @@ const Submitandexplore = (props) => {
             <Col xs lg="5">
                 <Button className="btnLg" block size="lg" variant="success" onClick={props.handleSubmitBtn}>Submit</Button>
             </Col>
-        <Col md="auto"><p className="invisible">Hello</p></Col>
+        <Col className="pb-5" md="auto"><p className="invisible">Hello</p></Col>
             <Col xs lg="5">
                 <Button className="btnLg" block size="lg" variant="success" onClick={props.handleExploreBtn}>Explore</Button>
             </Col>

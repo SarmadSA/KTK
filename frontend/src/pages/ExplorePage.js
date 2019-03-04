@@ -5,7 +5,7 @@ import Text from '../components/text';
 
 const LandingPage = () => {
     return (
-        <div className="surround">
+        <div>
             <Text/>
             <hr/>
             <Dropdown/>

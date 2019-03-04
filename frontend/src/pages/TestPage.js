@@ -2,7 +2,7 @@ import React from 'react';
 import Signin from '../components/SignIn';
 
 const  TestPage = () =>{
-    return (<div className="surround">
+    return (<div>
             <Signin />
             </div>);
 };
