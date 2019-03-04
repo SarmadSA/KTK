@@ -8,7 +8,7 @@ import '../css/Submitandexplore.css';
 
 const Submitandexplore = (props) => {
     return (
-<Jumbotron>
+<Jumbotron className="landingJum">
     <Container>
         <Row className="justify-content-md-center align-middle">
             <Col xs lg="5">

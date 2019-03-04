@@ -1,13 +1,16 @@
 .aboutText {
     padding-bottom: 50px;
     font-weight: 600;
-    
+
 }
- 
-.about {
-    position: absolute;
-    top: 420px;
+
+.aboutPage {
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
+    min-height: 100vh;
+    padding-bottom: 20px;
+    margin-bottom: 0 !important;
 }
 
 Form {

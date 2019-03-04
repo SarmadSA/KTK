@@ -50,7 +50,7 @@ class navbar extends Component {
                 <Navbar className="greenBck nav" collapseOnSelect expand="lg"
                 onToggle={this.setNavExpanded}
                 expanded={this.state.navExpanded}>
-                    <Navbar.Brand onClick={()=>goToPage('')}>
+                    <Navbar.Brand onClick={()=>{goToPage('/explore'); this.closeNav();}}>
                         <img
                             alt=""
                             src={require("../logo.svg")}
