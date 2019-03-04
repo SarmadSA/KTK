@@ -1,10 +1,10 @@
 import React from 'react';
 import Signin from '../components/SignIn';
 
-const  ContactPage = () =>{
+const  TestPage = () =>{
     return (<div className="surround">
             <Signin />
             </div>);
 };
 
-export default ContactPage;
+export default TestPage;
