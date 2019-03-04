@@ -25,7 +25,7 @@ const ListingRowRenderer = (props) => {
     const renderRows = (numOfRows) =>{
         for(let rowNumber = 0; rowNumber < numOfRows; rowNumber++){
             
-            const lastRow = numOfRows;
+            let lastRow = numOfRows;
             
             if (remainingCards !== 0) {
                 lastRow = numOfRows - 1;
