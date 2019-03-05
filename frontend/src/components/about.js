@@ -8,7 +8,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 
 const about = () => {
     return (
-        <Jumbotron>
+        <Jumbotron className="aboutPage">
             <Container>
                 <Row>
                     <Col md={{span: 6, offset: 3}}>

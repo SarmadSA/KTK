@@ -1,5 +1,5 @@
 .signUp {
-    padding-top: 50px;
+    padding-top: 70px;
 }
 
 .datePicker {
@@ -32,7 +32,7 @@
   color: #727272;
 }
   
-  .show{
+  .showpass{
     cursor: pointer;
     position: absolute;
     bottom: 0;

@@ -9,11 +9,13 @@ import SignUpPage from "../pages/SignUpPage";
 import ProfilePage from "../pages/ProfilePage";
 import ProfileEditPage from "../pages/ProfileEditPage";
 import SignIn from './SignIn';
+import Submit from '../pages/SubmitPage';
 
 const Routes = () =>{
     return(
         <Switch>
             <Route path="/about" exact component={AboutPage}/>
+            <Route path="/submit" exact component={Submit}/>
             <Route path="/signin" exact component={SignIn}/>
             <Route path="/contact" exact component={AboutPage}/>
             <Route path="/signup" exact component={SignUpPage}/>

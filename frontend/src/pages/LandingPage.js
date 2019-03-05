@@ -5,7 +5,7 @@ import {goToPage} from "../helpers/helperFunctions";
 
 const LandingPage = () => {
     return (
-            <div className="surround">
+            <div>
                 <Bg otherClasses={"breath"}/>
                 <Submitandexplore
                     handleExploreBtn={ () => goToPage('/explore') }

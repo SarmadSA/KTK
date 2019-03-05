@@ -11,9 +11,11 @@
     .popup_inner {
         left: 10vw;
         right: 10vw;
+        top: 15vh !important;
     }
     .closePop {
         right: 10vw;
+        top: 15vh !important;
     }
 }
 .popup_inner {

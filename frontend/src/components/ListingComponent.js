@@ -21,7 +21,7 @@ const ListingComponent = () => {
                 </Container>
                 <Form>
                     <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Control type="donation" placeholder="Donation sum" className="formContainer"/>
+                        <Form.Control className="donation" type="donation" placeholder="Donation sum" className="formContainer"/>
                     </Form.Group>
                 </Form>
                 <p className="minSum">Min sum:</p>

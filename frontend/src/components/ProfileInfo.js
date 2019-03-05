@@ -18,7 +18,7 @@ return (
                 <Flag className="pflag" code="NO" height="20"/>
             </Col>
             <Col xs={6} md={5}>
-                <h5 className="Description">Description</h5>
+                <h5>Description</h5>
                 <DescriptionText/>
             </Col>   
         </Row>            

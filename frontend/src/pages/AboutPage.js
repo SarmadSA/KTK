@@ -5,11 +5,8 @@ import Bg from '../components/bg';
 
 
 const AboutPage = () =>{
-    return (<div className="surround">
-                <Bg/>
-                <div  className="about">
+    return (<div>
                 <About/>
-                </div>
             </div>);
 };
 
