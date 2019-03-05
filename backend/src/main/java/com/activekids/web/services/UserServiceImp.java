@@ -26,9 +26,13 @@ public class UserServiceImp implements UserService {
 
     @Override
     public boolean createUser(User user) {
-        //Hash password, hash -> salt + password. everything is done by this class.
-        String hashedPassword = this.encoder.encode(user.getPassword());
-        user.setPassword(hashedPassword);
+
+        if(user.getPassword() != null) {
+            //Hash password, hash -> salt + password. everything is done by this class.
+            String hashedPassword = this.encoder.encode(user.getPassword());
+            user.setPassword(hashedPassword);
+        }
+
         userRepository.save(user);
         //TODO: check if user saved in database then return correct boolean value
         return true;
