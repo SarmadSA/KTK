@@ -4,8 +4,7 @@ import Form from 'react-bootstrap/Form';
 const countries = (props) => {
     return (
         <Form.Control as="select" onChange={props.handleChange}>
-            <option>Select...</option>
-            <option value="">Country...</option>
+            <option>Country...</option>
             <option value="AF">Afghanistan</option>
             <option value="AL">Albania</option>
             <option value="DZ">Algeria</option>
