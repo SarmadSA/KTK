@@ -24,11 +24,11 @@ const about = () => {
                             <Form>
                                 <Form.Group controlId="exampleForm.ControlInput1">
                                     <Form.Label>Name</Form.Label>
-                                    <Form.Control type="name" placeholder="Jane Doe" className="formContainer"/>
+                                    <Form.Control type="text" placeholder="Jane Doe" className="formContainer"/>
                                 </Form.Group>
                                 <Form.Group controlId="exampleForm.ControlInput1">
                                     <Form.Label>Email address</Form.Label>
-                                    <Form.Control type="email" placeholder="name@example.com"
+                                    <Form.Control type="text" placeholder="name@example.com"
                                                   className="formContainer"/>
                                 </Form.Group>
                                 <Form.Group controlId="exampleForm.ControlTextarea1">

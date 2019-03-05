@@ -1,6 +1,19 @@
+.Submit {
+    margin-top: 100px;
+}
 .fileZone {
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: 90%;
+    height: 150px;
     padding-bottom: 20px;
+}
+@media only screen and (min-width: 700px) {
+    .fileZone {
+        width: 30%;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .fileZone {
+    }
 }
