@@ -1,6 +1,6 @@
 import React from "react";
-import ImageUploader from 'react-images-upload';
 import Dropzone from 'react-dropzone';
+import '../css/upload.css';
 
 
 class Uploader extends React.Component {
@@ -14,7 +14,6 @@ class Uploader extends React.Component {
 
     onDrop(files) {
         this.setState({files});
-        // Do something with files
     }
 
     onCancel() {
@@ -25,14 +24,10 @@ class Uploader extends React.Component {
 
     render() {
         const files = this.state.files.map(file => (
-                    <li key={file.name}>
-                        {file.name}
-                    </li>
+                    <p key={file.name}>{file.name}</p>
                     ));
 
         const baseStyle = {
-            width: 200,
-            height: 200,
             borderWidth: 2,
             borderColor: '#666',
             borderStyle: 'dashed',
@@ -46,47 +41,43 @@ class Uploader extends React.Component {
         const rejectStyle = {
             borderStyle: 'solid',
             borderColor: '#c66',
-            backgroundColor : '#eee'
+            backgroundColor: '#eee'
         };
 
 
         return (
-                <section>
+                <section className="Submit">
+                    <h3>Submit your art.</h3>
+                    <br/>
                     <Dropzone 
                         accept="image/*" 
                         onDrop={this.onDrop.bind(this)}
                         onFileDialogCancel={this.onCancel.bind(this)}
+                        multiple="false"
                         >
                         {({
-                                getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject, acceptedFiles, rejectedFiles }) => {
+                                getRootProps, getInputProps, isDragActive,
+                                        isDragAccept, isDragReject, acceptedFiles }) => {
                                 let styles = {...baseStyle}
                         styles = isDragActive ? {
-                                            ...styles, ...activeStyle} : styles
+                                                ...styles, ...activeStyle} : styles
                         styles = isDragReject ? {
-                                            ...styles, ...rejectStyle} : styles
+                                                ...styles, ...rejectStyle} : styles
                 
                         return (
-                        <div
-                            {...getRootProps()}
-                            style={styles}
-                            >
-                            <input {...getInputProps()} />
-                            <div>
-                                {isDragAccept ? 'Drop' : 'Drag'} files here...
-                            </div>
+                        <div className="fileZone" {
+                                                ...getRootProps()} style={styles}>
+                            <input {...getInputProps()}/>
+                            <div>Click here or {isDragAccept ? 'drop' : 'drag'} the photo...</div>
                             {isDragReject && <div>Unsupported file type...</div>}
-                        </div>
-                        )
+                        </div> )
                         }}
                     </Dropzone>
                     <aside>
-                        <h4>File</h4>
-                        <ul>{
-                                            files}</ul>
+                        <ul>{files}</ul>
                     </aside>
-                </section>
-                                        );
-                        }
-            }
+                </section>);
+                            }
+                }
 
-            export default Uploader;
+                export default Uploader;

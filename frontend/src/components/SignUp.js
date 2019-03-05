@@ -42,7 +42,7 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div className='signUp'>
+            <div className='signUp signUpDiv'>
                 <div>
                     <h3>Registration</h3>
                     <Container>
@@ -50,32 +50,32 @@ class SignUp extends Component {
                             <Form.Row>
                                 <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
                                     <div className="label">
-                                        <Form.Label>Name</Form.Label>
+                                        <Form.Label>First name</Form.Label>
                                     </div>
-                                    <Form.Control type="name" placeholder="Name" onChange={this.props.handleNameChange}/>
+                                    <Form.Control required type="text" placeholder="First name" onChange={this.props.handleNameChange}/>
                                 </Form.Group>
 
                                 <Form.Group as={Col} xs={12} md={6} controlId="formGridLastName">
                                     <div className="label">
-                                        <Form.Label>Last Name</Form.Label>
+                                        <Form.Label>Last name</Form.Label>
                                     </div>
-                                    <Form.Control type="lastname" placeholder="Last Name" onChange={this.props.handleLastNameChange}/>
+                                    <Form.Control required type="text" placeholder="Last name" onChange={this.props.handleLastNameChange}/>
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} xs={12} md={12} controlId="formGridEmail">
                                     <div className="label">
-                                        <Form.Label>Email</Form.Label>
+                                        <Form.Label>Email(Username)</Form.Label>
                                     </div>
-                                    <Form.Control type="email" placeholder="Email" onChange={this.props.handleEmailChange}/>
+                                    <Form.Control required type="text" placeholder="Email" onChange={this.props.handleEmailChange}/>
                                 </Form.Group>
                                 <Form.Group as={Col} xs={12} md={12} controlId="formGridPassword">
                                     <div className="label">
                                         <Form.Label>Password</Form.Label>
                                     </div>
-                                    <Form.Control type={this.state.type} className="password input"
+                                    <Form.Control required type={this.state.type} className="password input"
                                                   onChange={this.passwordStrength} placeholder="Password" onInput={this.props.handlePasswordChange}/>
-                                    <span className="password show"
+                                    <span className="password showpass"
                                           onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
                                     <span className="password strength" data-score={this.state.score}/>
                                 </Form.Group>
@@ -90,7 +90,7 @@ class SignUp extends Component {
                             </Form.Row>
 
                             <Form.Group className="terms" id="formGridCheckbox">
-                                <Form.Check className="checkbox" type="checkbox"
+                                <Form.Check required className="checkbox" type="checkbox"
                                             label="&nbsp;&nbsp;I agree to the&nbsp;"/><a href="">terms of service</a>
                             </Form.Group>
                             <br/>
