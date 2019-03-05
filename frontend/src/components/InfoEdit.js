@@ -52,7 +52,7 @@ class InfoEdit extends Component {
 
     render() {
         return (
-                <div className='signUp'>
+                <div className='editProfile'>
                     <div>
                         <h3>Edit user information</h3>
                         <Container>
@@ -70,7 +70,7 @@ class InfoEdit extends Component {
                                             <Form.Label>New Password</Form.Label>
                                         </div>
                                         <Form.Control type={this.state.type} className="password input" onChange={this.passwordStrength} placeholder="New password" />
-                                        <span className="password show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
+                                        <span className="password showpass" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
                                         <span className="password strength" data-score={this.state.score} /> 
                                     </Form.Group>
                 
@@ -113,7 +113,7 @@ class InfoEdit extends Component {
                                 <Form.Row>
                                     <Form.Group as={Col} xs={12} md={3} controlId="formGridCountry">
                                         <div className="label">
-                                            <Form.Label>Country</Form.Label><a>*</a>
+                                            <Form.Label>Country</Form.Label>
                                         </div>
                                         <Countries/>
                                     </Form.Group>
