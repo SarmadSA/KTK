@@ -8,18 +8,27 @@ class Uploader extends React.Component {
     constructor() {
         super();
         this.state = {
-            files: []
+            files: [],
+            empty: true
         };
     }
 
     onDrop(files) {
         this.setState({files});
+        this.setState({empty: false});
+        
+     //   const req = request.post('/upload')
+     //  files.forEach(file => {
+     //       req.attach(file.name, file)
+     //   })
+     //   req.end(callback)
     }
 
     onCancel() {
         this.setState({
             files: []
         });
+        this.setState({empty: true});
     }
 
     render() {
@@ -41,7 +50,7 @@ class Uploader extends React.Component {
         const rejectStyle = {
             borderStyle: 'solid',
             borderColor: '#c66',
-            backgroundColor: '#eee'
+            backgroundColor : '#eee'
         };
 
 
@@ -57,16 +66,16 @@ class Uploader extends React.Component {
                         >
                         {({
                                 getRootProps, getInputProps, isDragActive,
-                                        isDragAccept, isDragReject, acceptedFiles }) => {
-                                let styles = {...baseStyle}
+                                        isDragAccept, isDragReject }) => {
+                                        let styles = {...baseStyle}
                         styles = isDragActive ? {
-                                                ...styles, ...activeStyle} : styles
+                                                    ...styles, ...activeStyle} : styles
                         styles = isDragReject ? {
-                                                ...styles, ...rejectStyle} : styles
+                                                    ...styles, ...rejectStyle} : styles
                 
                         return (
                         <div className="fileZone" {
-                                                ...getRootProps()} style={styles}>
+                                                         ...getRootProps()} style={styles}>
                             <input {...getInputProps()}/>
                             <div>Click here or {isDragAccept ? 'drop' : 'drag'} the photo...</div>
                             {isDragReject && <div>Unsupported file type...</div>}
@@ -74,10 +83,11 @@ class Uploader extends React.Component {
                         }}
                     </Dropzone>
                     <aside>
-                        <ul>{files}</ul>
+                        <ul>{
+                                            files}</ul>
                     </aside>
                 </section>);
-                            }
-                }
+                        }
+            }
 
-                export default Uploader;
+            export default Uploader;

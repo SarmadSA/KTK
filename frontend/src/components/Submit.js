@@ -24,7 +24,8 @@ const Submit = () => {
                             <Form.Group as={Col} xs={6} md={6} controlId="formGridAge">
                                 <Form.Label>Age</Form.Label>
                                 <Form.Control type="number" placeholder="0"
-                                              className="formContainer"/>
+                                              className="formContainer"
+                                              defaultValue='0'/>
                             </Form.Group>
                             <Form.Group as={Col} xs={6} md={6} controlId="formGridCountry">
                                 <div className="label">
