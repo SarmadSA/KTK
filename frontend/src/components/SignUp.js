@@ -65,7 +65,7 @@ class SignUp extends Component {
                             <Form.Row>
                                 <Form.Group as={Col} xs={12} md={12} controlId="formGridEmail">
                                     <div className="label">
-                                        <Form.Label>Email</Form.Label>
+                                        <Form.Label>Email(Username)</Form.Label>
                                     </div>
                                     <Form.Control type="email" placeholder="Email" onChange={this.props.handleEmailChange}/>
                                 </Form.Group>
@@ -75,7 +75,7 @@ class SignUp extends Component {
                                     </div>
                                     <Form.Control type={this.state.type} className="password input"
                                                   onChange={this.passwordStrength} placeholder="Password" onInput={this.props.handlePasswordChange}/>
-                                    <span className="password show"
+                                    <span className="password showpass"
                                           onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
                                     <span className="password strength" data-score={this.state.score}/>
                                 </Form.Group>
