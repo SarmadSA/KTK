@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import DatePicker from './DatePicker';
 import Countries from './countries';
 import '../css/signUp.css';
+import {goToPage} from "../helpers/helperFunctions";
 
 class InfoEdit extends Component {
 
@@ -49,12 +50,19 @@ class InfoEdit extends Component {
       });      
     }
     }
+    handleBackClick = () => {
+        goToPage('/profile/:id');
+    };
+    
 
     render() {
         return (
                 <div className='editProfile'>
                     <div>
                         <h3>Edit user information</h3>
+                        <Button variant="warning" onClick={()=>{this.handleBackClick();}}>
+                                    Back
+                        </Button>
                         <Container>
                             <Form className="SignForm">
                                 <Form.Row>
