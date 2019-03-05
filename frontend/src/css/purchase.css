@@ -1,0 +1,21 @@
+.purchaseContainer {
+    margin-top: 80px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.formLeft {
+    margin-left: auto;
+}
+
+.formRight {
+    margin-right: auto;
+}
+
+.purchaseBtn {
+    background-color: #28a745;
+    -webkit-text-stroke-color: transparent;
+    color: white;
+}
