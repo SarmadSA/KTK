@@ -59,30 +59,55 @@ class InfoEdit extends Component {
                             <Form className="SignForm">
                                 <Form.Row>
                                     <Form.Group as={Col} xs={6} md={5} controlId="formGridName">
-                                        <Form.Control type="name" placeholder="Name" />
+                                    <div className="FirstNameLabel">
+                                            <Form.Label>First name</Form.Label>
+                                        </div>
+                                        <Form.Control type="text" placeholder="First name" />
                                     </Form.Group>
                 
                                     <Form.Group as={Col} xs={6} md={5} controlId="formGridLastName">
-                                        <Form.Control type="lastname" placeholder="Last Name" />
+                                    <div className="LastNameLabel">
+                                            <Form.Label>Last name</Form.Label>
+                                        </div>
+                                        <Form.Control type="text" placeholder="Last Name" />
                                         </Form.Group>
-                                </Form.Row>
-                                
-                                    <Form.Group as={Col} xs={12} md={6} controlId="formGridEmail">
-                                        <Form.Control type="email" placeholder="Email" />
-                                    </Form.Group>
-                                    
-                                    <Form.Group as={Col} xs={12} md={2} controlId="formGridDateOfBirth">
+                                        <Form.Group as={Col} xs={12} md={2} controlId="formGridDateOfBirth">
                                         <div className="dateLabel">
                                             <Form.Label>Date of birth </Form.Label>
                                         </div>
                                         <DatePicker className="datePicker" selected={this.state.startDate} onChange={this.handleChange} dateFormat="yyyy-MM-dd" />
                                     </Form.Group>
-                                
+                                </Form.Row>
+                                <Form.Row>
+                                    <Form.Group as={Col} xs={12} md={6} controlId="formGridEmail">
+                                    <div className="EmailLabel">
+                                            <Form.Label>Email</Form.Label>
+                                        </div>
+                                        <Form.Control type="text" placeholder="Email" />
+                                    </Form.Group>
+                                    <Form.Group as={Col} xs={12} md={6} controlId="formGridPassword">
+                                    <div className="label">
+                                        <Form.Label>Password</Form.Label>
+                                    </div>
+                                    <Form.Control required type={this.state.type} className="password input"
+                                                  onChange={this.passwordStrength} placeholder="Password" onInput={this.props.handlePasswordChange}/>
+                                    <span className="password showpass"
+                                          onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
+                                    <span className="password strength" data-score={this.state.score}/>
+                                </Form.Group> 
+                                </Form.Row>
+                                <Form.Row>
                                     <Form.Group as={Col} xs={12} md={6} controlId="formGridAddress1">
+                                    <div className="label">
+                                        <Form.Label>Adress</Form.Label>
+                                    </div>
                                         <Form.Control placeholder="Address" />
                                     </Form.Group>
                 
                                     <Form.Group as={Col} xs={12} md={6} controlId="formGridAddress2">
+                                    <div className="label">
+                                        <Form.Label>Adress 2</Form.Label>
+                                    </div>
                                         <Form.Control placeholder="Apartment, studio, or floor" />
                                     </Form.Group>
                                 </Form.Row>
@@ -94,28 +119,28 @@ class InfoEdit extends Component {
                                         </div>
                                         <Countries/>
                                     </Form.Group>
-                
+                                                
                                     <Form.Group as={Col} xs={12} md={3} controlId="formGridState">
+                                    <div className="label">
+                                            <Form.Label>Province</Form.Label>
+                                        </div>
                                         <Form.Control placeholder="Province"/>
                                     </Form.Group>
                 
                                     <Form.Group as={Col} xs={12} md={3} controlId="formGridCity">
+                                    <div className="label">
+                                            <Form.Label>City</Form.Label>
+                                        </div>
                                         <Form.Control placeholder="City"/>
                                     </Form.Group>
                 
                                     <Form.Group as={Col} xs={12} md={3}  controlId="formGridZip">
+                                    <div className="label">
+                                            <Form.Label>Zip</Form.Label>
+                                        </div>
                                         <Form.Control placeholder="Postal/Zip code"/>
                                     </Form.Group>
-                                    
-                                    <Form.Group as={Col} xs={12} md={3} controlId="formGridCountry">
-                                        <Countries/>
-                                    </Form.Group>
-                                    
-                                    <Form.Group as={Col} xs={12} md={6} controlId="formGridPassword">
-                                        <Form.Control type={this.state.type} className="password input" onChange={this.passwordStrength} placeholder="New password" />
-                                        <span className="password show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
-                                        <span className="password strength" data-score={this.state.score} /> 
-                                    </Form.Group>
+                                    </Form.Row>
                                 <br/>
                                 <Button variant="primary" type="submit">
                                     Update
