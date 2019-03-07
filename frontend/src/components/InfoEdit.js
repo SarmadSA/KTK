@@ -66,89 +66,55 @@ class InfoEdit extends Component {
                         <Container>
                             <Form className="SignForm">
                                 <Form.Row>
-                                    <Form.Group as={Col} xs={6} md={5} controlId="formGridName">
-                                    <div className="FirstNameLabel">
-                                            <Form.Label>First name</Form.Label>
-                                        </div>
-                                        <Form.Control type="text" placeholder="First name" />
+                                    <Form.Group as={Col} xs={6} md={6} controlId="formGridName">
+                                        <Form.Control type="name" placeholder="Name" />
                                     </Form.Group>
                 
-                                    <Form.Group as={Col} xs={6} md={5} controlId="formGridLastName">
-                                    <div className="LastNameLabel">
-                                            <Form.Label>Last name</Form.Label>
-                                        </div>
-                                        <Form.Control type="text" placeholder="Last Name" />
-                                        </Form.Group>
-                                        <Form.Group as={Col} xs={12} md={2} controlId="formGridDateOfBirth">
+                                    <Form.Group as={Col} xs={6} md={6} controlId="formGridLastName">
+                                        <Form.Control type="lastname" placeholder="Last Name" />
+                                    </Form.Group>
+                                </Form.Row>
+                                
+                                    <Form.Group as={Col} xs controlId="formGridEmail">
+                                        <Form.Control type="email" placeholder="Email" />
+                                    </Form.Group>
+                                    
+                                    <Form.Group as={Col} xs controlId="formGridDateOfBirth">
                                         <div className="dateLabel">
                                             <Form.Label>Date of birth </Form.Label>
                                         </div>
                                         <DatePicker className="datePicker" selected={this.state.startDate} onChange={this.handleChange} dateFormat="yyyy-MM-dd" />
                                     </Form.Group>
-                                </Form.Row>
-                                <Form.Row>
-                                    <Form.Group as={Col} xs={12} md={6} controlId="formGridEmail">
-                                    <div className="EmailLabel">
-                                            <Form.Label>Email</Form.Label>
-                                        </div>
-                                        <Form.Control type="text" placeholder="Email" />
-                                    </Form.Group>
-                                    <Form.Group as={Col} xs={12} md={6} controlId="formGridPassword">
-                                    <div className="label">
-                                        <Form.Label>Password</Form.Label>
-                                    </div>
-                                    <Form.Control required type={this.state.type} className="password input"
-                                                  onChange={this.passwordStrength} placeholder="Password" onInput={this.props.handlePasswordChange}/>
-                                    <span className="password showpass"
-                                          onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
-                                    <span className="password strength" data-score={this.state.score}/>
-                                </Form.Group> 
-                                </Form.Row>
-                                <Form.Row>
-                                    <Form.Group as={Col} xs={12} md={6} controlId="formGridAddress1">
-                                    <div className="label">
-                                        <Form.Label>Adress</Form.Label>
-                                    </div>
+                                
+                                    <Form.Group as={Col} xs controlId="formGridAddress1">
                                         <Form.Control placeholder="Address" />
                                     </Form.Group>
                 
-                                    <Form.Group as={Col} xs={12} md={6} controlId="formGridAddress2">
-                                    <div className="label">
-                                        <Form.Label>Adress 2</Form.Label>
-                                    </div>
+                                    <Form.Group as={Col} xs controlId="formGridAddress2">
                                         <Form.Control placeholder="Apartment, studio, or floor" />
                                     </Form.Group>
-                                </Form.Row>
-                
-                                <Form.Row>
-                                    <Form.Group as={Col} xs={12} md={3} controlId="formGridCountry">
-                                        <div className="label">
-                                            <Form.Label>Country</Form.Label>
-                                        </div>
-                                        <Countries/>
-                                    </Form.Group>
-                                                
-                                    <Form.Group as={Col} xs={12} md={3} controlId="formGridState">
-                                    <div className="label">
-                                            <Form.Label>Province</Form.Label>
-                                        </div>
+                                    
+                                    <Form.Group as={Col} xs controlId="formGridState">
                                         <Form.Control placeholder="Province"/>
                                     </Form.Group>
                 
-                                    <Form.Group as={Col} xs={12} md={3} controlId="formGridCity">
-                                    <div className="label">
-                                            <Form.Label>City</Form.Label>
-                                        </div>
+                                    <Form.Group as={Col} xs controlId="formGridCity">
                                         <Form.Control placeholder="City"/>
                                     </Form.Group>
                 
-                                    <Form.Group as={Col} xs={12} md={3}  controlId="formGridZip">
-                                    <div className="label">
-                                            <Form.Label>Zip</Form.Label>
-                                        </div>
+                                    <Form.Group as={Col} xs  controlId="formGridZip">
                                         <Form.Control placeholder="Postal/Zip code"/>
                                     </Form.Group>
-                                    </Form.Row>
+                                    
+                                    <Form.Group as={Col} xs controlId="formGridCountry">
+                                        <Countries/>
+                                    </Form.Group>
+                                    
+                                    <Form.Group as={Col} xs controlId="formGridPassword">
+                                        <Form.Control type={this.state.type} className="password input" onChange={this.passwordStrength} placeholder="New password" />
+                                        <span className="password show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
+                                        <span className="password strength" data-score={this.state.score} /> 
+                                    </Form.Group>
                                 <br/>
                                 <Button variant="primary" type="submit">
                                     Update
