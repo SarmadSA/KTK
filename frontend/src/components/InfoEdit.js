@@ -66,53 +66,53 @@ class InfoEdit extends Component {
                         <Container>
                             <Form className="SignForm">
                                 <Form.Row>
-                                    <Form.Group as={Col} xs={6} md={6} controlId="formGridName">
+                                    <Form.Group className="editProfileCol" as={Col} xs={6} md={6} controlId="formGridName">
                                         <Form.Control type="name" placeholder="Name" />
                                     </Form.Group>
                 
-                                    <Form.Group as={Col} xs={6} md={6} controlId="formGridLastName">
+                                    <Form.Group className="editProfileCol" as={Col} xs={6} md={6} controlId="formGridLastName">
                                         <Form.Control type="lastname" placeholder="Last Name" />
                                     </Form.Group>
                                 </Form.Row>
                                 
-                                    <Form.Group as={Col} xs controlId="formGridEmail">
+                                    <Form.Group className="editProfileCol" as={Col} xs controlId="formGridEmail">
                                         <Form.Control type="email" placeholder="Email" />
                                     </Form.Group>
                                     
-                                    <Form.Group as={Col} xs controlId="formGridDateOfBirth">
+                                    <Form.Group className="editProfileCol" as={Col} xs controlId="formGridDateOfBirth">
                                         <div className="dateLabel">
                                             <Form.Label>Date of birth </Form.Label>
                                         </div>
                                         <DatePicker className="datePicker" selected={this.state.startDate} onChange={this.handleChange} dateFormat="yyyy-MM-dd" />
                                     </Form.Group>
                                 
-                                    <Form.Group as={Col} xs controlId="formGridAddress1">
+                                    <Form.Group className="editProfileCol" as={Col} xs controlId="formGridAddress1">
                                         <Form.Control placeholder="Address" />
                                     </Form.Group>
                 
-                                    <Form.Group as={Col} xs controlId="formGridAddress2">
+                                    <Form.Group className="editProfileCol" as={Col} xs controlId="formGridAddress2">
                                         <Form.Control placeholder="Apartment, studio, or floor" />
                                     </Form.Group>
                                     
-                                    <Form.Group as={Col} xs controlId="formGridState">
+                                    <Form.Group className="editProfileCol" as={Col} xs controlId="formGridState">
                                         <Form.Control placeholder="Province"/>
                                     </Form.Group>
                 
-                                    <Form.Group as={Col} xs controlId="formGridCity">
+                                    <Form.Group className="editProfileCol" as={Col} xs controlId="formGridCity">
                                         <Form.Control placeholder="City"/>
                                     </Form.Group>
                 
-                                    <Form.Group as={Col} xs  controlId="formGridZip">
+                                    <Form.Group className="editProfileCol" as={Col} xs  controlId="formGridZip">
                                         <Form.Control placeholder="Postal/Zip code"/>
                                     </Form.Group>
                                     
-                                    <Form.Group as={Col} xs controlId="formGridCountry">
+                                    <Form.Group className="editProfileCol" as={Col} xs controlId="formGridCountry">
                                         <Countries/>
                                     </Form.Group>
                                     
-                                    <Form.Group as={Col} xs controlId="formGridPassword">
+                                    <Form.Group className="editProfileCol" as={Col} xs controlId="formGridPassword">
                                         <Form.Control type={this.state.type} className="password input" onChange={this.passwordStrength} placeholder="New password" />
-                                        <span className="password show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
+                                        <span className="password showpass" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
                                         <span className="password strength" data-score={this.state.score} /> 
                                     </Form.Group>
                                 <br/>
