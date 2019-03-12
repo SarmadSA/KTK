@@ -10,5 +10,5 @@ public interface UserService {
 
     boolean removeUser(Integer id);
 
-    boolean updateUser(Integer id, User User);
+    boolean updateUser(Integer id, User user);
 }
