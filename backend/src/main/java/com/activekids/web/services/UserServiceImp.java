@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
 @Service
 public class UserServiceImp implements UserService {
 
@@ -26,6 +25,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public boolean createUser(User user) {
+        boolean  userCreated = false;
 
         if(user.getPassword() != null) {
             //Hash password, hash -> salt + password. everything is done by this class.
@@ -33,9 +33,12 @@ public class UserServiceImp implements UserService {
             user.setPassword(hashedPassword);
         }
 
-        userRepository.save(user);
-        //TODO: check if user saved in database then return correct boolean value
-        return true;
+        if(!userExist(user.getEmail())){
+            userRepository.save(user);
+            userCreated = true;
+        }
+
+        return userCreated;
     }
 
     @Override
@@ -47,6 +50,7 @@ public class UserServiceImp implements UserService {
     @Override
     public boolean updateUser(Integer id, User user) {
         User userToUpdate = userRepository.getUserById(id);
+        //TODO - check if email does not exist in database before updating
         userToUpdate.setEmail(user.getEmail());
         userToUpdate.setFirstName(user.getFirstName());
         userToUpdate.setLastName(user.getLastName());
@@ -57,5 +61,14 @@ public class UserServiceImp implements UserService {
         userToUpdate.setAddress(user.getAddress());
 
         return true;
+    }
+
+    private boolean userExist(String email){
+        boolean exists = false;
+
+        if(userRepository.findByEmail(email).isPresent()){
+            exists = true;
+        }
+        return exists;
     }
 }
