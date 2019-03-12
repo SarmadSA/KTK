@@ -65,4 +65,16 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    public User(User user) {
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.firstName = user.getFirstName();
+        this.lastName =user.getLastName();
+        this.password = user.getPassword();
+        this.birthDate = user.getBirthDate();
+        this.image = user.getImage();
+        this.roles = user.getRoles();
+        this.address = user.getAddress();
+    }
 }
