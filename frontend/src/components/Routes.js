@@ -11,6 +11,7 @@ import ProfileEditPage from "../pages/ProfileEditPage";
 import SignIn from './SignIn';
 import Submit from '../pages/SubmitPage';
 import Purchase from '../pages/Purchase';
+import PurchaseHistory from '../pages/PurchaseHistory';
 
 const Routes = () =>{
     return(
@@ -26,6 +27,7 @@ const Routes = () =>{
             <Route path="/profile/:id" exact component={ProfilePage}/>
             <Route path="/profileedit/:id" exact component={ProfileEditPage}/>
             <Route path="/purchase/:id" exact component={Purchase}/>
+            <Route path="/purchasehistory/:id" exact component={PurchaseHistory}/>
             <Route path="/" exact component={LandingPage}/>
             <Route render={()=> <NotFoundPage/>}/>
         </Switch>
