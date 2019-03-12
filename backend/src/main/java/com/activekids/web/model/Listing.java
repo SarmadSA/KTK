@@ -24,7 +24,7 @@ public class Listing {
     @NotBlank(message = "{listing.title.NotBlank}")
     private String title;
 
-    @Size(min = 0, max = 255, message = "{listing.description.size}")
+    @Size(max = 255, message = "{listing.description.size}")
     private String description;
 
     @Size(min = 1, max = 3, message = "{listing.age.size}")
