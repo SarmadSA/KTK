@@ -28,8 +28,8 @@ export default class SignIn extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        //executeHttpPost('http://localhost:8080/login', this.formInput, this.onSubmittingSuccess, this.onSubmittingFailure)
-        console.log("logging in...");
+        executeHttpPost('http://localhost:8080/login', this.formInput, this.onSubmittingSuccess, this.onSubmittingFailure)
+        //console.log("logging in...");
     };
 
     onSubmittingSuccess = (url, response) =>{
