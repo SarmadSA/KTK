@@ -25,12 +25,14 @@ public class AddressController {
         this.addressService = addressService;
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/list")
     public Iterable<Address> listAllUsers(){
         return addressService.getAllAddresses();
     }
 
     @Transactional
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PutMapping(path="/add", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity addAddress(@Valid @RequestBody Address address){
         boolean successfullyCreated = addressService.createAddress(address);
