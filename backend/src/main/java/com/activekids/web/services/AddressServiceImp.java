@@ -16,6 +16,11 @@ public class AddressServiceImp implements AddressService {
     }
 
     @Override
+    public Iterable<Address> getAllAddresses() {
+        return addressRepository.findAll();
+    }
+
+    @Override
     public boolean createAddress(Address address) {
         addressRepository.save(address);
         return true;
