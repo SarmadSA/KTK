@@ -6,57 +6,24 @@
     margin-right: auto;
 }
 
-.ListingPhoto {
-    width: 500px;
-    max-width: 100%;
-}
-
-.divContainer img {
-    max-width: 300px;
-    float: left;
-}
-
-.Age {
-    float: left;
-}
-
-.Location {
-    float: right;
-}
-
-.Description {
-    float: left;
-    padding-top: 20px;
-    text-align: left;
-}
-
 .buyBtn {
-   margin-top: 10px;
-   background-color: #28a745;
-   border-color: #28a745;
-   border-radius: 200px;
-   width: 80px;
-   border-style: solid;
-   margin-right: 100%;
-   font-size: 160%;
+    bottom: 10px;
+    right: 20px;
+    height: 50px;
+    background-color: #28a745;
+    border-color: #28a745;
+    border-radius: 200px;
+    width: 100px;
+    border-style: solid;
+    font-size: 150%;
+    position: absolute
+}
+
+.chooserRow {
+    position: relative;
 }
 
 .listingComp {
-    position: absolute;
     width: 100%;
-    top: 70px;
-}
-
-.donation {
-    width: 150px;
-}
-
-.minSum {
-    position: absolute;
-    margin-left: 160px;
-    margin-top: -48px;
-}
-
-.try {
-    
+    padding-top: 70px;
 }

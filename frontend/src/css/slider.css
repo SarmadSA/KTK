@@ -1,0 +1,19 @@
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+.rc-slider-rail,.rc-slider-track {
+height: 10px;
+}
+
+.rc-slider-track {
+    background-color: purple;
+}
+
+.rc-slider-handle  {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%; 
+  background: #4CAF50;
+  margin-top: -4px;
+}
