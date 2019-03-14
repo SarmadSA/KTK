@@ -3,8 +3,14 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Flag from 'react-world-flags';
 import '../css/card.css';
+import {goToPage} from "../helpers/helperFunctions";
 
 const ListingCard = () => {
+
+    const handleSupportClick = () => {
+        goToPage('/listing/:id');
+    };
+
     return (
             <Card>
             <Card.Img variant="top" src={require("../img/template.svg")} />
@@ -17,7 +23,7 @@ const ListingCard = () => {
             <Card.Footer>
                 <p className="cardFooter float-left">Name</p><p className="cardFooter float-right">Age: 9</p>
                 <Flag className="cflag" code="IE" height="20"/>
-                 <Button className="greenBck" block variant="success">SUPPORT</Button>
+                 <Button className="greenBck" block variant="success" onClick={handleSupportClick}>SUPPORT</Button>
             </Card.Footer>
             </Card>
     );
