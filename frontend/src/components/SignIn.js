@@ -63,7 +63,7 @@ export default class SignIn extends Component {
                                 <Form.Check type="checkbox" label="Remember me"/>
                             </Form.Group>
                             <Button variant="light" type="submit" onClick={this.handleSubmit}>Log in</Button>
-                            <a className="signUp loginA" href="/url">Don't have an account?</a>
+                            <a className="signUp loginA" href="/signup">Don't have an account?</a>
                         </Form>
                     </Container>
                 </div>
