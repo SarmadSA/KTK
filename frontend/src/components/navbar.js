@@ -4,6 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import '../css/nav.css';
 import {goToPage} from "../helpers/helperFunctions";
 import SignIn from '../components/SignIn';
+import {getJWT, removeJWT} from "../helpers/helperFunctions";
+import {AUTHENTICATION_JWT, EXPLORE_PAGE, PROFILE_PAGE, SIGNUP_PAGE} from "../resources/consts";
 
 class navbar extends Component {
 
@@ -32,7 +34,17 @@ class navbar extends Component {
     };
 
     handleSignUpClick = () => {
-        goToPage('/signup');
+        goToPage(SIGNUP_PAGE);
+    };
+
+    handleProfileClick = () => {
+        goToPage(PROFILE_PAGE + '/:id');
+    };
+
+    handleLogoutClick = () => {
+        removeJWT(AUTHENTICATION_JWT);
+        goToPage(EXPLORE_PAGE);
+        //window.location.replace("http://localhost:3000/explore");
     };
 
     setNavExpanded = (expanded) =>{
@@ -42,7 +54,25 @@ class navbar extends Component {
     closeNav = () => {
         this.setState({ navExpanded: false });
     };
-    
+
+    renderAuthenticationProperties = () => {
+        if(getJWT(AUTHENTICATION_JWT) /* TODO - add && check if JWT is not expired */){
+            return(
+                <Navbar.Text className="navFont">
+                    <button className="btn" onClick={()=>{this.handleProfileClick(); this.closeNav();}}>Profile</button>
+                    <button className="btn" onClick={()=>{this.handleLogoutClick(); this.closeNav();}}>Logout</button>
+                </Navbar.Text>
+            );
+        } else {
+            return(
+                <Navbar.Text className="navFont">
+                    <button className="btn" onClick={()=>{this.handleLoginClick(); this.closeNav();}}>Login</button>
+                    <button className="btn" onClick={()=>{this.handleSignUpClick(); this.closeNav();}}>Get Started</button>
+                </Navbar.Text>
+            );
+        }
+    };
+
 
     contentToRender = () => {
         if (window.location.pathname.split("/").pop() !== "") {
@@ -67,10 +97,7 @@ class navbar extends Component {
                             <Nav.Link className="navFont" onClick={()=>{goToPage('/submit'); this.closeNav();}}>Submit</Nav.Link>
                             <Nav.Link className="navFont" onClick={()=>{goToPage('/about'); this.closeNav();}}>About</Nav.Link>
                         </Nav>
-                        <Navbar.Text className="navFont">
-                            <button className="btn" onClick={()=>{this.handleLoginClick(); this.closeNav();}}>Log In</button>
-                            <button className="btn" onClick={()=>{this.handleSignUpClick(); this.closeNav();}}>Sign Up</button>
-                        </Navbar.Text>
+                            {this.renderAuthenticationProperties()}
                     </Navbar.Collapse>
                 </Navbar>
             );
