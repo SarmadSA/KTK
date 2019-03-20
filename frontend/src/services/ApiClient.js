@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export function executeHttpGet(url, onSuccess, onFailure){
+export function executeHttpGet(url, config, onSuccess, onFailure){
     console.log("Sending GET request to: " + url);
-    axios.get(url)
+    axios.get(url, config)
         .then(function(response){
             console.log("Request successful");
             console.log("Response from server is: ");
