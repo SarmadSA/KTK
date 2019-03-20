@@ -37,12 +37,47 @@ export default class SignIn extends Component {
     };
 
     onSubmittingSuccess = (url, response) =>{
-        //Handle submitting success
+        switch(response.status) {
+            case 200:
+                if(!getJWT(AUTHENTICATION_JWT)){
+                    if(response.data.token){
+                        const token = response.data.token;
+                        localStorage.setItem(AUTHENTICATION_JWT, token);
+                        console.log("Logged inn!");
+                        //Close the login popup or refresh page or component
+                        window.location.reload();
+                    } else{
+                        console.log("Something went wrong, No JWT returned from server")
+                    }
+                } else {
+                    console.log("Already logged inn");
+                }
+                break;
+            case 401:
+                console.log("Not logged inn!");
+                break;
+            default:
+                console.log("Something went wrong");
+        }
+
         console.log("Success!!")
+        //TODO - if the code is 200 this means the user has logged in, force refresh the website so the
+        //browser gets the cookie/seesion-id and sends it automaticly on every request done after login.
+        //You could just redirect the user to explore page, if in explore page just force refresh.
     };
 
     onSubmittingFailure = (url, response) =>{
-        //Handle submitting failure
+        switch(response.status) {
+            case 200:
+                console.log("Logged inn!");
+                // Save JWT on local storage
+                break;
+            case 401:
+                console.log("Not logged inn!");
+                break;
+            default:
+                console.log("Something went wrong");
+        }
         console.log("Failure!!")
     };
 
