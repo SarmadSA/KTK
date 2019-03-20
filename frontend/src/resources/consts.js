@@ -6,3 +6,6 @@ export const AUTHENTICATION_JWT = "KTK-Auth-Token";
 export const EXPLORE_PAGE = '/explore';
 export const SIGNUP_PAGE = '/signup';
 export const PROFILE_PAGE = '/profile';
+
+//API
+export const AUTHENTICATION_API = 'http://localhost:8080/api/authentication';
