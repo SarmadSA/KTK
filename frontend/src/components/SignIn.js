@@ -3,8 +3,13 @@ import Button from 'react-bootstrap/Button';
 import {IoMdClose} from 'react-icons/io';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
+import querystring from 'querystring';
+import base64 from "base-64";
+import utf8 from "utf8";
 import '../css/signInn.css';
 import {executeHttpPost} from "../services/ApiClient";
+import {getJWT} from '../helpers/helperFunctions';
+import {AUTHENTICATION_API, AUTHENTICATION_JWT} from '../resources/consts';
 
 export default class SignIn extends Component {
     constructor(props){
@@ -22,14 +27,13 @@ export default class SignIn extends Component {
     };
 
     handlePasswordChange = (value) =>{
-        this.formInput.password = value;
+        this.formInput.password = base64.encode(utf8.encode(value));
         console.log("Password: " + value);
     };
 
     handleSubmit = (e) => {
         e.preventDefault();
-        executeHttpPost('http://localhost:8080/login', this.formInput, this.onSubmittingSuccess, this.onSubmittingFailure)
-        //console.log("logging in...");
+        executeHttpPost(AUTHENTICATION_API, querystring.stringify(this.formInput), this.onSubmittingSuccess, this.onSubmittingFailure)
     };
 
     onSubmittingSuccess = (url, response) =>{
