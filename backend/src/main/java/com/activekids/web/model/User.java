@@ -9,8 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
 
 @Data
 @NoArgsConstructor
@@ -62,19 +60,9 @@ public class User {
     //@OneToMany
     //private List<Listing> listings;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    @ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles;
 
-    public User(User user) {
-        this.id = user.getId();
-        this.email = user.getEmail();
-        this.firstName = user.getFirstName();
-        this.lastName =user.getLastName();
-        this.password = user.getPassword();
-        this.birthDate = user.getBirthDate();
-        this.image = user.getImage();
-        this.roles = user.getRoles();
-        this.address = user.getAddress();
-    }
+    private String token;
 }
