@@ -11,4 +11,6 @@ public interface UserService {
     boolean removeUser(Integer id);
 
     boolean updateUser(Integer id, User user);
+
+    User isLoginValid(String username, String pass);
 }
