@@ -1,0 +1,25 @@
+.mngAccBtn {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 500px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 20px;
+    border-color: #28a745;
+    border-style: solid;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    font-size: 200%;
+}
+
+.mngAccContainer {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+}
+
+.mngAccDiv {
+    margin-top: 60px;
+}
