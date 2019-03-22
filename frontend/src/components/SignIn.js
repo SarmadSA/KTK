@@ -12,21 +12,21 @@ import {getJWT} from '../helpers/helperFunctions';
 import {AUTHENTICATION_API, AUTHENTICATION_JWT} from '../resources/consts';
 
 export default class SignIn extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
     }
 
     formInput = {
-        email:"",
-        password:""
+        email: "",
+        password: ""
     };
 
-    handleEmailChange = (value) =>{
+    handleEmailChange = (value) => {
         this.formInput.email = value;
         console.log("Email: " + value);
     };
 
-    handlePasswordChange = (value) =>{
+    handlePasswordChange = (value) => {
         this.formInput.password = base64.encode(utf8.encode(value));
         console.log("Password: " + value);
     };
@@ -36,17 +36,17 @@ export default class SignIn extends Component {
         executeHttpPost(AUTHENTICATION_API, querystring.stringify(this.formInput), this.onSubmittingSuccess, this.onSubmittingFailure)
     };
 
-    onSubmittingSuccess = (url, response) =>{
-        switch(response.status) {
+    onSubmittingSuccess = (url, response) => {
+        switch (response.status) {
             case 200:
-                if(!getJWT(AUTHENTICATION_JWT)){
-                    if(response.data.token){
+                if (!getJWT(AUTHENTICATION_JWT)) {
+                    if (response.data.token) {
                         const token = response.data.token;
                         localStorage.setItem(AUTHENTICATION_JWT, token);
                         console.log("Logged inn!");
                         //Close the login popup or refresh page or component
                         window.location.reload();
-                    } else{
+                    } else {
                         console.log("Something went wrong, No JWT returned from server")
                     }
                 } else {
@@ -61,13 +61,10 @@ export default class SignIn extends Component {
         }
 
         console.log("Success!!")
-        //TODO - if the code is 200 this means the user has logged in, force refresh the website so the
-        //browser gets the cookie/seesion-id and sends it automaticly on every request done after login.
-        //You could just redirect the user to explore page, if in explore page just force refresh.
     };
 
-    onSubmittingFailure = (url, response) =>{
-        switch(response.status) {
+    onSubmittingFailure = (url, response) => {
+        switch (response.status) {
             case 200:
                 console.log("Logged inn!");
                 // Save JWT on local storage
@@ -91,11 +88,13 @@ export default class SignIn extends Component {
                         <Form className="SignForm" method="POST">
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" placeholder="Email" onChange={(e)=>this.handleEmailChange(e.target.value.trim())}/>
+                                <Form.Control type="email" placeholder="Email"
+                                              onChange={(e) => this.handleEmailChange(e.target.value.trim())}/>
                             </Form.Group>
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" onChange={(e)=>this.handlePasswordChange(e.target.value)}/>
+                                <Form.Control type="password" placeholder="Password"
+                                              onChange={(e) => this.handlePasswordChange(e.target.value)}/>
                                 <a className="signUp loginA" href="/url">Forgot password?</a>
                             </Form.Group>
                             <Form.Group controlId="formBasicChecbox">
