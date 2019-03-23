@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export function executeHttpGet(url, config, onSuccess, onFailure) {
     console.log("Sending GET request to: " + url);
+    console.log("With config: " + config);
     axios.get(url, config)
         .then(function (response) {
             handleSuccessfulRequest(url, response, onSuccess);
@@ -55,5 +56,8 @@ function handleFailureRequest(url, error, onFailure){
         console.log("Response from server is: ");
         console.log(error.response);
         onFailure(url, error.response);
+    } else if (!error.status) {
+        console.log("Could not reach other server, server may be offline, please try again later!");
+        onFailure(url, error);
     }
 }
