@@ -1,7 +1,7 @@
 package com.activekids.web.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,7 +9,10 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
+@EqualsAndHashCode(exclude="users")
+@ToString(exclude="users")
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Role {
 
@@ -22,6 +25,7 @@ public class Role {
     @NotNull
     private String role;
 
+    @JsonIgnoreProperties("roles")
     @ManyToMany(mappedBy = "roles", cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     private List<User> users;
 }

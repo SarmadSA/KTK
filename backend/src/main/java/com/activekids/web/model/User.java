@@ -1,8 +1,7 @@
 package com.activekids.web.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -11,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@EqualsAndHashCode(exclude="roles")
+@ToString(exclude="roles")
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -60,6 +61,7 @@ public class User {
     //@OneToMany
     //private List<Listing> listings;
 
+    @JsonIgnoreProperties("users")
     @ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
