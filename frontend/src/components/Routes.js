@@ -13,6 +13,7 @@ import Submit from '../pages/SubmitPage';
 import Purchase from '../pages/Purchase';
 import PurchaseHistory from '../pages/PurchaseHistory';
 import ManageAccount from '../pages/ManageAccount';
+import RequestTestingPage from '../pages/RequestTestingPage';
 
 const Routes = () =>{
     return(
@@ -30,6 +31,7 @@ const Routes = () =>{
             <Route path="/purchase/:id" exact component={Purchase}/>
             <Route path="/purchasehistory/:id" exact component={PurchaseHistory}/>
             <Route path="/manageaccount/:id" exact component={ManageAccount}/>
+            <Route path="/requests" exact component={RequestTestingPage}/>
             <Route path="/" exact component={LandingPage}/>
             <Route render={()=> <NotFoundPage/>}/>
         </Switch>
