@@ -94,6 +94,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                     .antMatchers("/api/user").permitAll()
                     .antMatchers("/").permitAll()
                     .antMatchers("/favicon.ico").permitAll()
+                    //.antMatchers("/address/list").hasAnyRole("ADMIN")
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
@@ -111,6 +112,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
         http.headers().cacheControl();
+        http.cors();
             //http.authorizeRequests()
             //        .antMatchers("**/address/**")
             //        .authenticated()
@@ -130,7 +132,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
             //        .logout()
             //        .logoutUrl("/logout")
             //        .permitAll();
-            http.cors();
     }
 
     @Bean

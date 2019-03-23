@@ -84,9 +84,9 @@ public class UserServiceImp implements UserService {
     public User createUserToken(String email, String secret) {
         String token = jwtService.createToken(email, secret, dateGenerator.getExpirationDate());
         User user = userRepository.getUserByEmail(email);
-        user.setToken(token);
-        boolean userUpdated = updateUser(user.getId(), user);
-        if(userUpdated){
+        if(user != null){
+            user.setToken(token);
+            //userRepository.save(user);
             return user;
         }
         return null;
@@ -96,7 +96,7 @@ public class UserServiceImp implements UserService {
         String username = jwtService.getUsername(token, secret);
         if (username != null ) {
             User user = userRepository.getUserByEmail(username);
-            if (user != null && token.equals(user.getToken()) && jwtService.isValid(token, secret)) {
+            if (user != null /*&& token.equals(user.getToken())*/ && jwtService.isValid(token, secret)) {
                 return user;
             }
         }
