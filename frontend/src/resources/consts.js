@@ -9,3 +9,4 @@ export const PROFILE_PAGE = '/profile';
 
 //API
 export const AUTHENTICATION_API = 'http://localhost:8080/api/authentication';
+export const GET_LISTINGS_API = 'http://localhost:8080/listing/list';
