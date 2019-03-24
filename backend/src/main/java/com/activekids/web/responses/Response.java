@@ -15,6 +15,8 @@ public enum Response {
     ADDRESS_NOT_DELETED("Could not delete address!"),
     ADDRESS_UPDATED("Address updated!"),
     ADDRESS_NOT_UPDATED("Could not update address!"),
+    LISTING_CREATED("Listing created!"),
+    LISTING_NOT_CREATED("Could not create listing!"),
     UNKNOWN_ERROR("Something went wrong");
 
     @Getter
