@@ -3,6 +3,7 @@ package com.activekids.web.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -27,17 +28,23 @@ public class Listing {
     @Size(max = 255, message = "{listing.description.size}")
     private String description;
 
-    @Size(min = 1, max = 3, message = "{listing.age.size}")
+    @Min(value = 1, message = "{listing.age.min}")
+    @Max(value = 200, message = "{listing.age.max}")
     @NotNull(message = "{listing.age.notNull}")
-    @NotBlank(message = "{listing.age.notBlank}")
-    private String age;
+    //@NotBlank(message = "{listing.age.notBlank}")
+    private Integer age;
 
-    @Size(min = 2, max = 2, message = "{listing.country.size}")
+    @Size(min = 1, max = 60, message = "{listing.country.size}")
     @NotNull(message = "{listing.country.notNull}")
     @NotBlank(message = "{listing.country.notBlank}")
     private String country;
 
+    @Value("https://dummyimage.com/345x160/000/fff&text=From+database")
     @Size(max = 255)
-    private String image;
+    //@NotNull(message = "{listing.image.notNull}")
+    private String image = "https://dummyimage.com/345x160/000/fff&text=From+database";
+
+    @ManyToOne
+    private User user;
 
 }
