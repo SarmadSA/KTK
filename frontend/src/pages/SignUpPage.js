@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Signup from '../components/SignUp';
 import Col from 'react-bootstrap/Col';
 import {executeHttpPut} from '../services/ApiClient';
+import {CREATE_USER_API} from "../resources/consts";
 
 export default class SignUp extends Component {
 
@@ -19,7 +20,7 @@ export default class SignUp extends Component {
 
     handleFromSubmit = (e) =>{
         e.preventDefault();
-        executeHttpPut("http://localhost:8080/user/add", this.formInput, this.onSubmittingSuccess, this.onSubmittingFailure);
+        executeHttpPut(CREATE_USER_API, this.formInput, {}, this.onSubmittingSuccess, this.onSubmittingFailure);
     };
 
     onSubmittingSuccess = (url, response) =>{
@@ -64,7 +65,7 @@ export default class SignUp extends Component {
                         handleLastNameChange={(e) => this.handleLastNameChange(e.target.value.trim()) }
                         handleEmailChange={ (e) => this.handleEmailChange(e.target.value.trim()) }
                         handlePasswordChange={ (e) => this.handlePasswordChange(e.target.value) }
-                        handleCountryChange={ (e) => this.handleCountryChange(e.target.options[e.target.options.selectedIndex].innerText) } //Proud that I did this crap to get the selected text instead of the value
+                        handleCountryChange={ (e) => this.handleCountryChange(e.target.value) } //(e.target.options[e.target.options.selectedIndex].innerText) to get country text. Proud that I did this crap to get the selected text instead of the value
                         handleFormSubmit={ (e) => this.handleFromSubmit(e) }
                     />
                 </Col>
