@@ -1,0 +1,25 @@
+.landingJum {
+    margin-bottom: 0 !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+    background:none !important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.btnLg {
+    background-color: rgba(71,210,37,0.8);
+    border-color: #47d225;
+    height: 100px;
+    border-radius: 45px;
+    font-size: xx-large;
+    transition: 0.5s;
+}

@@ -1,0 +1,89 @@
+html, body, #root, .App {
+
+}
+
+.clear{
+    clear: both;
+}
+
+.main {
+    min-height: 100vh;
+    /*Disable scroll bars*/
+    overflow: hidden;
+}
+
+.blue {
+    color: #0ebea0;
+}
+
+.green {
+    color: #47d225;
+}
+
+.yellow {
+    color: #fffd1e;
+}
+
+.purple {
+    color: #b212a2;
+}
+
+.red {
+     color: #b20e12;
+}
+
+.black {
+    color: black !important;
+}
+
+.greenBck {
+    background-color: #08CC30;
+}
+
+.blueBck {
+    background-color: #0ebea0;
+    border-color: #0ebea0;
+}
+
+.yellowBck {
+    background-color: #fffd1e;
+}
+
+.purpleBck {
+    background-color: #b212a2;
+}
+
+.redBck {
+     background-color: #b20e12;
+}
+
+.blackBck {
+     background-color: black;
+}
+
+.signUpBox {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+button:focus{
+    outline: none;
+}
+
+.exploreText {
+    padding-top: 90px;
+}
+
+.submitFormC {
+    padding-bottom: 50px;
+}
+
+.editProfile {
+    margin-top: 100px;
+}
+
+.pListC {
+    margin-top: 30px;
+}

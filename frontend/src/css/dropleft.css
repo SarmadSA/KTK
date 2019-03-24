@@ -1,0 +1,45 @@
+.dropleft {
+    padding-top: 2px;
+    float: right;
+}
+
+.filter{
+    font-size: larger;
+}
+
+.inputFilter {
+    -webkit-appearance:none;
+    width:25px;
+    height:14px;
+    background:white;
+    border-radius:5px;
+    border:2px solid #555;
+}
+.inputFilter:checked {
+    background: #555;
+}
+
+.iconFilter {
+    padding-top: 5px;
+    margin-top: -12px;
+    float: right;
+    font-size: 55px;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    background-color: #0ebea0;
+    border-color: #0ebea0;
+}
+.btn-primary:hover {
+    background-color: #0ebea0;
+    border-color: #0ebea0;    
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(14, 190, 160,.5) !important;
+}
+
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(14, 190, 160,.5) !important;
+}

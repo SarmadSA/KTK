@@ -1,0 +1,26 @@
+.historyDiv {
+    padding-top: 70px;
+}
+
+.hisCon {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+.hisColL {
+    text-align: left;
+}
+
+.hisColR {
+    text-align: right;
+}
+
+.details {
+    border-style: solid;
+    border-width: 1px;
+}
+
+.hisContainer {
+    margin-bottom: 10px;
+}

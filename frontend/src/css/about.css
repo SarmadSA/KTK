@@ -1,0 +1,33 @@
+.aboutText {
+    padding-bottom: 50px;
+    font-weight: 600;
+
+}
+
+.aboutPage {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 20px;
+    margin-bottom: 0 !important;
+}
+
+Form {
+    font-weight: 700;
+}
+
+.submitBtn {
+    background-color: #28a745;
+    -webkit-text-stroke-color: transparent;
+}
+
+.aboutContactDiv {
+    background: rgba(255,255,255,0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.formContainer {
+    background: rgba(255,255,255,0.8);
+}

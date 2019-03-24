@@ -1,0 +1,10 @@
+.eachRow {
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.filterBar {
+    display: flow-root !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
