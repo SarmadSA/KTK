@@ -3,12 +3,12 @@ import ListingRowRenderer from '../utils/ListngRowRenderer';
 import Container from 'react-bootstrap/Container';
 
 
-const list = () => {
-    const numberOfCards = 9; //get this number from props
+const list = (props) => {
     return (
         <Container>
-            <ListingRowRenderer number = {numberOfCards}/>
+            <ListingRowRenderer data={props.data} number={props.data.length}/>
         </Container>
-        );
+    );
 };
+
 export default list;
