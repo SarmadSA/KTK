@@ -58,8 +58,8 @@ public class User {
     @ManyToOne
     private Address address;
 
-    //@OneToMany
-    //private List<Listing> listings;
+    @OneToMany
+    private List<Listing> listings;
 
     @JsonIgnoreProperties("users")
     @ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
