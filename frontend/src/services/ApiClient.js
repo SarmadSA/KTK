@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function executeHttpGet(url, config, onSuccess, onFailure) {
     console.log("Sending GET request to: " + url);
-    console.log("With config: " + config);
+    console.log("Config: " + config);
     axios.get(url, config)
         .then(function (response) {
             handleSuccessfulRequest(url, response, onSuccess);
@@ -12,11 +12,12 @@ export function executeHttpGet(url, config, onSuccess, onFailure) {
         });
 }
 
-export function executeHttpPost(url, apiCallParams, onSuccess, onFailure) {
+export function executeHttpPost(url, apiCallParams, config, onSuccess, onFailure) {
     console.log("Sending POST request to: " + url);
+    console.log("Config: " + config);
     console.log("Payload: ");
     console.log(apiCallParams);
-    axios.post(url, apiCallParams, {headers: {"contentType": "application/json; charset=UTF-8"}})
+    axios.post(url, apiCallParams, config)
         .then(function (response) {
             handleSuccessfulRequest(url, response, onSuccess);
         })
@@ -25,11 +26,12 @@ export function executeHttpPost(url, apiCallParams, onSuccess, onFailure) {
         });
 }
 
-export function executeHttpPut(url, apiCallParams, onSuccess, onFailure) {
+export function executeHttpPut(url, apiCallParams, config, onSuccess, onFailure) {
     console.log("Sending PUT request to: " + url);
+    console.log("Config: " + config);
     console.log("Payload: ");
     console.log(apiCallParams);
-    axios.put(url, apiCallParams, {headers: {"contentType": "application/json; charset=UTF-8"}})
+    axios.put(url, apiCallParams, config)
         .then(function (response) {
             handleSuccessfulRequest(url, response, onSuccess);
         })
