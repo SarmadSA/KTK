@@ -83,12 +83,12 @@ class navbar extends Component {
                     <Navbar.Brand onClick={()=>{goToPage('/explore'); this.closeNav();}}>
                         <img
                             alt=""
-                            src={require("../logo.svg")}
+                            src={require("../logo.png")}
                             width="30"
                             height="30"
                             className="d-inline-block align-top"
                         />
-                        {' React Bootstrap'}
+                        {' Kids For Kids'}
                     </Navbar.Brand>
                     <Navbar.Toggle/>
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -102,7 +102,7 @@ class navbar extends Component {
                 </Navbar>
             );
         } else {
-            return (<div></div>)
+            return (<div/>)
         }
     };
 
