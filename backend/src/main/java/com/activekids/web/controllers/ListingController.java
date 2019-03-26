@@ -9,8 +9,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 @RestController
 @CrossOrigin //TODO - Allow only authorized domains
@@ -39,6 +43,45 @@ public class ListingController {
         }
         else {
             return new ResponseEntity<>(Response.LISTING_NOT_CREATED, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    /**
+     * Upload single file using Spring Controller
+     */
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    public @ResponseBody String uploadFileHandler(@RequestParam("file") MultipartFile file) {
+
+        String fileName = file.getOriginalFilename();
+        System.out.println(fileName);
+        System.out.println(file.getName());
+
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+
+                // Creating the directory to store file
+                String rootPath = System.getProperty("catalina.home");
+                File directory = new File(rootPath + File.separator + "tmpFiles");
+                if (!directory.exists()){
+                    directory.mkdirs();
+                }
+
+                // Create the file on server
+                File serverFile = new File(directory.getAbsolutePath() + File.separator + fileName);
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+                stream.write(bytes);
+                stream.close();
+
+                System.out.println("Server File Location=" + serverFile.getAbsolutePath());
+
+                return "You successfully uploaded file=" + fileName;
+            } catch (Exception e) {
+                return "You failed to upload " + fileName + " => " + e.getMessage();
+            }
+        } else {
+            return "You failed to upload " + fileName
+                    + " because the file was empty.";
         }
     }
 }
