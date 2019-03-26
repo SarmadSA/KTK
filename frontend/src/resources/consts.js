@@ -11,4 +11,6 @@ export const PROFILE_PAGE = '/profile';
 const HOST = "http://localhost:8080";
 export const AUTHENTICATION_API = HOST + '/api/authentication';
 export const GET_LISTINGS_API = HOST + '/listing/list';
-export const CREATE_USER_API = HOST + 'user/add"';
+export const UPLOAD_IMAGE_API = HOST + '/listing/uploadFile';
+export const CREATE_LISTING_API = HOST + '/listing/add';
+export const CREATE_USER_API = HOST + '/user/add';
