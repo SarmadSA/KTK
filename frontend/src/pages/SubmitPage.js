@@ -1,9 +1,9 @@
 import React from 'react';
 import Uploader from '../components/Uploader';
 import Submit from '../components/Submit';
-import {executeHttpPost, executeHttpPut} from "../services/ApiClient";
+import {executeHttpPost} from "../services/ApiClient";
 import {getJWT} from "../helpers/helperFunctions";
-import {AUTHENTICATION_JWT, CREATE_LISTING_API, UPLOAD_IMAGE_API} from "../resources/consts";
+import {AUTHENTICATION_JWT, CREATE_LISTING_API} from "../resources/consts";
 
 const SubmitPage = () => {
 
@@ -42,30 +42,17 @@ const SubmitPage = () => {
 
         const formData = new FormData();
         formData.append('file', imageFile);
+        formData.append('properties', new Blob([JSON.stringify(formInput)], {
+            type: "application/json"
+        }));
 
         executeHttpPost(
-            UPLOAD_IMAGE_API,
-            formData,
-            getConfig('multipart/form-data'),
-            onImageUploadSuccess,
-            onImageUploadFailure
-        );
-    };
-
-    const onImageUploadSuccess = () => {
-        console.log("Image upload success!");
-        console.log("Sending request to create listing..");
-        executeHttpPut(
             CREATE_LISTING_API,
-            formInput,
-            getConfig('application/json; charset=UTF-8'),
+            formData,
+            getConfig(undefined),
             onSubmitSuccess,
             onSubmitFailure
         );
-    };
-
-    const onImageUploadFailure = () => {
-        console.log("Upload failure!")
     };
 
     const onSubmitSuccess = () => {
@@ -74,7 +61,6 @@ const SubmitPage = () => {
 
     const onSubmitFailure = () => {
         console.log("Submit failure!");
-        //TODO - send request to delete uploaded image file
     };
 
     const handleImageChange = (images) =>{
