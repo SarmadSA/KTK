@@ -17,3 +17,12 @@
     .fileZone {
     }
 }
+
+.preview {
+    max-width: 200px;
+    max-height: 100px;
+    margin-bottom: -140px;
+    position: relative;
+    top: -140px;
+    z-index: -1;
+}

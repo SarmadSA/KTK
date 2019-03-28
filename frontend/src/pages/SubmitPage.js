@@ -9,9 +9,10 @@ const SubmitPage = () => {
 
     const formInput = {
         title: "",
+        name: "",
         description: "",
         age: "",
-        country: "",
+        country: ""
     };
 
     let imageFile = {};
@@ -19,6 +20,11 @@ const SubmitPage = () => {
     const handleTitleChange = (value) => {
         console.log("Title: " + value);
         formInput.title = value;
+    };
+
+    const handleNameChange = (value) => {
+        console.log("Name: " + value);
+        formInput.name = value;
     };
 
     const handleDescriptionChange = (value) => {
@@ -63,13 +69,15 @@ const SubmitPage = () => {
         console.log("Submit failure!");
     };
 
-    const handleImageChange = (images) =>{
+
+    const handleImageChange = (images) => {
         console.log("Image info: ");
         console.log(images[0]);
         imageFile = images[0];
     };
 
-    const getConfig = (contentType) =>{
+
+    const getConfig = (contentType) => {
         return {
             headers: {
                 'contentType': contentType,
@@ -79,17 +87,18 @@ const SubmitPage = () => {
     };
 
     return (
-        <div>
-            <Uploader handleImageChange={ (e) => handleImageChange(e) }/>
-            <Submit
-                handleTitleChange={(e) => handleTitleChange(e.target.value)}
-                handleDescriptionChange={(e) => handleDescriptionChange(e.target.value)}
-                handleAgeChange={(e) => handleAgeChange(e.target.value)}
-                handleCountryChange={(e) => handleCountryChange(e.target.value)}
-                handleFormSubmit={(e) => handleFormSubmit(e)}
-            />
-        </div>
-    );
+            <div>
+                <Uploader handleImageChange={ (e) => handleImageChange(e) }/>
+                <Submit
+                    handleTitleChange={(e) => handleTitleChange(e.target.value)}
+                    handleNameChange={(e) => handleNameChange(e.target.value)}
+                    handleDescriptionChange={(e) => handleDescriptionChange(e.target.value)}
+                    handleAgeChange={(e) => handleAgeChange(e.target.value)}
+                    handleCountryChange={(e) => handleCountryChange(e.target.value)}
+                    handleFormSubmit={(e) => handleFormSubmit(e)}
+                    />
+            </div>
+            );
 };
 
 export default SubmitPage;
