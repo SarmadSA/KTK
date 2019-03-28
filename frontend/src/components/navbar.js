@@ -3,35 +3,20 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../css/nav.css';
 import {goToPage} from "../helpers/helperFunctions";
+import Collapsible from 'react-collapsible';
 import SignIn from '../components/SignIn';
 import {getJWT, removeJWT} from "../helpers/helperFunctions";
 import {AUTHENTICATION_JWT, EXPLORE_PAGE, PROFILE_PAGE, SIGNUP_PAGE} from "../resources/consts";
+import LogIn from './LogIn';
 
 class navbar extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            loginVisible: false,
             navExpanded: false
         };
     }
-
-    setLoginClass = () =>{
-        if (this.state.loginVisible) {
-            return 'visible';
-        } else {
-            return '';
-        }
-    };
-
-    handleLoginClick = () => {
-        this.setState({loginVisible: true});
-    };
-
-    closeLoginWindow = () => {
-        this.setState({loginVisible: false});
-    };
 
     handleSignUpClick = () => {
         goToPage(SIGNUP_PAGE);
@@ -65,10 +50,13 @@ class navbar extends Component {
             );
         } else {
             return(
-                <Navbar.Text className="navFont">
-                    <button className="btn" onClick={()=>{this.handleLoginClick(); this.closeNav();}}>Login</button>
-                    <button className="btn" onClick={()=>{this.handleSignUpClick(); this.closeNav();}}>Get Started</button>
-                </Navbar.Text>
+                <Navbar.Text className="navFont navLog">
+                <button className="btn" onClick={()=>{this.handleSignUpClick(); this.closeNav();}}>Get Started</button>
+                    <Collapsible triggerTagName="Navbar.Text" trigger="Login">
+                    <LogIn handleCloseClick={this.closeLoginWindow}/>
+                    </Collapsible>
+                </Navbar.Text> 
+                
             );
         }
     };
@@ -102,17 +90,13 @@ class navbar extends Component {
                 </Navbar>
             );
         } else {
-            return (<div/>)
+            return (<div/>);
         }
     };
 
     render() {
         return (
             <div>
-                <SignIn
-                    handleCloseClick={this.closeLoginWindow}
-                    otherClasses={this.setLoginClass()}
-                />
                 {this.contentToRender()}
             </div>
         );
