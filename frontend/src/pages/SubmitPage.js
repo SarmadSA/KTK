@@ -12,7 +12,7 @@ const SubmitPage = () => {
         name: "",
         description: "",
         age: "",
-        country: "",
+        country: ""
     };
 
     let imageFile = {};
@@ -48,26 +48,29 @@ const SubmitPage = () => {
 
         const formData = new FormData();
         formData.append('file', imageFile);
+        formData.append('properties', new Blob([JSON.stringify(formInput)], {
+            type: "application/json"
+        }));
 
         executeHttpPost(
-            UPLOAD_IMAGE_API,
-            formData,
-            getConfig('multipart/form-data'),
-            onImageUploadSuccess,
-            onImageUploadFailure
-        );
+                UPLOAD_IMAGE_API,
+                formData,
+                getConfig(undefined),
+                onImageUploadSuccess,
+                onImageUploadFailure
+                );
     };
 
     const onImageUploadSuccess = () => {
         console.log("Image upload success!");
-        console.log("Sending request to create listing..");
-        executeHttpPut(
-            CREATE_LISTING_API,
-            formInput,
-            getConfig('application/json; charset=UTF-8'),
-            onSubmitSuccess,
-            onSubmitFailure
-        );
+        //console.log("Sending request to create listing..");
+        //executeHttpPut(
+        //    CREATE_LISTING_API,
+        //    formInput,
+        //    getConfig('application/json; charset=UTF-8'),
+        //    onSubmitSuccess,
+        //    onSubmitFailure
+        //);
     };
 
     const onImageUploadFailure = () => {
@@ -83,13 +86,15 @@ const SubmitPage = () => {
         //TODO - send request to delete uploaded image file
     };
 
-    const handleImageChange = (images) =>{
+
+    const handleImageChange = (images) => {
         console.log("Image info: ");
         console.log(images[0]);
         imageFile = images[0];
     };
 
-    const getConfig = (contentType) =>{
+
+    const getConfig = (contentType) => {
         return {
             headers: {
                 'contentType': contentType,
@@ -100,10 +105,10 @@ const SubmitPage = () => {
 
     return (
             <div>
-                <Uploader/>
+                <Uploader handleImageChange={ (e) => handleImageChange(e) }/>
                 <Submit
                     handleTitleChange={(e) => handleTitleChange(e.target.value)}
-                    handleNameChange={(e) => handleNameChange(e.targer.value)}
+                    handleNameChange={(e) => handleNameChange(e.target.value)}
                     handleDescriptionChange={(e) => handleDescriptionChange(e.target.value)}
                     handleAgeChange={(e) => handleAgeChange(e.target.value)}
                     handleCountryChange={(e) => handleCountryChange(e.target.value)}

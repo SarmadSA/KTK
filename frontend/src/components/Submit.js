@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -16,7 +16,7 @@ const Submit = (props) => {
                                 <Form.Label>Title</Form.Label>
                                 <Form.Control type="text" placeholder="Title" className="formContainer" onChange={props.handleTitleChange}/>
                             </Form.Group>
-                            <Form.Group controlId="formGridTitle">
+                            <Form.Group controlId="formGridName">
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control type="text" placeholder="Name" className="formContainer" onChange={props.handleNameChange}/>
                             </Form.Group>
