@@ -87,18 +87,18 @@ const SubmitPage = () => {
     };
 
     return (
-            <div>
-                <Uploader handleImageChange={ (e) => handleImageChange(e) }/>
-                <Submit
-                    handleTitleChange={(e) => handleTitleChange(e.target.value)}
-                    handleNameChange={(e) => handleNameChange(e.target.value)}
-                    handleDescriptionChange={(e) => handleDescriptionChange(e.target.value)}
-                    handleAgeChange={(e) => handleAgeChange(e.target.value)}
-                    handleCountryChange={(e) => handleCountryChange(e.target.value)}
-                    handleFormSubmit={(e) => handleFormSubmit(e)}
-                    />
-            </div>
-            );
+        <div>
+            <Uploader handleImageChange={(e) => handleImageChange(e)}/>
+            <Submit
+                handleTitleChange={(e) => handleTitleChange(e.target.value)}
+                handleNameChange={(e) => handleNameChange(e.target.value)}
+                handleDescriptionChange={(e) => handleDescriptionChange(e.target.value)}
+                handleAgeChange={(e) => handleAgeChange(e.target.value)}
+                handleCountryChange={(e) => handleCountryChange(e.target.value)}
+                handleFormSubmit={(e) => handleFormSubmit(e)}
+            />
+        </div>
+    );
 };
 
 export default SubmitPage;
