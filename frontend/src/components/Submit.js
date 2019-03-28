@@ -31,6 +31,7 @@ const Submit = (props) => {
                                                   className="formContainer"
                                                   defaultValue='0'
                                                   onChange={props.handleAgeChange}
+                                                  min="0"
                                                   />
                                 </Form.Group>
                                 <Form.Group as={Col} xs={6} md={6} controlId="formGridCountry">

@@ -5,6 +5,7 @@ import Tooltip from 'rc-tooltip';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Items from './Items';
+import Case from './Case';
 import 'rc-slider/assets/index.css';
 import '../css/slider.css';
 
@@ -16,35 +17,45 @@ class Chooser extends React.Component {
         this.state = {
             price: 0,
             minPrice: 0,
-            amount: 1
+            amount: 1,
+            Pcase: false
         };
     }
 
     onSliderChange = (value) => {
         this.setState({price: value});
-    }
-    ;
+    };
+    
     handleItemChange = (val) => {
-        this.setState({minPrice: val * this.state.amount});
-    }
-    ;
+        if(val === "404") {
+            this.setState({Pcase: true});
+        } else {
+            this.setState({Pcase: false});
+            this.setState({minPrice: val * this.state.amount});
+        }
+    };
+    
+    handleCaseChange = (val) => {
+            this.setState({minPrice: val * this.state.amount});
+    };
+    
     onAmountChange = (val) => {
         this.setState({amount: val});
-    }
-    ;
+    };
+    
             render() {
-
-
         return (
                 <div>
                     <Form onSubmit={e => {e.preventDefault();}}>
                     <Items handleChange={e => this.handleItemChange(e.target.value)}/>
+                    {(this.state.Pcase) ? <Case handleChange={e => this.handleCaseChange(e.target.value)}/> : null}
                     <br/>
                     <Form.Label>Amount</Form.Label>
                         <Form.Control type="number"
                                       className="formContainer"
                                       value={this.state.amount}
-                                      onChange={(e) => this.onAmountChange(e.target.value)}/>
+                                      onChange={(e) => this.onAmountChange(e.target.value)}
+                                      min="1"/>
                     <br/>
                     <p>Min price: {(this.state.minPrice * this.state.amount).toFixed(2)} USD</p>
                     <Slider step={0.01} min={Number(this.state.minPrice)} max={Number(this.state.minPrice * 10)} value={this.state.price} onChange={this.onSliderChange} />
@@ -55,7 +66,8 @@ class Chooser extends React.Component {
                                 <Form.Control type="number"
                                               className="formContainer"
                                               value={(this.state.price * this.state.amount).toFixed(2)}
-                                              onChange={(e) => this.onSliderChange(e.target.value)}/>
+                                              onChange={(e) => this.onSliderChange(e.target.value)}
+                                              min="0"/>
                             </Form.Group>
                             <button as={Col} className="mt-5" xs={6} md={6} type="submit" className="buyBtn">Buy</button>
                         </Form.Row>
