@@ -39,10 +39,11 @@ public class Listing {
     @NotBlank(message = "{listing.country.notBlank}")
     private String country;
 
-    @Value("https://dummyimage.com/345x160/000/fff&text=From+database")
+    //@Value("https://dummyimage.com/345x160/000/fff&text=From+database")
     @Size(max = 255)
     //@NotNull(message = "{listing.image.notNull}")
-    private String image = "https://dummyimage.com/345x160/000/fff&text=From+database";
+    //@NotBlank(message = "{listing.image.notBlank}")
+    private String image;
 
     @ManyToOne
     private User user;
