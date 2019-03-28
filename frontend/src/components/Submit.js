@@ -7,14 +7,18 @@ import Countries from './countries';
 
 const Submit = (props) => {
     return (
-        <Container className='submitFormC'>
-            <Row>
-                <Col md={{span: 6, offset: 3}}>
+            <Container className='submitFormC'>
+                <Row>
+                    <Col md={{span: 6, offset: 3}}>
                     <div>
                         <Form>
                             <Form.Group controlId="formGridTitle">
                                 <Form.Label>Title</Form.Label>
                                 <Form.Control type="text" placeholder="Title" className="formContainer" onChange={props.handleTitleChange}/>
+                            </Form.Group>
+                            <Form.Group controlId="formGridTitle">
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control type="text" placeholder="Name" className="formContainer" onChange={props.handleNameChange}/>
                             </Form.Group>
                             <Form.Group controlId="formGridTextArea">
                                 <Form.Label>Description</Form.Label>
@@ -27,7 +31,7 @@ const Submit = (props) => {
                                                   className="formContainer"
                                                   defaultValue='0'
                                                   onChange={props.handleAgeChange}
-                                    />
+                                                  />
                                 </Form.Group>
                                 <Form.Group as={Col} xs={6} md={6} controlId="formGridCountry">
                                     <div className="label">
@@ -41,10 +45,10 @@ const Submit = (props) => {
                             </button>
                         </Form>
                     </div>
-                </Col>
-            </Row>
-        </Container>
-    );
-};
+                    </Col>
+                </Row>
+            </Container>
+                        );
+            };
 
-export default Submit;
+    export default Submit;

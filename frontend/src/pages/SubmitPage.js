@@ -9,6 +9,7 @@ const SubmitPage = () => {
 
     const formInput = {
         title: "",
+        name: "",
         description: "",
         age: "",
         country: "",
@@ -19,6 +20,11 @@ const SubmitPage = () => {
     const handleTitleChange = (value) => {
         console.log("Title: " + value);
         formInput.title = value;
+    };
+
+    const handleNameChange = (value) => {
+        console.log("Name: " + value);
+        formInput.name = value;
     };
 
     const handleDescriptionChange = (value) => {
@@ -93,17 +99,18 @@ const SubmitPage = () => {
     };
 
     return (
-        <div>
-            <Uploader handleImageChange={ (e) => handleImageChange(e) }/>
-            <Submit
-                handleTitleChange={(e) => handleTitleChange(e.target.value)}
-                handleDescriptionChange={(e) => handleDescriptionChange(e.target.value)}
-                handleAgeChange={(e) => handleAgeChange(e.target.value)}
-                handleCountryChange={(e) => handleCountryChange(e.target.value)}
-                handleFormSubmit={(e) => handleFormSubmit(e)}
-            />
-        </div>
-    );
+            <div>
+                <Uploader/>
+                <Submit
+                    handleTitleChange={(e) => handleTitleChange(e.target.value)}
+                    handleNameChange={(e) => handleNameChange(e.targer.value)}
+                    handleDescriptionChange={(e) => handleDescriptionChange(e.target.value)}
+                    handleAgeChange={(e) => handleAgeChange(e.target.value)}
+                    handleCountryChange={(e) => handleCountryChange(e.target.value)}
+                    handleFormSubmit={(e) => handleFormSubmit(e)}
+                    />
+            </div>
+            );
 };
 
 export default SubmitPage;
