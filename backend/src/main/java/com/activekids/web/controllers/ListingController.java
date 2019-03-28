@@ -3,6 +3,7 @@ package com.activekids.web.controllers;
 import com.activekids.web.model.Listing;
 import com.activekids.web.responses.Response;
 import com.activekids.web.services.ListingService;
+import com.activekids.web.services.UploaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,9 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @RestController
 @CrossOrigin //TODO - Allow only authorized domains
@@ -22,10 +22,12 @@ import java.io.FileOutputStream;
 public class ListingController {
 
     private final ListingService listingService;
+    private final UploaderService uploaderService;
 
     @Autowired
-    public ListingController(ListingService listingService) {
+    public ListingController(ListingService listingService, UploaderService uploaderService) {
         this.listingService = listingService;
+        this.uploaderService = uploaderService;
     }
 
     @GetMapping("/list")
@@ -33,55 +35,39 @@ public class ListingController {
         return listingService.getAllListings();
     }
 
-    @Transactional
-    @PutMapping(path="/add", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity addListing(@Valid @RequestBody Listing listing){
-        boolean successfullyCreated = listingService.createListing(listing);
-
-        if(successfullyCreated){
-            return new ResponseEntity<>(Response.LISTING_CREATED, HttpStatus.CREATED);
-        }
-        else {
-            return new ResponseEntity<>(Response.LISTING_NOT_CREATED, HttpStatus.BAD_REQUEST);
-        }
-    }
-
     /**
      * Upload single file using Spring Controller
      */
-    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-    public @ResponseBody String uploadFileHandler(@RequestParam("file") MultipartFile file) {
+    @Transactional
+    @PostMapping(value = "/create", consumes = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.TEXT_PLAIN_VALUE,
+            MediaType.ALL_VALUE})
+    public @ResponseBody ResponseEntity uploadFileHandler(@RequestPart("properties") @Valid Listing listing,
+                                                  @RequestPart("file") @Valid @NotNull @NotBlank MultipartFile file) {
 
         String fileName = file.getOriginalFilename();
-        System.out.println(fileName);
-        System.out.println(file.getName());
+        try{
+            String imagePath = this.uploaderService.uploadImage(file);
 
-        if (!file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes();
+            if(imagePath != null){
+                System.out.println("Image uploaded!");
 
-                // Creating the directory to store file
-                String rootPath = System.getProperty("catalina.home");
-                File directory = new File(rootPath + File.separator + "tmpFiles");
-                if (!directory.exists()){
-                    directory.mkdirs();
+                listing.setImage(imagePath);
+                boolean successfullyCreated = listingService.createListing(listing);
+                if(successfullyCreated){
+                    return new ResponseEntity<>(Response.LISTING_CREATED, HttpStatus.CREATED);
+                } else {
+                    return new ResponseEntity<>(Response.LISTING_NOT_CREATED, HttpStatus.BAD_REQUEST);
                 }
-
-                // Create the file on server
-                File serverFile = new File(directory.getAbsolutePath() + File.separator + fileName);
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-                stream.write(bytes);
-                stream.close();
-
-                System.out.println("Server File Location=" + serverFile.getAbsolutePath());
-
-                return "You successfully uploaded file=" + fileName;
-            } catch (Exception e) {
-                return "You failed to upload " + fileName + " => " + e.getMessage();
+            } else{
+                String responseMessage = "You failed to upload " + fileName + " because the file was empty.";
+                return new ResponseEntity<>(responseMessage, HttpStatus.CONFLICT);
             }
-        } else {
-            return "You failed to upload " + fileName
-                    + " because the file was empty.";
+
+        } catch (Exception e){
+            String responseMessage = "You failed to upload " + fileName + " => " + e.getMessage();
+            return new ResponseEntity<>(responseMessage, HttpStatus.CONFLICT);
         }
     }
 }
