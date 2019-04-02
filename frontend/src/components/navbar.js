@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../css/nav.css';
-import {getTokenExpirationDate, goToPage} from "../helpers/helperFunctions";
+import {goToPage, isExpiredToken} from "../helpers/helperFunctions";
 import Collapsible from 'react-collapsible';
 import SignIn from '../components/SignIn';
 import {getJWT, removeJWT} from "../helpers/helperFunctions";
@@ -42,7 +42,7 @@ class navbar extends Component {
 
     renderAuthenticationProperties = () => {
         const token = getJWT(AUTHENTICATION_JWT);
-        if(token && getTokenExpirationDate(token) > Date.now()){
+        if(token && !isExpiredToken(token)){
             return(
                 <Navbar.Text className="navFont">
                     <button className="btn" onClick={()=>{this.handleProfileClick(); this.closeNav();}}>Profile</button>

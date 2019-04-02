@@ -8,7 +8,7 @@ import base64 from "base-64";
 import utf8 from "utf8";
 import '../css/signInn.css';
 import {executeHttpPost} from "../services/ApiClient";
-import {getJWT} from '../helpers/helperFunctions';
+import {getJWT, isExpiredToken} from '../helpers/helperFunctions';
 import {AUTHENTICATION_API, AUTHENTICATION_JWT} from '../resources/consts';
 
 export default class SignIn extends Component {
@@ -39,7 +39,8 @@ export default class SignIn extends Component {
     onSubmittingSuccess = (url, response) => {
         switch (response.status) {
             case 200:
-                if (!getJWT(AUTHENTICATION_JWT)) {
+                const token = getJWT(AUTHENTICATION_JWT);
+                if (!token || isExpiredToken(token)) {
                     if (response.data.token) {
                         const token = response.data.token;
                         localStorage.setItem(AUTHENTICATION_JWT, token);

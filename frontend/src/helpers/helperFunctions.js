@@ -13,9 +13,12 @@ export const removeJWT = (jwtName) =>{
     return localStorage.removeItem(jwtName);
 };
 
-export const getTokenExpirationDate = (token) =>{
-    const parsedToken = parseJwt(token);
-    return parsedToken.exp;
+export const isExpiredToken = (token) =>{
+    return (getTokenExpirationDate(token) < (Date.now() / 1000));
+};
+
+const getTokenExpirationDate = (token) =>{
+    return parseJwt(token).exp;
 };
 
 const parseJwt = (token) => {
