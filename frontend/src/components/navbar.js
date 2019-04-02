@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../css/nav.css';
-import {goToPage} from "../helpers/helperFunctions";
+import {getTokenExpirationDate, goToPage} from "../helpers/helperFunctions";
 import Collapsible from 'react-collapsible';
 import SignIn from '../components/SignIn';
 import {getJWT, removeJWT} from "../helpers/helperFunctions";
@@ -41,7 +41,8 @@ class navbar extends Component {
     };
 
     renderAuthenticationProperties = () => {
-        if(getJWT(AUTHENTICATION_JWT) /* TODO - add && check if JWT is not expired */){
+        const token = getJWT(AUTHENTICATION_JWT);
+        if(token && getTokenExpirationDate(token) > Date.now()){
             return(
                 <Navbar.Text className="navFont">
                     <button className="btn" onClick={()=>{this.handleProfileClick(); this.closeNav();}}>Profile</button>
@@ -55,8 +56,8 @@ class navbar extends Component {
                     <Collapsible triggerTagName="Navbar.Text" trigger="Login">
                     <LogIn handleCloseClick={this.closeLoginWindow}/>
                     </Collapsible>
-                </Navbar.Text> 
-                
+                </Navbar.Text>
+
             );
         }
     };
