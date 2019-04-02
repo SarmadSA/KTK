@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Countries from './countries';
+import TweetBox from './TweetBox';
 
 const Submit = (props) => {
     return (
@@ -22,7 +23,7 @@ const Submit = (props) => {
                             </Form.Group>
                             <Form.Group controlId="formGridTextArea">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control as="textarea" rows="3" className="formContainer" onChange={props.handleDescriptionChange}/>
+                                <TweetBox onChange={props.handleDescriptionChange}/>
                             </Form.Group>
                             <Form.Row>
                                 <Form.Group as={Col} xs={6} md={6} controlId="formGridAge">
