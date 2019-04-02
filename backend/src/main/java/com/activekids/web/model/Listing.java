@@ -25,12 +25,12 @@ public class Listing {
     @NotBlank(message = "{listing.title.NotBlank}")
     private String title;
 
-    @Size(max = 140, message = "{listing.description.size}")
+    @Size(max = 255, message = "{listing.description.size}")
     private String description;
 
-    @Min(value = 0, message = "{listing.age.min}")
+    @Min(value = 1, message = "{listing.age.min}")
     @Max(value = 200, message = "{listing.age.max}")
-    //@NotNull(message = "{listing.age.notNull}")
+    @NotNull(message = "{listing.age.notNull}")
     //@NotBlank(message = "{listing.age.notBlank}")
     private Integer age;
 
