@@ -22,19 +22,19 @@ const ListingRowRenderer = (props) => {
         );
     };
 
-    const renderRows = (numOfRows) =>{
+    const renderRows = (numOfRows) => {
 
-        let lastRow = numOfRows; //3
+        let lastRow = numOfRows;
 
         if (remainingCards !== 0) {
             lastRow = numOfRows - 1;
         }
         let renderFrom = 0;
-        for(let rowNumber = 0; rowNumber < numOfRows; rowNumber++){
-            if(rowNumber === lastRow){
+        for (let rowNumber = 0; rowNumber < numOfRows; rowNumber++) {
+            if (rowNumber === lastRow) {
                 rowArray.push(getRow(remainingCards, renderFrom));
                 renderFrom += remainingCards;
-            } else{
+            } else {
                 rowArray.push(getRow(consts.CARD_PER_ROW, renderFrom));
                 renderFrom += consts.CARD_PER_ROW;
             }
