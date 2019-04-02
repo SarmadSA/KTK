@@ -16,11 +16,11 @@ class TweetBox extends Component {
   
   overflowAlert = () => {
     if (this.remainingCharacters() < 0) {
-      var beforeOverflowText = this.state.text.substring(140 - 10, 140);
+      var beforeOverflowText = this.state.text.substring(140 - 5, 140);
       var overflowText = this.state.text.substring(140);
 
       return (
-        <div className="">
+        <div>
           <strong>Oops! Too Long:</strong>
             &nbsp;...{beforeOverflowText}
             <strong className="bg-danger">{overflowText}</strong>
@@ -39,8 +39,7 @@ class TweetBox extends Component {
         <textarea className="form-control"
                   onChange={this.handleChange.bind(this)} value={this.props.text}>
         </textarea>
-        <br/>
-          <span>{this.remainingCharacters()}</span>
+          <span style={{float: 'right'}}>{this.remainingCharacters()}</span>
         <br />
         {this.overflowAlert()} 
       </div>
