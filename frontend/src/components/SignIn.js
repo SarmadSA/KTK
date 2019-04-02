@@ -14,8 +14,10 @@ import {AUTHENTICATION_API, AUTHENTICATION_JWT} from '../resources/consts';
 export default class SignIn extends Component {
     constructor(props) {
         super(props)
+        this.showHide = this.showHide.bind(this);
     }
-
+    
+    
     formInput = {
         email: "",
         password: ""
@@ -35,6 +37,14 @@ export default class SignIn extends Component {
         e.preventDefault();
         executeHttpPost(AUTHENTICATION_API, querystring.stringify(this.formInput), {}, this.onSubmittingSuccess, this.onSubmittingFailure)
     };
+    
+    showHide(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.setState({
+            type: this.state.type === 'password' ? 'input' : 'password'
+        });
+    }
 
     onSubmittingSuccess = (url, response) => {
         switch (response.status) {
@@ -94,8 +104,9 @@ export default class SignIn extends Component {
                             </Form.Group>
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password"
-                                              onChange={(e) => this.handlePasswordChange(e.target.value)}/>
+                                <Form.Control type="password" className="password input" placeholder="Password"  
+                                onChange={(e) => this.handlePasswordChange(e.target.value)}/>
+                                <span className="password showpass" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
                                 <a className="signUp loginA" href="/url">Forgot password?</a>
                             </Form.Group>
                             <Form.Group controlId="formBasicChecbox">

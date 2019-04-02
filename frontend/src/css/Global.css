@@ -2,6 +2,17 @@ html, body, #root, .App {
 
 }
 
+.card-body{
+    min-width: 225px;
+    max-width: 225px;
+    min-height: 155px;
+    max-height: 225px;
+}
+
+.card-text{
+    font-size: small;
+}
+
 .clear{
     clear: both;
 }
@@ -30,7 +41,7 @@ html, body, #root, .App {
 }
 
 .red {
-     color: #b20e12;
+    color: #b20e12;
 }
 
 .black {
@@ -55,11 +66,11 @@ html, body, #root, .App {
 }
 
 .redBck {
-     background-color: #b20e12;
+    background-color: #b20e12;
 }
 
 .blackBck {
-     background-color: black;
+    background-color: black;
 }
 
 .signUpBox {

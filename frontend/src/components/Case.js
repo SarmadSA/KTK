@@ -5,16 +5,26 @@ const Case = (props) => {
     return (
         <Form.Control as="select" onChange={e => props.handleChange(e)}>
             <option>Item...</option>
-            <option value="45.95">iPhone 4 45.95 USD</option>
-            <option value="21">iPhone 5 21 USD</option>
-            <option value="21">iPhoneX 21 USD</option>
-            <option value="12.95">Coffee Mug 12.95 USD</option>
-            <option value="23">Pillow 23 USD</option>
-            <option value="18">Pillow case 18 USD</option>
-            <option value="18">Poster 18 USD</option>
-            <option value="23.5">Framed poster 23.50 USD</option>
-            <option value="30">Towel 30 USD</option>
-            <option value="15">Placemat 15 USD</option>
+            <option value="16.95">iPhone 6</option>
+            <option value="16.95">iPhone 6s</option>
+            <option value="16.95">iPhone 6+</option>
+            <option value="16.95">iPhone 6s+</option>
+            <option value="16.95">iPhone 7</option>
+            <option value="16.95">iPhone 7+</option>
+            <option value="16.95">iPhone 8</option>
+            <option value="16.95">iPhone 8+</option>
+            <option value="16.95">iPhone x</option>
+            <option value="16.95">iPhone xx</option>
+            <option value="16.95">iPhone xsMax</option>
+            <option value="16.95">Samsung Galaxy S7</option>
+            <option value="16.95">Samsung Galaxy S7 Edge</option>
+            <option value="16.95">Samsung Galaxy S8</option>
+            <option value="16.95">Samsung Galaxy S8+</option>
+            <option value="16.95">Samsung Galaxy S9</option>
+            <option value="16.95">Samsung Galaxy S9+</option>
+            <option value="16.95">Samsung Galaxy S10</option>
+            <option value="16.95">Samsung Galaxy S10e</option>
+            <option value="16.95">Samsung Galaxy S10+</option>
         </Form.Control>);
 };
 export default Case;
