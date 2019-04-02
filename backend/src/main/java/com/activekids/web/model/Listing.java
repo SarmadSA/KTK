@@ -28,7 +28,10 @@ public class Listing {
     @Size(max = 255, message = "{listing.description.size}")
     private String description;
 
-    @Min(value = 1, message = "{listing.age.min}")
+    //TODO - add name in listing service and other places and add validation messages for name
+    //private String kidName;
+
+    @Min(value = 0, message = "{listing.age.min}")
     @Max(value = 200, message = "{listing.age.max}")
     @NotNull(message = "{listing.age.notNull}")
     //@NotBlank(message = "{listing.age.notBlank}")
