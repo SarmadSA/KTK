@@ -7,16 +7,16 @@ import '../css/PurchaseHistory.css';
 class PurchasedItem extends Component {
     
     constructor () {
-        super()
+        super();
         this.state = {
             isHidden: true
-        }
+        };
     }
     
     toggleHidden () {
         this.setState({
             isHidden:!this.state.isHidden
-        })
+        });
     }
     
     render() {

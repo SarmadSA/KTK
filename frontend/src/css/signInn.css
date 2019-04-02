@@ -71,3 +71,8 @@
 .invisible{
     display: none;
 }
+
+.showpassLogin{
+    cursor: pointer;
+    color: black !important;
+}
