@@ -104,7 +104,6 @@ export default class SignIn extends Component {
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Label>Password</Form.Label>
                             <Form.Control type={this.state.type} className="password input" placeholder="Password"
                                           onChange={(e) => this.handlePasswordChange(e.target.value)}/>
                             <span className="password showpassLogin"

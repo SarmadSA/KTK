@@ -1,6 +1,11 @@
 .bg-image {
   /* The image used */
   background-image: url("../img/kids.jpg");
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
 
   /* Add the blur effect */
   filter: blur(8px);
