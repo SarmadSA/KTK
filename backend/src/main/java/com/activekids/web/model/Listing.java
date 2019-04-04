@@ -1,5 +1,7 @@
 package com.activekids.web.model;
 
+import com.activekids.web.model.validation.order.FirstOrder;
+import com.activekids.web.model.validation.order.SecondOrder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,9 +22,8 @@ public class Listing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size(min = 3, max = 45, message = "{listing.title.size}")
-    @NotNull(message = "{listing.title.notNull}")
-    @NotBlank(message = "{listing.title.NotBlank}")
+    @NotEmpty(message = "{listing.title.notEmpty}", groups = {FirstOrder.class})
+    @Size(min = 3, max = 45, message = "{listing.title.size}", groups = {SecondOrder.class})
     private String title;
 
     @Size(max = 140, message = "{listing.description.size}")
@@ -38,8 +39,7 @@ public class Listing {
     private Integer age;
 
     @Size(min = 1, max = 60, message = "{listing.country.size}")
-    @NotNull(message = "{listing.country.notNull}")
-    @NotBlank(message = "{listing.country.notBlank}")
+    @NotEmpty(message = "{listing.country.notEmpty}")
     private String country;
 
     //@Value("https://dummyimage.com/345x160/000/fff&text=From+database")
