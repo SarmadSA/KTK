@@ -17,10 +17,18 @@
 }
 
 .details {
-    border-style: solid;
-    border-width: 1px;
+    border-bottom: solid 1px;
+    border-right: solid 1px;
+    border-left: solid 1px;
 }
 
 .hisContainer {
     margin-bottom: 10px;
+}
+
+.detailsBtn{
+    position: absolute;
+    font-size: 25px;
+    border: none;
+    background: none;
 }
