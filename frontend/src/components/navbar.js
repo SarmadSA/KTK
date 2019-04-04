@@ -118,7 +118,7 @@ class navbar extends Component {
                     <Navbar.Brand onClick={()=>{goToPage('/explore'); this.closeNav();}}>
                         <img
                             alt=""
-                            src={require("../logo.png")}
+                            src={require("../logo.gif")}
                             width="30"
                             height="30"
                             className="d-inline-block align-top"

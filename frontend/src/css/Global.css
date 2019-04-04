@@ -20,7 +20,7 @@ html, body, #root, .App {
 .main {
     /*Disable scroll bars*/
     overflow: hidden;
-    margin-top: 90px;
+    margin-top: 56px;
 }
 
 @media only screen and (min-width: 992px) {
