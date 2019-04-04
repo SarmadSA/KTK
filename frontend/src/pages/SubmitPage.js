@@ -180,11 +180,6 @@ class SubmitPage extends Component {
                             handleCountryChange={(e) => this.handleCountryChange(e.target.value)}
                             handleFormSubmit={(e) => this.handleFormSubmit(e)}
                             />
-                        <img
-                            alt="Please Login First"
-                            src={require("../img/PleasLogin.png")}
-                            className="loginPlease"
-                            />
                     </div>
                     );
         }
