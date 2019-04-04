@@ -12,9 +12,9 @@ class SubmitPage extends Component {
         super(props);
         this.state = {
             receivedResponse: false,
-            errors: [],
-            messages: [],
-            feedBackVariant: ""
+            submitted: false,
+            feedBackMessage: '',
+            errors: []
         }
     }
 
@@ -22,7 +22,7 @@ class SubmitPage extends Component {
         title: "",
         name: "",
         description: "",
-        age: "",
+        age: 1,
         country: ""
     };
 
@@ -70,17 +70,16 @@ class SubmitPage extends Component {
             this.onSubmitSuccess,
             this.onSubmitFailure
         );
+        //TODO - scroll to top
     };
 
     onSubmitSuccess = (url, response) => {
         console.log("Successfully submitted!");
         this.setState({
             receivedResponse: true,
-            feedBackVariant: "success",
-            messages: [response.data]
+            submitted: true,
+            feedBackMessage: 'Successfully submitted!'
         });
-
-        console.log(this.state.messages);
 
         //if (response.data) {
         //    switch (response.status) {
@@ -101,18 +100,21 @@ class SubmitPage extends Component {
 
         this.setState({
             receivedResponse: true,
-            feedBackVariant: "danger"
+            submitted: false
         });
 
         switch (response.status) {
             //unauthorized
             case 401:
-                this.setState({messages: ["You need to be logged in to submit!"]});
-                console.log(this.state.messages);
+                this.setState({feedBackMessage: "You need to be logged in to submit!"});
+                console.log(this.state.errors);
                 break;
             case 400: //Error/errors
-                this.setState({messages: response.data.errors});
-                console.log(this.state.messages);
+                this.setState({
+                    feedBackMessage:'Could not submit, please fix the errors below!',
+                    errors: response.data.errors
+                });
+
                 //response.data.errors.map((error, idx) => (messages.push(error.defaultMessage)));
                 break;
             case 409: //Image error (conflict), image file empty or something wrong with the imag
@@ -146,15 +148,21 @@ class SubmitPage extends Component {
         };
     };
 
-    renderServerMessages = () => {
+    showFeedBackMessage = () => {
         if (this.state.receivedResponse) {
-            return (
-                <Alert key={1} variant={this.state.feedBackVariant}>
-                    <ul id="alert-list" style={{listStyleType: 'none'}}>
-                        {this.getAllMessagesToRender()}
-                    </ul>
-                </Alert>
-            );
+            if(this.state.submitted){
+                return (
+                    <Alert key={1} variant='success'>
+                        { this.state.feedBackMessage }
+                    </Alert>
+                );
+            } else {
+                return (
+                    <Alert key={1} variant='danger'>
+                        { this.state.feedBackMessage }
+                    </Alert>
+                );
+            }
         }
     };
 
@@ -171,8 +179,7 @@ class SubmitPage extends Component {
     render() {
         return (
             <div>
-
-                {this.renderServerMessages()}
+                { this.showFeedBackMessage() }
                 <Uploader handleImageChange={(e) => this.handleImageChange(e)}/>
                 <Submit
                     handleTitleChange={(e) => this.handleTitleChange(e.target.value)}
@@ -185,6 +192,6 @@ class SubmitPage extends Component {
             </div>
         );
     }
-};
+}
 
 export default SubmitPage;
