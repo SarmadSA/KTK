@@ -14,10 +14,12 @@ import {AUTHENTICATION_API, AUTHENTICATION_JWT} from '../resources/consts';
 export default class SignIn extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            type: 'password'
+        };
         this.showHide = this.showHide.bind(this);
     }
-    
-    
+
     formInput = {
         email: "",
         password: ""
@@ -26,17 +28,18 @@ export default class SignIn extends Component {
     handleEmailChange = (value) => {
         this.formInput.email = value;
         console.log("Email: " + value);
-    };
-
-    handlePasswordChange = (value) => {
+    }
+    ;
+            handlePasswordChange = (value) => {
         this.formInput.password = base64.encode(utf8.encode(value));
         console.log("Password: " + value);
-    };
-
-    handleSubmit = (e) => {
+    }
+    ;
+            handleSubmit = (e) => {
         e.preventDefault();
         executeHttpPost(AUTHENTICATION_API, querystring.stringify(this.formInput), {}, this.onSubmittingSuccess, this.onSubmittingFailure)
-    };
+    }
+    ;
     
     showHide(e) {
         e.preventDefault();
@@ -72,9 +75,9 @@ export default class SignIn extends Component {
         }
 
         console.log("Success!!")
-    };
-
-    onSubmittingFailure = (url, response) => {
+    }
+    ;
+            onSubmittingFailure = (url, response) => {
         switch (response.status) {
             case 200:
                 console.log("Logged inn!");
@@ -87,37 +90,38 @@ export default class SignIn extends Component {
                 console.log("Something went wrong");
         }
         console.log("Failure!!")
-    };
-
-    render() {
+    }
+    ;
+            render() {
         return (
-            <div className={'popup ' + this.props.otherClasses}>
-                <div className='popup_inner'>
-                    <h3>Log In</h3>
-                    <button className="closePop" onClick={this.props.handleCloseClick}><IoMdClose/></button>
-                    <Container>
-                        <Form className="SignForm" method="POST">
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" placeholder="Email"
-                                              onChange={(e) => this.handleEmailChange(e.target.value.trim())}/>
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" className="password input" placeholder="Password"  
-                                onChange={(e) => this.handlePasswordChange(e.target.value)}/>
-                                <span className="password showpass" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
-                                <a className="signUp loginA" href="/url">Forgot password?</a>
-                            </Form.Group>
-                            <Form.Group controlId="formBasicChecbox">
-                                <Form.Check type="checkbox" label="Remember me"/>
-                            </Form.Group>
-                            <Button variant="light" type="submit" onClick={this.handleSubmit}>Log in</Button>
-                            <a className="signUp loginA" href="/signup">Don't have an account?</a>
-                        </Form>
-                    </Container>
+                <div className={'popup ' + this.props.otherClasses}>
+                    <div className='popup_inner'>
+                        <h3>Log In</h3>
+                        <button className="closePop" onClick={this.props.handleCloseClick}><IoMdClose/></button>
+                        <Container>
+                            <Form className="SignForm" method="POST">
+                                <Form.Group controlId="formBasicEmail">
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control type="email" placeholder="Email"
+                                                  onChange={(e) => this.handleEmailChange(e.target.value.trim())}/>
+                                </Form.Group>
+                                <Form.Group controlId="formBasicPassword">
+                                    <Form.Label>Password</Form.Label>
+                                    <Form.Control type={this.state.type} className="password input" placeholder="Password"
+                                                  onChange={(e) => this.handlePasswordChange(e.target.value)}/>
+                                    <span className="password showpassLogin"
+                                          onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
+                                    <a className="signUp loginA" href="/url">Forgot password?</a>
+                                </Form.Group>
+                                <Form.Group controlId="formBasicChecbox">
+                                    <Form.Check type="checkbox" label="Remember me"/>
+                                </Form.Group>
+                                <Button variant="light" type="submit" onClick={this.handleSubmit}>Log in</Button>
+                                <a className="signUp loginA" href="/signup">Don't have an account?</a>
+                            </Form>
+                        </Container>
+                    </div>
                 </div>
-            </div>
-        );
+                );
     }
 };
