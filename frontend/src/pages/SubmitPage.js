@@ -28,6 +28,19 @@ class SubmitPage extends Component {
 
     imageFile = {};
 
+    clearFields = () =>{
+
+    };
+
+    resetFieldInput = () => {
+        this.formInput.title = "";
+        this.formInput.name = "";
+        this.formInput.description = "";
+        this.formInput.age = "";
+        this.formInput.country = "";
+        this.imageFile = {}
+    };
+
     handleTitleChange = (value) => {
         console.log("Title: " + value);
         this.formInput.title = value;
@@ -75,6 +88,10 @@ class SubmitPage extends Component {
 
     onSubmitSuccess = (url, response) => {
         console.log("Successfully submitted!");
+
+        //TODO - clear fields Make all fields empty
+        this.resetFieldInput();
+
         this.setState({
             receivedResponse: true,
             submitted: true,
