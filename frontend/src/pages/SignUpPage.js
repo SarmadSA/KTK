@@ -59,7 +59,7 @@ export default class SignUp extends Component {
     render() {
         return (
             <div className="surround">
-                <Col xs={12} md={4} lg={4} className="signUpBox">
+                <Col xs={12} md={10} lg={4} className="signUpBox">
                     <Signup
                         handleNameChange={ (e) => this.handleNameChange(e.target.value.trim()) }
                         handleLastNameChange={(e) => this.handleLastNameChange(e.target.value.trim()) }

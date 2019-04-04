@@ -6,7 +6,11 @@ html, body, #root, .App {
     min-width: 225px;
     max-width: 225px;
     min-height: 155px;
-    max-height: 155px;
+    max-height: 225px;
+}
+
+.card-text{
+    font-size: small;
 }
 
 .clear{
@@ -14,9 +18,24 @@ html, body, #root, .App {
 }
 
 .main {
-    min-height: 100vh;
     /*Disable scroll bars*/
     overflow: hidden;
+    margin-top: 90px;
+}
+
+@media only screen and (min-width: 992px) {
+    .loginPlease{
+        position: fixed;
+        top: 75px;
+        right: 155px;
+        z-index: -1;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .loginPlease{
+        display: none;
+    }
 }
 
 .blue {

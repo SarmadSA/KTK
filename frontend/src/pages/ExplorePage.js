@@ -42,7 +42,7 @@ export default class LandingPage extends Component {
         const style = {marginTop:'10%'};
 
         if (this.state.isLoading) {
-            return (<LoadingCube style={style}/>) //TODO - replace with loading component
+            return (<LoadingCube style={style}/>);
         }
         if (this.state.data.length > 0) {
             return (<List data={this.state.data}/>)

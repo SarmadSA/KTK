@@ -8,12 +8,16 @@ import base64 from "base-64";
 import utf8 from "utf8";
 import '../css/signInn.css';
 import {executeHttpPost} from "../services/ApiClient";
-import {getJWT} from '../helpers/helperFunctions';
+import {getJWT, isExpiredToken} from '../helpers/helperFunctions';
 import {AUTHENTICATION_API, AUTHENTICATION_JWT} from '../resources/consts';
 
 export default class SignIn extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = {
+            type: 'password'
+        };
+        this.showHide = this.showHide.bind(this);
     }
 
     formInput = {
@@ -21,25 +25,34 @@ export default class SignIn extends Component {
         password: ""
     };
 
+    showHide(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.setState({
+            type: this.state.type === 'password' ? 'input' : 'password'
+        });
+    }
+
     handleEmailChange = (value) => {
         this.formInput.email = value;
         console.log("Email: " + value);
-    }
-    ;
-            handlePasswordChange = (value) => {
+    };
+
+    handlePasswordChange = (value) => {
         this.formInput.password = base64.encode(utf8.encode(value));
         console.log("Password: " + value);
-    }
-    ;
-            handleSubmit = (e) => {
+    };
+
+    handleSubmit = (e) => {
         e.preventDefault();
         executeHttpPost(AUTHENTICATION_API, querystring.stringify(this.formInput), {}, this.onSubmittingSuccess, this.onSubmittingFailure)
-    }
-    ;
-            onSubmittingSuccess = (url, response) => {
+    };
+
+    onSubmittingSuccess = (url, response) => {
         switch (response.status) {
             case 200:
-                if (!getJWT(AUTHENTICATION_JWT)) {
+                const token = getJWT(AUTHENTICATION_JWT);
+                if (!token || isExpiredToken(token)) {
                     if (response.data.token) {
                         const token = response.data.token;
                         localStorage.setItem(AUTHENTICATION_JWT, token);
@@ -61,9 +74,9 @@ export default class SignIn extends Component {
         }
 
         console.log("Success!!")
-    }
-    ;
-            onSubmittingFailure = (url, response) => {
+    };
+
+    onSubmittingFailure = (url, response) => {
         switch (response.status) {
             case 200:
                 console.log("Logged inn!");
@@ -78,29 +91,32 @@ export default class SignIn extends Component {
         console.log("Failure!!")
     }
     ;
-            render() {
+
+    render() {
         return (
-                <div>
-                    <Container>
-                        <Form className="SignForm" method="POST">
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" placeholder="Email"
-                                              onChange={(e) => this.handleEmailChange(e.target.value.trim())}/>
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password"
-                                              onChange={(e) => this.handlePasswordChange(e.target.value)}/>
-                                <a className="signUp loginA" href="/url">Forgot password?</a>
-                            </Form.Group>
-                            <Form.Group controlId="formBasicChecbox">
-                                <Form.Check type="checkbox" label="Remember me"/>
-                            </Form.Group>
-                            <Button variant="light" type="submit" onClick={this.handleSubmit}>Log in</Button>
-                        </Form>
-                    </Container>
-                </div>
-                );
+            <div>
+                <Container>
+                    <Form className="SignForm" method="POST">
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" placeholder="Email"
+                                          onChange={(e) => this.handleEmailChange(e.target.value.trim())}/>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type={this.state.type} className="password input" placeholder="Password"
+                                          onChange={(e) => this.handlePasswordChange(e.target.value)}/>
+                            <span className="password showpassLogin"
+                                  onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
+                            <a className="signUp loginA" href="/url">Forgot password?</a>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicChecbox">
+                            <Form.Check type="checkbox" label="Remember me"/>
+                        </Form.Group>
+                        <Button variant="light" type="submit" onClick={this.handleSubmit}>Log in</Button>
+                    </Form>
+                </Container>
+            </div>
+        );
     }
 };
