@@ -15,7 +15,7 @@ class SubmitPage extends Component {
             errors: [],
             messages: [],
             feedBackVariant: ""
-        }
+        };
     }
 
     formInput = {
@@ -31,29 +31,29 @@ class SubmitPage extends Component {
     handleTitleChange = (value) => {
         console.log("Title: " + value);
         this.formInput.title = value;
-    };
-
-    handleNameChange = (value) => {
+    }
+    ;
+            handleNameChange = (value) => {
         console.log("Name: " + value);
         this.formInput.name = value;
-    };
-
-    handleDescriptionChange = (value) => {
+    }
+    ;
+            handleDescriptionChange = (value) => {
         console.log("description: " + value);
         this.formInput.description = value;
-    };
-
-    handleAgeChange = (value) => {
+    }
+    ;
+            handleAgeChange = (value) => {
         console.log("age: " + value);
         this.formInput.age = value;
-    };
-
-    handleCountryChange = (value) => {
+    }
+    ;
+            handleCountryChange = (value) => {
         console.log("Country: " + value);
         this.formInput.country = value;
-    };
-
-    handleFormSubmit = (e) => {
+    }
+    ;
+            handleFormSubmit = (e) => {
         e.preventDefault();
         console.log("Submitting: " + this.formInput);
 
@@ -64,15 +64,15 @@ class SubmitPage extends Component {
         }));
 
         executeHttpPost(
-            CREATE_LISTING_API,
-            formData,
-            this.getConfig(undefined),
-            this.onSubmitSuccess,
-            this.onSubmitFailure
-        );
-    };
-
-    onSubmitSuccess = (url, response) => {
+                CREATE_LISTING_API,
+                formData,
+                this.getConfig(undefined),
+                this.onSubmitSuccess,
+                this.onSubmitFailure
+                );
+    }
+    ;
+            onSubmitSuccess = (url, response) => {
         console.log("Successfully submitted!");
         this.setState({
             receivedResponse: true,
@@ -94,9 +94,9 @@ class SubmitPage extends Component {
         //    }
         //}
 
-    };
-
-    onSubmitFailure = (url, response) => {
+    }
+    ;
+            onSubmitFailure = (url, response) => {
         console.log("Submit failure!");
 
         this.setState({
@@ -127,64 +127,68 @@ class SubmitPage extends Component {
         //response.data.errors.map((error, idx) => (messages.push(error.defaultMessage)));
         //console.log(messages);
 
-    };
-
-
-    handleImageChange = (images) => {
+    }
+    ;
+            handleImageChange = (images) => {
         console.log("Image info: ");
         console.log(images[0]);
         this.imageFile = images[0];
-    };
-
-
-    getConfig = (contentType) => {
+    }
+    ;
+            getConfig = (contentType) => {
         return {
             headers: {
                 'contentType': contentType,
                 'Authorization': 'Bearer ' + getJWT(AUTHENTICATION_JWT)
             }
         };
-    };
-
-    renderServerMessages = () => {
+    }
+    ;
+            renderServerMessages = () => {
         if (this.state.receivedResponse) {
             return (
-                <Alert key={1} variant={this.state.feedBackVariant}>
-                    <ul id="alert-list" style={{listStyleType: 'none'}}>
-                        {this.getAllMessagesToRender()}
-                    </ul>
-                </Alert>
-            );
+                    <Alert key={1} variant={this.state.feedBackVariant}>
+                        <ul id="alert-list" style={{listStyleType: 'none'}}>
+                            {this.getAllMessagesToRender()}
+                        </ul>
+                    </Alert>
+                                );
+                    }
         }
-    };
-
-    getAllMessagesToRender = () => {
-        let list = document.getElementById("alert-list");
-        for (let i = 0; i < this.state.messages.length; i++) {
-            console.log(this.state.messages[i].defaultMessage);
-            let entry = document.createElement('li');
-            entry.appendChild(document.createTextNode(this.state.messages[i].defaultMessage));
-            list.appendChild(entry);
+        ;
+                getAllMessagesToRender = () => {
+            let list = document.getElementById("alert-list");
+            for (let i = 0; i < this.state.messages.length; i++) {
+                console.log(this.state.messages[i].defaultMessage);
+                let entry = document.createElement('li');
+                entry.appendChild(document.createTextNode(this.state.messages[i].defaultMessage));
+                list.appendChild(entry);
+            }
         }
-    };
-
-    render() {
-        return (
-            <div>
-
-                {this.renderServerMessages()}
-                <Uploader handleImageChange={(e) => this.handleImageChange(e)}/>
-                <Submit
-                    handleTitleChange={(e) => this.handleTitleChange(e.target.value)}
-                    handleNameChange={(e) => this.handleNameChange(e.target.value)}
-                    handleDescriptionChange={(e) => this.handleDescriptionChange(e.target.value)}
-                    handleAgeChange={(e) => this.handleAgeChange(e.target.value)}
-                    handleCountryChange={(e) => this.handleCountryChange(e.target.value)}
-                    handleFormSubmit={(e) => this.handleFormSubmit(e)}
-                />
-            </div>
-        );
+        ;
+                render() {
+            return (
+                    <div>
+                    
+                        {this.renderServerMessages()}
+                        <Uploader handleImageChange={(e) => this.handleImageChange(e)}/>
+                        <Submit
+                            handleTitleChange={(e) => this.handleTitleChange(e.target.value)}
+                            handleNameChange={(e) => this.handleNameChange(e.target.value)}
+                            handleDescriptionChange={(e) => this.handleDescriptionChange(e.target.value)}
+                            handleAgeChange={(e) => this.handleAgeChange(e.target.value)}
+                            handleCountryChange={(e) => this.handleCountryChange(e.target.value)}
+                            handleFormSubmit={(e) => this.handleFormSubmit(e)}
+                            />
+                        <img
+                            alt="Please Login First"
+                            src={require("../img/PleasLogin.png")}
+                            className="loginPlease"
+                            />
+                    </div>
+                    );
+        }
     }
-};
+    ;
 
-export default SubmitPage;
+    export default SubmitPage;

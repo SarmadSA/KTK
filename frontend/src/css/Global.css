@@ -23,6 +23,21 @@ html, body, #root, .App {
     margin-top: 90px;
 }
 
+@media only screen and (min-width: 992px) {
+    .loginPlease{
+        position: fixed;
+        top: 75px;
+        right: 155px;
+        z-index: -1;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .loginPlease{
+        display: none;
+    }
+}
+
 .blue {
     color: #0ebea0;
 }
