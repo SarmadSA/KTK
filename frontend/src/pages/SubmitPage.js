@@ -18,6 +18,8 @@ class SubmitPage extends Component {
         }
     }
 
+//response.data.errors[i].defaultMessage
+//response.data.errors[i].field
     formInput = {
         title: "",
         name: "",
@@ -27,6 +29,47 @@ class SubmitPage extends Component {
     };
 
     imageFile = {};
+
+    //Error messages
+    fieldErrors = {
+        title: "",
+        name: "",
+        description: "",
+        age: "",
+        country: ""
+    };
+
+    mapErrorsToFields = () =>{
+        const fieldErrors = this.fieldErrors;
+        (this.state.errors).forEach(function(error) {
+            console.log(error);
+            switch (error.field) {
+                case 'title':
+                    if(fieldErrors.title === ""){
+                        fieldErrors.title = error.defaultMessage;
+                    }
+                    break;
+                case 'name':
+                    if(fieldErrors.name === ""){
+                        fieldErrors.name = error.defaultMessage;
+                    }
+                    break;
+                case 'description':
+                    if(fieldErrors.description === "") {
+                        fieldErrors.description = error.defaultMessage;
+                    }
+                    break;
+                case 'age':
+                    fieldErrors.age = error.defaultMessage;
+                    break;
+                case 'country':
+                    if(fieldErrors.country === ""){
+                        fieldErrors.country = error.defaultMessage;
+                    }
+                    break;
+            }
+        });
+    };
 
     clearFields = () =>{
 
@@ -131,7 +174,7 @@ class SubmitPage extends Component {
                     feedBackMessage:'Could not submit, please fix the errors below!',
                     errors: response.data.errors
                 });
-
+                this.mapErrorsToFields();
                 //response.data.errors.map((error, idx) => (messages.push(error.defaultMessage)));
                 break;
             case 409: //Image error (conflict), image file empty or something wrong with the imag
@@ -183,14 +226,24 @@ class SubmitPage extends Component {
         }
     };
 
-    getAllMessagesToRender = () => {
-        let list = document.getElementById("alert-list");
-        for (let i = 0; i < this.state.messages.length; i++) {
-            console.log(this.state.messages[i].defaultMessage);
-            let entry = document.createElement('li');
-            entry.appendChild(document.createTextNode(this.state.messages[i].defaultMessage));
-            list.appendChild(entry);
-        }
+    handleTitleError = () => {
+        return this.fieldErrors.title;
+    };
+
+    handleNameError = () => {
+        return this.fieldErrors.name;
+    };
+
+    handleDescriptionError = () => {
+        return this.fieldErrors.description;
+    };
+
+    handleAgeError = () => {
+        return this.fieldErrors.age;
+    };
+
+    handleCountryError = () => {
+        return this.fieldErrors.country;
     };
 
     render() {
@@ -205,6 +258,13 @@ class SubmitPage extends Component {
                     handleAgeChange={(e) => this.handleAgeChange(e.target.value)}
                     handleCountryChange={(e) => this.handleCountryChange(e.target.value)}
                     handleFormSubmit={(e) => this.handleFormSubmit(e)}
+
+                    //Error handling
+                    handleTitleError = { this.handleTitleError() }
+                    handleNameError = { this.handleNameError() }
+                    handleDescriptionError = { this.handleDescriptionError() }
+                    handleAgeError = { this.handleAgeError() }
+                    handleCountryError = { this.handleCountryError() }
                 />
             </div>
         );
