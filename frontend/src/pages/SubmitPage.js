@@ -11,15 +11,14 @@ class SubmitPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            receivedResponse: false,
-            submitted: false,
+            showFeedbackMessage: false,
+            submitting: false,
+            successfullySubmitted: false,
             feedBackMessage: '',
             errors: []
         }
     }
 
-//response.data.errors[i].defaultMessage
-//response.data.errors[i].field
     formInput = {
         title: "",
         name: "",
@@ -39,23 +38,23 @@ class SubmitPage extends Component {
         country: ""
     };
 
-    mapErrorsToFields = () =>{
+    mapErrorsToFields = () => {
         const fieldErrors = this.fieldErrors;
-        (this.state.errors).forEach(function(error) {
+        (this.state.errors).forEach(function (error) {
             console.log(error);
             switch (error.field) {
                 case 'title':
-                    if(fieldErrors.title === ""){
+                    if (fieldErrors.title === "") {
                         fieldErrors.title = error.defaultMessage;
                     }
                     break;
                 case 'name':
-                    if(fieldErrors.name === ""){
+                    if (fieldErrors.name === "") {
                         fieldErrors.name = error.defaultMessage;
                     }
                     break;
                 case 'description':
-                    if(fieldErrors.description === "") {
+                    if (fieldErrors.description === "") {
                         fieldErrors.description = error.defaultMessage;
                     }
                     break;
@@ -63,7 +62,7 @@ class SubmitPage extends Component {
                     fieldErrors.age = error.defaultMessage;
                     break;
                 case 'country':
-                    if(fieldErrors.country === ""){
+                    if (fieldErrors.country === "") {
                         fieldErrors.country = error.defaultMessage;
                     }
                     break;
@@ -71,8 +70,8 @@ class SubmitPage extends Component {
         });
     };
 
-    clearFields = () =>{
-
+    clearFields = () => {
+        //Get element by Id
     };
 
     resetFieldInput = () => {
@@ -109,9 +108,26 @@ class SubmitPage extends Component {
         this.formInput.country = value;
     };
 
+    handleImageChange = (images) => {
+        console.log("Image info: ");
+        console.log(images[0]);
+        this.imageFile = images[0];
+    };
+
+    getConfig = (contentType) => {
+        return {
+            headers: {
+                'contentType': contentType,
+                'Authorization': 'Bearer ' + getJWT(AUTHENTICATION_JWT)
+            }
+        };
+    };
+
     handleFormSubmit = (e) => {
         e.preventDefault();
         console.log("Submitting: " + this.formInput);
+
+        this.setState({submitting: true});
 
         const formData = new FormData();
         formData.append('file', this.imageFile);
@@ -130,15 +146,16 @@ class SubmitPage extends Component {
     };
 
     onSubmitSuccess = (url, response) => {
-        console.log("Successfully submitted!");
+        console.log("Successfully successfullySubmitted!");
 
         //TODO - clear fields Make all fields empty
         this.resetFieldInput();
 
         this.setState({
-            receivedResponse: true,
-            submitted: true,
-            feedBackMessage: 'Successfully submitted!'
+            showFeedbackMessage: true,
+            successfullySubmitted: true,
+            submitting: false,
+            feedBackMessage: 'Successfully successfullySubmitted!'
         });
 
         //if (response.data) {
@@ -159,26 +176,33 @@ class SubmitPage extends Component {
         console.log("Submit failure!");
 
         this.setState({
-            receivedResponse: true,
-            submitted: false
+            showFeedbackMessage: true,
+            submitting: false,
         });
 
-        switch (response.status) {
-            //unauthorized
-            case 401:
-                this.setState({feedBackMessage: "You need to be logged in to submit!"});
-                console.log(this.state.errors);
-                break;
-            case 400: //Error/errors
-                this.setState({
-                    feedBackMessage:'Could not submit, please fix the errors below!',
-                    errors: response.data.errors
-                });
-                this.mapErrorsToFields();
-                //response.data.errors.map((error, idx) => (messages.push(error.defaultMessage)));
-                break;
-            case 409: //Image error (conflict), image file empty or something wrong with the imag
-                break;
+        if (!response.status) {
+            //Network error
+            this.setState({feedBackMessage: "Could not reach server, please try again later!"});
+        } else {
+            this.setState({successfullySubmitted: false});
+
+            switch (response.status) {
+                //unauthorized
+                case 401:
+                    this.setState({feedBackMessage: "You need to be logged in to submit!"});
+                    console.log(this.state.errors);
+                    break;
+                case 400: //Error/errors
+                    this.setState({
+                        feedBackMessage: 'Could not submit, please fix the errors below!',
+                        errors: response.data.errors
+                    });
+                    this.mapErrorsToFields();
+                    //response.data.errors.map((error, idx) => (messages.push(error.defaultMessage)));
+                    break;
+                case 409: //Image error (conflict), image file empty or something wrong with the imag
+                    break;
+            }
         }
 
 
@@ -191,35 +215,18 @@ class SubmitPage extends Component {
 
     };
 
-
-    handleImageChange = (images) => {
-        console.log("Image info: ");
-        console.log(images[0]);
-        this.imageFile = images[0];
-    };
-
-
-    getConfig = (contentType) => {
-        return {
-            headers: {
-                'contentType': contentType,
-                'Authorization': 'Bearer ' + getJWT(AUTHENTICATION_JWT)
-            }
-        };
-    };
-
     showFeedBackMessage = () => {
-        if (this.state.receivedResponse) {
-            if(this.state.submitted){
+        if (this.state.showFeedbackMessage) {
+            if (this.state.successfullySubmitted) {
                 return (
                     <Alert key={1} variant='success'>
-                        { this.state.feedBackMessage }
+                        {this.state.feedBackMessage}
                     </Alert>
                 );
             } else {
                 return (
                     <Alert key={1} variant='danger'>
-                        { this.state.feedBackMessage }
+                        {this.state.feedBackMessage}
                     </Alert>
                 );
             }
@@ -249,7 +256,7 @@ class SubmitPage extends Component {
     render() {
         return (
             <div>
-                { this.showFeedBackMessage() }
+                {this.showFeedBackMessage()}
                 <Uploader handleImageChange={(e) => this.handleImageChange(e)}/>
                 <Submit
                     handleTitleChange={(e) => this.handleTitleChange(e.target.value)}
@@ -260,11 +267,11 @@ class SubmitPage extends Component {
                     handleFormSubmit={(e) => this.handleFormSubmit(e)}
 
                     //Error handling
-                    handleTitleError = { this.handleTitleError() }
-                    handleNameError = { this.handleNameError() }
-                    handleDescriptionError = { this.handleDescriptionError() }
-                    handleAgeError = { this.handleAgeError() }
-                    handleCountryError = { this.handleCountryError() }
+                    handleTitleError={this.handleTitleError()}
+                    handleNameError={this.handleNameError()}
+                    handleDescriptionError={this.handleDescriptionError()}
+                    handleAgeError={this.handleAgeError()}
+                    handleCountryError={this.handleCountryError()}
                 />
             </div>
         );
