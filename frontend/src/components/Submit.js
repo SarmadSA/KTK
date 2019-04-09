@@ -8,6 +8,10 @@ import TweetBox from './TweetBox';
 import '../css/submitForm.css';
 
 const Submit = (props) => {
+
+    const defaultFormValues = props.defalutValues;
+    const fieldErrors = props.fieldErrors;
+    console.log(fieldErrors);
     return (
         <Container className='submitFormC'>
             <Row>
@@ -17,37 +21,41 @@ const Submit = (props) => {
                             <Form.Group controlId="formGridTitle">
                                 <Form.Label>Title</Form.Label>
                                 <Form.Control type="text" placeholder="Title" className="formContainer"
-                                              onChange={props.handleTitleChange}/>
-                                <span className="error-message-span"> {props.handleTitleError} </span>
+                                              onChange={props.handleTitleChange}
+                                              defaultValue={defaultFormValues.title}/>
+                                <span className="error-message-span"> {fieldErrors.title} </span>
                             </Form.Group>
                             <Form.Group controlId="formGridName">
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control type="text" placeholder="Name" className="formContainer"
-                                              onChange={props.handleNameChange}/>
-                                <span className="error-message-span"> {props.handleNameError} </span>
+                                              onChange={props.handleNameChange}
+                                              defaultValue={defaultFormValues.name}/>
+                                <span className="error-message-span"> {fieldErrors.name} </span>
                             </Form.Group>
                             <Form.Group controlId="formGridTextArea">
                                 <Form.Label>Description</Form.Label>
-                                <TweetBox onChange={props.handleDescriptionChange}/>
-                                <span className="error-message-span"> {props.handleDescriptionError} </span>
+                                <TweetBox onChange={props.handleDescriptionChange}
+                                          defaultValue={defaultFormValues.description}/>
+                                <span className="error-message-span"> {fieldErrors.description} </span>
                             </Form.Group>
                             <Form.Row>
                                 <Form.Group as={Col} xs={6} md={6} controlId="formGridAge">
                                     <Form.Label>Age</Form.Label>
                                     <Form.Control type="number" placeholder="0"
                                                   className="formContainer"
-                                                  defaultValue='1'
+                                                  defaultValue={defaultFormValues.age}
                                                   onChange={props.handleAgeChange}
                                                   min="1"
                                     />
-                                    <span className="error-message-span"> {props.handleAgeError} </span>
+                                    <span className="error-message-span"> {fieldErrors.age} </span>
                                 </Form.Group>
                                 <Form.Group as={Col} xs={6} md={6} controlId="formGridCountry">
                                     <div className="label">
                                         <Form.Label>Country</Form.Label>
                                     </div>
-                                    <Countries handleChange={props.handleCountryChange}/>
-                                    <span className="error-message-span"> {props.handleCountryError} </span>
+                                    <Countries handleChange={props.handleCountryChange}
+                                               defaultValue={defaultFormValues.country}/>
+                                    <span className="error-message-span"> {fieldErrors.country} </span>
                                 </Form.Group>
                             </Form.Row>
                             <button type="submit" className="btn submitBtn" onClick={props.handleFormSubmit}>

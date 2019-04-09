@@ -5,6 +5,7 @@ import Submit from '../components/Submit';
 import {executeHttpPost} from "../services/ApiClient";
 import {getJWT} from "../helpers/helperFunctions";
 import {AUTHENTICATION_JWT, CREATE_LISTING_API} from "../resources/consts";
+import LoadingCube from "../components/LoadingCube";
 
 class SubmitPage extends Component {
 
@@ -41,7 +42,6 @@ class SubmitPage extends Component {
     mapErrorsToFields = () => {
         const fieldErrors = this.fieldErrors;
         (this.state.errors).forEach(function (error) {
-            console.log(error);
             switch (error.field) {
                 case 'title':
                     if (fieldErrors.title === "") {
@@ -68,10 +68,7 @@ class SubmitPage extends Component {
                     break;
             }
         });
-    };
-
-    clearFields = () => {
-        //Get element by Id
+        this.forceUpdate();
     };
 
     resetFieldInput = () => {
@@ -111,7 +108,7 @@ class SubmitPage extends Component {
     handleImageChange = (images) => {
         console.log("Image info: ");
         console.log(images[0]);
-        this.imageFile = images[0];
+        this.imageFile = images[0]; // we only allow one image to be uploaded.
     };
 
     getConfig = (contentType) => {
@@ -142,20 +139,18 @@ class SubmitPage extends Component {
             this.onSubmitSuccess,
             this.onSubmitFailure
         );
-        //TODO - scroll to top
     };
 
     onSubmitSuccess = (url, response) => {
         console.log("Successfully successfullySubmitted!");
 
-        //TODO - clear fields Make all fields empty
         this.resetFieldInput();
 
         this.setState({
             showFeedbackMessage: true,
             successfullySubmitted: true,
             submitting: false,
-            feedBackMessage: 'Successfully successfullySubmitted!'
+            feedBackMessage: 'Successfully submitted!'
         });
 
         //if (response.data) {
@@ -178,54 +173,48 @@ class SubmitPage extends Component {
         this.setState({
             showFeedbackMessage: true,
             submitting: false,
+            successfullySubmitted: false
         });
 
         if (!response.status) {
             //Network error
             this.setState({feedBackMessage: "Could not reach server, please try again later!"});
         } else {
-            this.setState({successfullySubmitted: false});
-
             switch (response.status) {
-                //unauthorized
-                case 401:
+                case 401: //unauthorized
                     this.setState({feedBackMessage: "You need to be logged in to submit!"});
-                    console.log(this.state.errors);
                     break;
-                case 400: //Error/errors
+                case 400: //Error or errors
                     this.setState({
                         feedBackMessage: 'Could not submit, please fix the errors below!',
                         errors: response.data.errors
                     });
                     this.mapErrorsToFields();
-                    //response.data.errors.map((error, idx) => (messages.push(error.defaultMessage)));
                     break;
                 case 409: //Image error (conflict), image file empty or something wrong with the imag
                     break;
+                case 500:// parsing problem (usually the multipart file parsing (no image selected))
+                    this.setState({feedBackMessage: "Something went wrong, Please try again later!"});
+                    break;
             }
         }
-
-
-        //TODO - check if unauthorized
-        //if(response.statuse)
-//
-        ////TODO - check if other errors
-        //response.data.errors.map((error, idx) => (messages.push(error.defaultMessage)));
-        //console.log(messages);
-
     };
 
     showFeedBackMessage = () => {
         if (this.state.showFeedbackMessage) {
+            const alertStyle ={
+                width: '50%',
+                display: 'inline-block'
+            };
             if (this.state.successfullySubmitted) {
                 return (
-                    <Alert key={1} variant='success'>
+                    <Alert key={1} variant='success' style={alertStyle}>
                         {this.state.feedBackMessage}
                     </Alert>
                 );
             } else {
                 return (
-                    <Alert key={1} variant='danger'>
+                    <Alert key={1} variant='danger' style={alertStyle}>
                         {this.state.feedBackMessage}
                     </Alert>
                 );
@@ -233,48 +222,44 @@ class SubmitPage extends Component {
         }
     };
 
-    handleTitleError = () => {
-        return this.fieldErrors.title;
-    };
+    renderContent = () => {
+        if (!this.state.submitting) {
 
-    handleNameError = () => {
-        return this.fieldErrors.name;
-    };
+            const style = {
+                marginTop: '30px',
+                textAlign: 'center'
+            };
 
-    handleDescriptionError = () => {
-        return this.fieldErrors.description;
-    };
+            return (
+                <div style={style}>
+                    {this.showFeedBackMessage()}
+                    <Uploader handleImageChange={(e) => this.handleImageChange(e)}/>
+                    <Submit
+                        handleTitleChange={(e) => this.handleTitleChange(e.target.value)}
+                        handleNameChange={(e) => this.handleNameChange(e.target.value)}
+                        handleDescriptionChange={(e) => this.handleDescriptionChange(e.target.value)}
+                        handleAgeChange={(e) => this.handleAgeChange(e.target.value)}
+                        handleCountryChange={(e) => this.handleCountryChange(e.target.value)}
+                        handleFormSubmit={(e) => this.handleFormSubmit(e)}
 
-    handleAgeError = () => {
-        return this.fieldErrors.age;
-    };
-
-    handleCountryError = () => {
-        return this.fieldErrors.country;
+                        defalutValues = {this.formInput}
+                        fieldErrors = {this.fieldErrors}
+                    />
+                </div>
+            );
+        } else {
+            const style = {marginTop:'20%'};
+            return (
+                <div style={style}>
+                    <LoadingCube style={style}/>
+                    Submitting, Please wait...
+                </div>
+            );
+        }
     };
 
     render() {
-        return (
-            <div>
-                {this.showFeedBackMessage()}
-                <Uploader handleImageChange={(e) => this.handleImageChange(e)}/>
-                <Submit
-                    handleTitleChange={(e) => this.handleTitleChange(e.target.value)}
-                    handleNameChange={(e) => this.handleNameChange(e.target.value)}
-                    handleDescriptionChange={(e) => this.handleDescriptionChange(e.target.value)}
-                    handleAgeChange={(e) => this.handleAgeChange(e.target.value)}
-                    handleCountryChange={(e) => this.handleCountryChange(e.target.value)}
-                    handleFormSubmit={(e) => this.handleFormSubmit(e)}
-
-                    //Error handling
-                    handleTitleError={this.handleTitleError()}
-                    handleNameError={this.handleNameError()}
-                    handleDescriptionError={this.handleDescriptionError()}
-                    handleAgeError={this.handleAgeError()}
-                    handleCountryError={this.handleCountryError()}
-                />
-            </div>
-        );
+        return (this.renderContent());
     }
 }
 

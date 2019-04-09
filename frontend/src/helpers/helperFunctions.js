@@ -5,6 +5,10 @@ export const goToPage = (path) =>{
     History.push(path);
 };
 
+export const scrollToTop = () =>{
+    //window.
+};
+
 export const getJWT = (jwtName) =>{
     return localStorage.getItem(jwtName);
 };
