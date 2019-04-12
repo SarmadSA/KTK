@@ -67,4 +67,7 @@ public class User {
     private List<Role> roles;
 
     private String token;
+    
+    @Size(min = 8, max = 8)
+    private String resetPasswordLink;
 }
