@@ -142,7 +142,7 @@ class SubmitPage extends Component {
     };
 
     onSubmitSuccess = (url, response) => {
-        console.log("Successfully successfullySubmitted!");
+        console.log("Successfully Submitted!");
 
         this.resetFieldInput();
 

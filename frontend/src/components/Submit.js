@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -11,7 +11,6 @@ const Submit = (props) => {
 
     const defaultFormValues = props.defalutValues;
     const fieldErrors = props.fieldErrors;
-    console.log(fieldErrors);
     return (
         <Container className='submitFormC'>
             <Row>
