@@ -80,6 +80,14 @@ class SubmitPage extends Component {
         this.imageFile = {}
     };
 
+    resetErrors = () => {
+        this.fieldErrors.title = "";
+        this.fieldErrors.name = "";
+        this.fieldErrors.description = "";
+        this.fieldErrors.age = "";
+        this.fieldErrors.country = "";
+    };
+
     handleTitleChange = (value) => {
         console.log("Title: " + value);
         this.formInput.title = value;
@@ -145,6 +153,7 @@ class SubmitPage extends Component {
         console.log("Successfully Submitted!");
 
         this.resetFieldInput();
+        this.resetErrors();
 
         this.setState({
             showFeedbackMessage: true,
