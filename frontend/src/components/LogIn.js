@@ -8,7 +8,7 @@ import base64 from "base-64";
 import utf8 from "utf8";
 import '../css/signInn.css';
 import {executeHttpPost} from "../services/ApiClient";
-import {getJWT, isExpiredToken} from '../helpers/helperFunctions';
+import {getJWT, goToPage, isExpiredToken} from '../helpers/helperFunctions';
 import {AUTHENTICATION_API, AUTHENTICATION_JWT} from '../resources/consts';
 
 export default class SignIn extends Component {
@@ -58,7 +58,11 @@ export default class SignIn extends Component {
                         localStorage.setItem(AUTHENTICATION_JWT, token);
                         console.log("Logged inn!");
                         //Close the login popup or refresh page or component
-                        window.location.reload();
+                        if(window.location.pathname === "/signup"){
+                            window.location.href = "/explore";
+                        } else {
+                            window.location.reload();
+                        }
                     } else {
                         console.log("Something went wrong, No JWT returned from server")
                     }
