@@ -22,8 +22,8 @@ public class Listing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty(message = "{listing.title.notEmpty}", groups = {FirstOrder.class})
-    @Size(min = 3, max = 45, message = "{listing.title.size}", groups = {SecondOrder.class})
+    @NotEmpty(message = "{listing.title.notEmpty}")
+    @Size(min = 3, max = 45, message = "{listing.title.size}")
     private String title;
 
     @Size(max = 140, message = "{listing.description.size}")
