@@ -9,7 +9,7 @@ export const PROFILE_PAGE = '/profile';
 
 //API
 //const HOST = "http://localhost:8080";
-const HOST = "https://certain-region-232223.appspot.com";
+const HOST = "https://fromkids-backend.appspot.com";
 export const AUTHENTICATION_API = HOST + '/api/authentication';
 export const GET_LISTINGS_API = HOST + '/listing/list';
 export const UPLOAD_FILE_API = HOST + '/listing/uploadFile';
