@@ -1,3 +1,4 @@
+/*
 INSERT INTO role (id, role) VALUES
 (1, 'ROLE_ADMIN'),
 (2, 'ROLE_USER');
@@ -17,3 +18,4 @@ INSERT INTO user (id, email, first_name, last_name, password, country, birth_dat
 (1, 'one@email.com', 'Tom', 'Trevor', '123456789', 'China','2011-03-12', 'https://dummyimage.com/600x400/000/fff', 2),
 (2, 'two@email.sk', 'John', 'Michael', '5542js9K', 'Norway','1995-11-15', 'https://dummyimage.com/400x100/e322e3/fff', 1),
 (3, 'three@email.no', 'Sara', 'Sam', 'ruYj3rf2','Norway', '1995-11-15','https://dummyimage.com/400x400/22e379/2a308c&text=Some+text+here', null);
+*/
