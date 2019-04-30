@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 
 const countries = (props) => {
     return (
-        <Form.Control as="select" onChange={props.handleChange}>
+        <Form.Control as="select" onChange={props.handleChange} defaultValue={props.defaultValue}>
             <option>Country...</option>
             <option value="AF">Afghanistan</option>
             <option value="AL">Albania</option>

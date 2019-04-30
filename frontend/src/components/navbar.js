@@ -2,21 +2,43 @@ import React, {Component} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../css/nav.css';
-import {goToPage} from "../helpers/helperFunctions";
-import SignIn from '../components/SignIn';
+import {goToPage, isExpiredToken} from "../helpers/helperFunctions";
+import Collapsible from 'react-collapsible';
+import SignIn from './SignIn';
 import {getJWT, removeJWT} from "../helpers/helperFunctions";
 import {AUTHENTICATION_JWT, EXPLORE_PAGE, PROFILE_PAGE, SIGNUP_PAGE} from "../resources/consts";
+import LogIn from './LogIn';
 
 class navbar extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            navExpanded: false,
             loginVisible: false,
-            navExpanded: false
+            width: 0,
+            height: 0
         };
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    }
+    
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+
+    handleSignUpClick = () => {
+        goToPage(SIGNUP_PAGE);
+    };
+    
     setLoginClass = () =>{
         if (this.state.loginVisible) {
             return 'visible';
@@ -24,17 +46,13 @@ class navbar extends Component {
             return '';
         }
     };
-
+    
     handleLoginClick = () => {
         this.setState({loginVisible: true});
     };
-
+    
     closeLoginWindow = () => {
         this.setState({loginVisible: false});
-    };
-
-    handleSignUpClick = () => {
-        goToPage(SIGNUP_PAGE);
     };
 
     handleProfileClick = () => {
@@ -54,9 +72,26 @@ class navbar extends Component {
     closeNav = () => {
         this.setState({ navExpanded: false });
     };
+    
+    getMobileLogin = () =>{
+        return(<div className="navbar-text">
+               <button className="btn" onClick={()=>{this.handleSignUpClick(); this.closeNav();}}>Get Started</button>
+               <button className="btn" onClick={()=>{this.handleLoginClick(); this.closeNav();}}>Login</button>
+               </div>)
+    };
+    
+    getDesktopLogin = () =>{
+        return(<div>
+        <button className="btn" onClick={()=>{this.handleSignUpClick(); this.closeNav();}}>Get Started</button>
+        <Collapsible triggerTagName="Navbar.Text" trigger="Login">
+        <LogIn handleCloseClick={this.closeLoginWindow}/>
+        </Collapsible>
+        </div>)
+    };
 
     renderAuthenticationProperties = () => {
-        if(getJWT(AUTHENTICATION_JWT) /* TODO - add && check if JWT is not expired */){
+        const token = getJWT(AUTHENTICATION_JWT);
+        if(token && !isExpiredToken(token)){
             return(
                 <Navbar.Text className="navFont">
                     <button className="btn" onClick={()=>{this.handleProfileClick(); this.closeNav();}}>Profile</button>
@@ -65,10 +100,10 @@ class navbar extends Component {
             );
         } else {
             return(
-                <Navbar.Text className="navFont">
-                    <button className="btn" onClick={()=>{this.handleLoginClick(); this.closeNav();}}>Login</button>
-                    <button className="btn" onClick={()=>{this.handleSignUpClick(); this.closeNav();}}>Get Started</button>
+                <Navbar.Text className="navFont navLog">
+                {(this.state.width < 992) ? this.getMobileLogin() : this.getDesktopLogin()}
                 </Navbar.Text>
+
             );
         }
     };
@@ -83,12 +118,12 @@ class navbar extends Component {
                     <Navbar.Brand onClick={()=>{goToPage('/explore'); this.closeNav();}}>
                         <img
                             alt=""
-                            src={require("../logo.svg")}
+                            src={require("../logo.gif")}
                             width="30"
                             height="30"
                             className="d-inline-block align-top"
                         />
-                        {' React Bootstrap'}
+                        {' Kids For Kids'}
                     </Navbar.Brand>
                     <Navbar.Toggle/>
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -102,7 +137,7 @@ class navbar extends Component {
                 </Navbar>
             );
         } else {
-            return (<div></div>)
+            return (<div/>);
         }
     };
 

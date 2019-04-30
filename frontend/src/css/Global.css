@@ -2,14 +2,40 @@ html, body, #root, .App {
 
 }
 
+.card-body{
+    min-width: 225px;
+    max-width: 225px;
+    min-height: 155px;
+    max-height: 225px;
+}
+
+.card-text{
+    font-size: small;
+}
+
 .clear{
     clear: both;
 }
 
 .main {
-    min-height: 100vh;
     /*Disable scroll bars*/
     overflow: hidden;
+    margin-top: 56px;
+}
+
+@media only screen and (min-width: 992px) {
+    .loginPlease{
+        position: fixed;
+        top: 75px;
+        right: 155px;
+        z-index: -1;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .loginPlease{
+        display: none;
+    }
 }
 
 .blue {
@@ -29,7 +55,7 @@ html, body, #root, .App {
 }
 
 .red {
-     color: #b20e12;
+    color: #b20e12;
 }
 
 .black {
@@ -54,11 +80,11 @@ html, body, #root, .App {
 }
 
 .redBck {
-     background-color: #b20e12;
+    background-color: #b20e12;
 }
 
 .blackBck {
-     background-color: black;
+    background-color: black;
 }
 
 .signUpBox {

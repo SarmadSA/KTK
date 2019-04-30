@@ -14,6 +14,8 @@ import Purchase from '../pages/Purchase';
 import PurchaseHistory from '../pages/PurchaseHistory';
 import ManageAccount from '../pages/ManageAccount';
 import RequestTestingPage from '../pages/RequestTestingPage';
+import ResetPasswordPage from '../pages/ResetPasswordPage';
+import ForgotPasswordPage from '../pages/ForgotPasswordPage';
 
 const Routes = () =>{
     return(
@@ -32,6 +34,8 @@ const Routes = () =>{
             <Route path="/purchasehistory/:id" exact component={PurchaseHistory}/>
             <Route path="/manageaccount/:id" exact component={ManageAccount}/>
             <Route path="/requests" exact component={RequestTestingPage}/>
+            <Route path="/resetpassword/:id" exact component={ResetPasswordPage}/>
+            <Route path="/forgotpassword" exact component={ForgotPasswordPage}/>
             <Route path="/" exact component={LandingPage}/>
             <Route render={()=> <NotFoundPage/>}/>
         </Switch>

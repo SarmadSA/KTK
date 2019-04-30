@@ -1,5 +1,7 @@
 package com.activekids.web.model;
 
+import com.activekids.web.model.validation.order.FirstOrder;
+import com.activekids.web.model.validation.order.SecondOrder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,13 +22,15 @@ public class Listing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotEmpty(message = "{listing.title.notEmpty}")
     @Size(min = 3, max = 45, message = "{listing.title.size}")
-    @NotNull(message = "{listing.title.notNull}")
-    @NotBlank(message = "{listing.title.NotBlank}")
     private String title;
 
-    @Size(max = 255, message = "{listing.description.size}")
+    @Size(max = 140, message = "{listing.description.size}")
     private String description;
+
+    //TODO - add name in listing service and other places and add validation messages for name
+    //private String kidName;
 
     @Min(value = 1, message = "{listing.age.min}")
     @Max(value = 200, message = "{listing.age.max}")
@@ -35,14 +39,14 @@ public class Listing {
     private Integer age;
 
     @Size(min = 1, max = 60, message = "{listing.country.size}")
-    @NotNull(message = "{listing.country.notNull}")
-    @NotBlank(message = "{listing.country.notBlank}")
+    @NotEmpty(message = "{listing.country.notEmpty}")
     private String country;
 
-    @Value("https://dummyimage.com/345x160/000/fff&text=From+database")
+    //@Value("https://dummyimage.com/345x160/000/fff&text=From+database")
     @Size(max = 255)
     //@NotNull(message = "{listing.image.notNull}")
-    private String image = "https://dummyimage.com/345x160/000/fff&text=From+database";
+    //@NotBlank(message = "{listing.image.notBlank}")
+    private String image;
 
     @ManyToOne
     private User user;
