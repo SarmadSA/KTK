@@ -35,11 +35,11 @@ public class UserServiceImp implements UserService {
     public boolean createUser(User user) {
         boolean  userCreated = false;
 
-       //if(user.getPassword() != null) {
-       //    //Hash password, hash -> salt + password. everything is done by this class.
-       //    String hashedPassword = this.encoder.encode(user.getPassword());
-       //    user.setPassword(hashedPassword);
-       //}
+       if(user.getPassword() != null) {
+           //Hash password, hash -> salt + password. everything is done by this class.
+           String hashedPassword = this.encoder.encode(user.getPassword());
+           user.setPassword(hashedPassword);
+       }
 
         if(!userExist(user.getEmail())){
             userRepository.save(user);
@@ -62,7 +62,7 @@ public class UserServiceImp implements UserService {
         userToUpdate.setEmail(user.getEmail());
         userToUpdate.setFirstName(user.getFirstName());
         userToUpdate.setLastName(user.getLastName());
-        userToUpdate.setPassword(user.getPassword());
+        userToUpdate.setPassword(user.getPassword()); //TODO - encoder.encode(user.getPassword())
         userToUpdate.setCountry(user.getCountry());
         userToUpdate.setBirthDate(user.getBirthDate());
         userToUpdate.setImage(user.getImage());
@@ -113,7 +113,8 @@ public class UserServiceImp implements UserService {
         if(u == null) {
             return null;
         }
-        if(!u.getPassword().equals(password)){
+        if(!encoder.matches(password, u.getPassword())){
+            System.out.println("not valid login");
             return null;
         }
         return u;
