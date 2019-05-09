@@ -44,7 +44,7 @@ public class UploaderService {
 
     private String UploadToImgur(MultipartFile file) {
         String imageLink = null;
-        String clientID = ""; //Hidden for security reasons
+        String clientID = "a3252b57e5588bd";
         String imgurUploadUrl = "https://api.imgur.com/3/image/";
 
         try {
