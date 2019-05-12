@@ -10,7 +10,7 @@ Frontend:
 If you don't have node.js installed, make sure to do so inorder to be able to start the fronend app and run the requrired commands.
 
 Backend:
-1. Start local MySQL server that runs on localhost (127.0.0.1) port 3306. If your local root user have password set, you need to go to 'src/main/resources/application.properties' in backend project and set 'spring.datasource.password' to your password. Or simply set 'spring.datasource.password' and 'spring.datasource.username' to the correct username and password.The database and all tables will be craeted by spring, so no SQL script or similar is provided.
+1. Start local MySQL server that runs on localhost (127.0.0.1) port 3306. If your local root user have password set, you need to go to 'src/main/resources/application.properties' in backend project and set 'spring.datasource.password' to your password. Or simply set 'spring.datasource.password' and 'spring.datasource.username' to the correct username and password.The database and all tables will be craeted by spring, so no SQL script or similar is provided or needed.
 2. Acces the backend project where pom.xml is loacted
 3. Install the maven dependencies by running 'mvn install'
 4. To run the backend app you can run the commend: 'mvn spring-boot:run'
